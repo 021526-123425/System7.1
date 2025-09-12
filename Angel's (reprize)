@@ -1,0 +1,108 @@
+#!/bin/bash
+set -euo pipefail
+
+# ========== Safety and Logging ==========
+echo "Starting comprehensive system setup at $(date)"
+LOGFILE="setup-$(date '+%Y%m%d-%H%M%S').log"
+exec > >(tee -a "$LOGFILE") 2>&1
+
+# ========== Core Updates ==========
+echo "Updating package lists..."
+apt update && apt upgrade -y
+
+# ========== Firewall Setup ==========
+echo "Configuring UFW firewall..."
+apt install -y ufw
+ufw enable
+ufw default deny incoming
+ufw default allow outgoing
+
+# ========== Flatpak & Snap Setup ==========
+echo "Installing Flatpak and Snap (app platforms)..."
+apt install -y flatpak gnome-software-plugin-flatpak snapd
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# ========== Install Core Apps ==========
+echo "Installing core applications and utilities..."
+# Flatpak apps
+flatpak install -y flathub net.studio08.xbplay
+flatpak install -y flathub com.sindresorhus.Caprine
+flatpak install -y flathub com.google.Chrome
+flatpak install -y flathub org.goldendict.GoldenGoldenDict
+flatpak install -y flathub net.sourceforge.artha.Artha
+flatpak install -y flathub com.github.HypatiaProject.hypatia
+flatpak install -y flathub io.gitlab.o20.file
+flatpak install -y flathub org.ardour.Ardour
+flatpak install -y flathub org.jjazzlab.JJazzLab
+
+# Snap apps
+snap install facebook-webapp
+snap install soundcloud9000
+snap install spotify
+snap install gimp
+snap install klettres
+snap install boa
+
+# ========== Games & Entertainment ==========
+echo "Cloning games repositories..."
+GAMES_DIR=~/games
+mkdir -p "$GAMES_DIR"
+cd "$GAMES_DIR"
+git clone https://github.com/ValveSoftware/halflife || true
+git clone https://github.com/OpenDiablo2/OpenDiablo2 || true
+git clone https://github.com/mitallast/diablo-js || true
+git clone https://github.com/lostdecade/onslaught_arena || true
+git clone https://github.com/ValyriaTear/ValyriaTear || true
+git clone https://github.com/AquariaOSE/Aquaria || true
+git clone https://github.com/solarus-games/zsdx || true
+git clone https://github.com/opentomb/OpenTomb || true
+git clone https://github.com/maettig/starship-sorades-13k || true
+git clone https://github.com/skyjake/Doomsday-Engine.git || true
+git clone https://github.com/NFMynster/ArenaGame.git || true
+git clone https://github.com/inside/actionRPGGame.git || true
+
+# ========== Security, Privacy & Forensics ==========
+echo "Installing security and recovery tools..."
+apt install -y testdisk extundelete cryptsetup
+
+# ========== Useful Utilities ==========
+echo "Installing xscreensaver and extras..."
+apt install -y xscreensaver xscreensaver-data-extra xscreensaver-gl-extra
+
+# ========== Machine Learning & Hacking ==========
+echo "Cloning AI and security tools..."
+TOOLS_DIR=~/tools
+mkdir -p "$TOOLS_DIR"
+cd "$TOOLS_DIR"
+git clone https://github.com/asbestomolesto/mindguard || true
+git clone https://github.com/offensive-security/kali-nethunter || true
+git clone https://github.com/egodigital/node-google-play-store || true
+git clone https://github.com/deepfence/ThreatMapper || true
+git clone https://github.com/ooni/probe || true
+git clone https://github.com/tensorflow/tensorflow || true
+
+# ========== Deploy ThreatMapper (optional, requires Docker) ==========
+echo "Setting up Deepfence ThreatMapper (requires Docker)..."
+if command -v docker &>/dev/null; then
+    wget https://github.com/deepfence/ThreatMapper/raw/release-2.5/deployment-scripts/docker-compose.yml -O docker-compose.yml
+    docker-compose -f docker-compose.yml up --detach
+    # Sample agent run (edit IP and KEY)
+    # docker run -dit --cpus=".2" --name=deepfence-agent --restart on-failure --pid=host --net=host --log-driver json-file --log-opt max-size=50m --privileged=true -v /sys/kernel/debug:/sys/kernel/debug:rw -v /var/log/fenced -v /var/run/docker.sock:/var/run/docker.sock -v /:/fenced/mnt/host/:ro -e DF_LOG_LEVEL="info" -e CUSTOM_TAGS="" -e MGMT_CONSOLE_URL="---CONSOLE-IP---" -e MGMT_CONSOLE_PORT="443" -e DEEPFENCE_KEY="---DEEPFENCE-API-KEY---" quay.io/deepfenceio/deepfence_agent_ce:2.5.7
+else
+    echo "Docker is not installed; skipping ThreatMapper deployment."
+fi
+
+# ========== Data Recovery (use with caution) ==========
+echo "Ready for data recovery (manual step required)."
+echo "To recover files from an unmounted partition:"
+echo "  sudo extundelete /dev/sdXN --restore-all --output-dir /tmp/recovered"
+echo "Replace /dev/sdXN and /tmp/recovered as needed."
+
+# ========== Disk Encryption (manual step required) ==========
+echo "To encrypt a partition, use:"
+echo "  sudo cryptsetup --hash sha512 --verbose --cipher aes-xts-plain --key-size 512 luksFormat /dev/sdXN"
+echo "  sudo cryptsetup open /dev/sdXN <SparkOne>"
+
+# ========== Finish ==========
+echo "Setup complete! Please reboot if prompted."
