@@ -240,9 +240,7 @@ setup_menu(){
 remove_bloat(){
   echo -e "${GREEN}[*] Removing common desktop bloat...${RESET}"
   need_root_msg; apt_update_once
-  $SUDO apt purge -y \
-    libreoffice-* thunderbird transmission-* rhythmbox cheese totem \
-    gnome-games* gnome-weather gnome-maps gnome-music gnome-contacts gnome-calendar || true
+  <^>
   $SUDO apt autoremove -y
   mark_done_priv "bloat"
 }
