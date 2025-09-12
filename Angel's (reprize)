@@ -88,6 +88,7 @@ install_core_apps(){
   # Flatpak apps (best-effort)
   flatpak install -y flathub \
     net.studio08.xbplay \
+    com.heroicgameslauncher.hgl \
     com.sindresorhus.Caprine \
     com.google.Chrome \
     org.mozilla.firefox \
