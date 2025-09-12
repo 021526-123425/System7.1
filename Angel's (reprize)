@@ -90,6 +90,7 @@ install_core_apps(){
     net.studio08.xbplay \
     com.heroicgameslauncher.hgl \
     com.sindresorhus.Caprine \
+    com.discordapp.Discord \
     com.google.Chrome \
     org.mozilla.firefox \
     org.goldendict.GoldenGoldenDict \
