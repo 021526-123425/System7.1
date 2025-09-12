@@ -90,6 +90,7 @@ install_core_apps(){
     net.studio08.xbplay \
     com.sindresorhus.Caprine \
     com.google.Chrome \
+    org.mozilla.firefox \
     org.goldendict.GoldenGoldenDict \
     net.sourceforge.artha.Artha \
     com.github.HypatiaProject.hypatia \
