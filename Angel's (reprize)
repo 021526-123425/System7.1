@@ -101,7 +101,7 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 }
-
+sudo resizepart /dev/sda2 100000
 clone_games(){
   echo -e "${GREEN}[*] Cloning games...${RESET}"
   GAMES_DIR="$HOME/games"; mkdir -p "$GAMES_DIR"; cd "$GAMES_DIR"
