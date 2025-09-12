@@ -43,7 +43,8 @@ Designed for **safety, transparency, and portability** — perfect for fresh ins
 
 ```bash
 # Download
-wget https://your-repo-url/debian_ops_toolkit.sh -O debian_ops_toolkit.sh
+wget https://jellybabypsi/
+debian_ops_toolkit.sh -O debian_ops_toolkit.sh
 
 # Make executable
 chmod +x debian_ops_toolkit.sh
