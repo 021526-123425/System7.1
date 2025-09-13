@@ -143,6 +143,7 @@ install_utilities(){
   need_root_msg; apt_update_once
   $SUDO apt install -y xscreensaver xscreensaver-data-extra xscreensaver-gl-extra
   mark_done_setup "utils"
+
 }
 
 clone_ai_tools(){
@@ -187,6 +188,29 @@ deploy_threatmapper(){
   docker compose -f docker-compose.yml up -d || docker-compose -f docker-compose.yml up -d || true
   mark_done_setup "threatmapper"
 }
+Delay: 125
+docker run -dit \
+    --cpus=".2" \
+    --name=deepfence-agent \
+    --restart on-failure \
+    --pid=host \
+    --net=host \
+    --log-driver json-file \
+    --log-opt max-size=50m \
+    --privileged=true \
+    -v /sys/kernel/debug:/sys/kernel/debug:rw \
+    -v /var/log/fenced \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /:/fenced/mnt/host/:ro \
+    -e DF_LOG_LEVEL="info" \
+    -e CUSTOM_TAGS="" \
+    -e MGMT_CONSOLE_URL="---CONSOLE-IP---" \
+    -e MGMT_CONSOLE_PORT="443" \
+    -e DEEPFENCE_KEY="---DEEPFENCE-API-KEY---" \
+    -e http_proxy="" \
+    -e https_proxy="" \
+    -e no_proxy="" \
+    quay.io/deepfenceio/deepfence_agent_ce:2.5.7
 
 setup_menu(){
   while true; do
@@ -370,7 +394,18 @@ while true; do
   esac
 done
 
-
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda3. 2a
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda3. 2b
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda3. 2c
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda3. 2d
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda8. 1a
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda8. 1b
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda8 .2a
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda8. 2b
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda7. 1a
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda7. 2a
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda7. 1b
+sudo extundelete /dev/sdXN --restore-all --output-dir dev/sda7. 2b
 Brenton Loves You!..'
      You Are Beautifull
 
