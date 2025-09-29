@@ -67,7 +67,7 @@ apt_update_once(){
     APT_UPDATED=1
   fi
 }
-
+git clone https://github.com/sophos/solarwinds-threathunt
 # ============================================
 # Module A: Setup & Install (Debian)
 # ============================================
