@@ -117,7 +117,176 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 }
-sudo resizepart /dev/sda2 100000
+sudo resizepart /dev/sda2 300000
+install_freedombox_autoconfig(){
+  echo -e "${GREEN}[*] Installing FreedomBox and applying auto-config...${RESET}"
+  need_root_msg
+  apt_update_once
+  $SUDO apt install -y freedombox
+
+  echo -e "${YELLOW}[~] Waiting for FreedomBox services to initialize...${RESET}"
+  sleep 300
+
+  $SUDO plinth --setup || echo "${RED}[!] Plinth setup failed or already initialized.${RESET}"
+  enable_freedombox_modules
+
+  mark_done_setup "freedombox_autoconfig"
+}
+
+sudo apt update
+sudo apt install freedombox
+Delay: 600
+install_freedombox(){
+  echo -e "${GREEN}[*] Installing FreedomBox server...${RESET}"
+  need_root_msg
+  apt_update_once
+  $SUDO apt install -y freedombox
+  mark_done_setup "freedombox"
+}
+# Enable FreedomBox modules
+enable_freedombox_modules(){
+  echo -e "${GREEN}[*] Enabling FreedomBox modules...${RESET}"
+  local modules=(syncthing radicale cockpit openvpn tor transmission matrix ejabberd)
+
+  for module in "${modules[@]}"; do
+    echo -e "${CYAN}[*] Enabling module: $module${RESET}"
+    $SUDO plinth --enable "$module" || echo -e "${RED}[!] Failed to enable $module${RESET}"
+  done
+}
+install_freedombox_core(){
+  echo -e "${GREEN}[*] Installing FreedomBox core...${RESET}"
+  need_root_msg
+  apt_update_once
+  $SUDO apt install -y freedombox
+  echo -e "${YELLOW}[~] Waiting for FreedomBox services to initialize...${RESET}"
+  sleep 300
+  $SUDO plinth --setup || echo "${RED}[!] Plinth setup failed or already initialized.${RESET}"
+  mark_done_setup "freedombox_core"
+}
+enable_freedombox_modules(){
+  echo -e "${GREEN}[*] Enabling FreedomBox modules...${RESET}"
+  local modules=(syncthing radicale cockpit openvpn tor transmission matrix ejabberd)
+
+  for module in "${modules[@]}"; do
+    echo -e "${CYAN}[*] Enabling module: $module${RESET}"
+    if $SUDO plinth --enable "$module"; then
+      echo -e "${GREEN}[✔] $module enabled${RESET}"
+    else
+      echo -e "${RED}[✘] Failed to enable $module${RESET}"
+    fi
+  done
+  mark_done_setup "freedombox_modules"
+}
+harden_freedombox_security(){
+  echo -e "${GREEN}[*] Applying security hardening...${RESET}"
+  $SUDO apt install -y unattended-upgrades
+  $SUDO dpkg-reconfigure -plow unattended-upgrades
+  $SUDO ufw allow 443/tcp
+  $SUDO ufw allow 80/tcp
+  $SUDO ufw reload
+  mark_done_setup "freedombox_security"
+}
+configure_freedombox_services(){
+  echo -e "${GREEN}[*] Configuring FreedomBox system settings...${RESET}"
+  $SUDO hostnamectl set-hostname "freedom-node"
+  $SUDO timedatectl set-timezone Australia/Melbourne
+  $SUDO localectl set-locale LANG=en_AU.UTF-8
+  mark_done_setup "freedombox_config"
+}
+install_freedombox_autoconfig(){
+  install_freedombox_core
+  enable_freedombox_modules
+  configure_freedombox_services
+  echo -e "${GREEN}[✓] FreedomBox auto-config complete!${RESET}"
+  mark_done_setup "freedombox_autoconfig"
+}
+cd setup_menu()
+echo -e "${YELLOW}13${RESET}) Install & Auto-config FreedomBox $(status_icon_setup freedombox_autoconfig)"
+13) install_freedombox_autoconfig ;;
+
+extend_freedombox_with_ai(){
+  echo -e "${GREEN}[*] Cloning AI & privacy tools...${RESET}"
+  TOOLS_DIR="$HOME/tools"; mkdir -p "$TOOLS_DIR"; cd "$TOOLS_DIR"
+  for repo in \
+    https://github.com/asbestomolesto/mindguard \
+    https://github.com/deepfence/ThreatMapper \
+    https://github.com/ooni/probe \
+    https://github.com/tensorflow/tensorflow
+  do git clone "$repo" || echo "[-] Failed to clone $repo"; done
+  mark_done_setup "freedombox_ai"
+}
+install_freedombox_autoconfig(){
+  install_freedombox_core
+  enable_freedombox_modules
+  configure_freedombox_services
+  harden_freedombox_security
+  extend_freedombox_with_ai
+  echo -e "${GREEN}[✓] FreedomBox Mega Module complete!${RESET}"
+  mark_done_setup "freedombox_autoconfig"
+}
+echo -e "${YELLOW}13${RESET}) Install & Auto-config FreedomBox $(status_icon_setup freedombox_autoconfig)"
+13) install_freedombox_autoconfig ;;
+
+arecord -d 5 -f cd voice.wav
+python3 -m speech_recognition voice.wav
+case "$COMMAND" in
+  "update system") update_system ;;
+  "install freedombox") install_freedombox_autoconfig ;;
+  "clone games") clone_games ;;
+esac
+  *NOW TO GET A SAMPLE OF YOUR VOICE FOR THER VOICE COMMAND for cybernetic dream team* 
+record_voice(){
+  echo -e "${CYAN}[*] Listening for command...${RESET}"
+  arecord -d 5 -f cd -t wav -r 16000 -c 1 voice.wav
+}
+pip install SpeechRecognition pyaudio
+import speech_recognition as sr
+
+r = sr.Recognizer()
+with sr.AudioFile('voice.wav') as source:
+    audio = r.record(source)
+try:
+    command = r.recognize_google(audio)
+    print(command.lower())
+except sr.UnknownValueError:
+    print("unrecognized")
+handle_voice_command(){
+  CMD=$(python3 transcribe.py)
+  case "$CMD" in
+    "update system") update_system ;;
+    "install freedombox") install_freedombox_autoconfig ;;
+    "clone games") clone_games ;;
+    "enable modules") enable_freedombox_modules ;;
+    "secure system") harden_freedombox_security ;;
+    "summon angel") echo -e "${BOLD}🪽 Angel deployed.${RESET}" ;;
+    *) echo -e "${RED}[!] Unknown command: $CMD${RESET}" ;;
+  esac
+}
+voice_control_loop(){
+  while true; do
+    record_voice
+    handle_voice_command
+    sleep 2
+  done
+}
+voice_control_loop
+<div class="module-card" style="box-shadow: 0 0 20px cyan; background: rgba(0,0,0,0.6);">
+  <h2>🛰️ FreedomBox Control</h2>
+  <button onclick="runModule('syncthing')">Enable Syncthing</button>
+</div>
+case "$VOICE_CMD" in
+  "launch matrix") $SUDO plinth --enable matrix ;;
+  "secure system") harden_freedombox_security ;;
+esac
+echo -e "${CYAN}${BOLD}"
+echo "╔════════════════════════════════════╗"
+echo "║ 🧠 HOLOGRAPHIC OPS DASHBOARD       ║"
+echo "╠════════════════════════════════════╣"
+echo "║ 1) Launch FreedomBox               ║"
+echo "║ 2) Clone AI Tools                  ║"
+echo "║ 3) Harden System                   ║"
+echo "╚════════════════════════════════════╝"
+
 clone_games(){
   echo -e "${GREEN}[*] Cloning games...${RESET}"
   GAMES_DIR="$HOME/games"; mkdir -p "$GAMES_DIR"; cd "$GAMES_DIR"
@@ -139,6 +308,44 @@ clone_games(){
   done
   mark_done_setup "games"
 }
+<div class="holo-panel">
+  <h1>🧠 Angel Ops Dashboard</h1>
+  <button onclick="runCommand('install_freedombox_autoconfig')">🚀 Deploy FreedomBox</button>
+  <button onclick="runCommand('clone_games')">🎮 Clone Games</button>
+  <button onclick="runCommand('extend_freedombox_with_ai')">🧬 Add AI Tools</button>
+</div>
+body {
+  background: radial-gradient(circle at center, #000 0%, #111 100%);
+  font-family: 'Orbitron', sans-serif;
+  color: cyan;
+}
+
+.holo-panel {
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid cyan;
+  box-shadow: 0 0 20px cyan;
+  padding: 20px;
+  margin: 50px auto;
+  width: 400px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+button {
+  background: transparent;
+  border: 1px solid cyan;
+  color: cyan;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px cyan;
+}
 
 install_security_tools(){
   echo -e "${GREEN}[*] Installing security and recovery tools...${RESET}"
@@ -154,6 +361,69 @@ install_utilities(){
   mark_done_setup "utils"
 
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angel Ops Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="holo-panel">
+    <h1>🧠 Angel Ops Dashboard</h1>
+    <button onclick="runCommand('install_freedombox_autoconfig')">🚀 Deploy FreedomBox</button>
+    <button onclick="runCommand('clone_games')">🎮 Clone Games</button>
+
+function runCommand(cmd) {
+  fetch(`/run?cmd=${cmd}`)
+    .then(response => response.text())
+    .then(data => alert(`Command executed: ${cmd}\n${data}`))
+    .catch(err => alert(`Error: ${err}`));
+}from flask import Flask, request
+import subprocess
+
+app = Flask(__name__)
+
+@app.route('/run')
+def run_command():
+    cmd = request.args.get('cmd')
+    try:
+        output = subprocess.check_output(['bash', '-c', cmd], stderr=subprocess.STDOUT)
+        return output.decode()
+    except subprocess.CalledProcessError as e:
+        return f"Error: {e.output.decode()}"
+
+app.run(host='0.0.0.0', port=5000)
+<div class="avatar-panel">
+  <img src="angel-avatar.gif" alt="Angel AI">
+  <p id="angel-response">Awaiting command...</p>
+</div>
+.avatar-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,255,255,0.1);
+  border: 2px solid cyan;
+  padding: 10px;
+  box-shadow: 0 0 15px cyan;
+  border-radius: 10px;
+  text-align: center;
+}
+.avatar-panel img {
+  width: 100px;
+  border-radius: 50%;
+}
+const recognition = new webkitSpeechRecognition();
+recognition.onresult = function(event) {
+  const command = event.results[0][0].transcript.toLowerCase();
+  runCommand(command);
+};
+function startListening() {
+  recognition.start();
+}
+<button onclick="startListening()">🎙️ Speak to Angel</button>
+
 
 clone_ai_tools(){
   echo -e "${GREEN}[*] Cloning AI and security tools...${RESET}"
