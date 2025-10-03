@@ -542,7 +542,7 @@ setup_menu(){
     echo; read -rp "Press Enter to return..."
   done
 }
-
+13) install_freedombox_autoconfig ;;
 # ============================================
 # Module B: Privacy & De-bloat (Debian)
 # ============================================
