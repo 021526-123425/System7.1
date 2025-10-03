@@ -16,6 +16,10 @@ Allright:: Lets Hit it!
 sudo get upgrade
 flash install system
 mosquitto_pub -t "angelbot/command" -m "summon brenton"
+case "$VOICE_CMD" in
+  "summon robot angel") curl -X POST http://robot.local/api/summon ;;
+  "deploy rescue") curl -X POST http://robot.local/api/rescue ;;
+esac
 
 *Amon Tobin - Rosies*
 w3m https://www.youtube.com/watch?v=NcV1QR4_B-M&t=10s
@@ -287,7 +291,10 @@ echo "║ 1) Launch FreedomBox               ║"
 echo "║ 2) Clone AI Tools                  ║"
 echo "║ 3) Harden System                   ║"
 echo "╚════════════════════════════════════╝"
-
+summon_robot_angel(){
+  curl -X POST http://robot.local/api/summon
+  notify-send "🤖 Robot Angel deployed"
+}
 clone_games(){
   echo -e "${GREEN}[*] Cloning games...${RESET}"
   GAMES_DIR="$HOME/games"; mkdir -p "$GAMES_DIR"; cd "$GAMES_DIR"
