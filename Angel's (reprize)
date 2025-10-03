@@ -15,6 +15,7 @@ Allright:: Lets Hit it!
 
 sudo get upgrade
 flash install system
+mosquitto_pub -t "angelbot/command" -m "summon brenton"
 
 *Amon Tobin - Rosies*
 w3m https://www.youtube.com/watch?v=NcV1QR4_B-M&t=10s
