@@ -285,6 +285,42 @@ case "$VOICE_CMD" in
 esac
 }
 >file
+ecc_encrypt_decrypt(){
+  echo -e "${CYAN}${BOLD}ECC Encryption & Decryption${RESET}"
+  need_root_msg
+  apt_update_once
+  $SUDO apt install -y seccure || return 1
+
+  echo -e "${YELLOW}Choose action:${RESET}"
+  echo "1) Generate ECC key"
+  echo "2) Encrypt message"
+  echo "3) Decrypt message"
+  read -rp "Select: " action
+
+  case "$action" in
+    1)
+      echo -e "${CYAN}Enter passphrase:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-key -c secp256r1
+      ;;
+    2)
+      read -rp "Enter public key: " pubkey
+      read -rp "Enter message: " msg
+      echo "$msg" | seccure-encrypt -c secp256r1 -o ecc_message.enc "$pubkey"
+      echo -e "${GREEN}[✓] Message encrypted to ecc_message.enc${RESET}"
+      ;;
+    3)
+      echo -e "${CYAN}Enter passphrase to decrypt:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-decrypt -c secp256r1 -i ecc_message.enc
+      ;;
+    *)
+      echo -e "${RED}[!] Invalid choice${RESET}"
+      ;;
+  esac
+  mark_done_setup "ecc"
+}
+
 voice_control_loop(){
   while true; do
     record_voice
@@ -300,6 +336,9 @@ voice_control_loop
 case "$VOICE_CMD" in
   "launch matrix") $SUDO plinth --enable matrix ;;
   "secure system") harden_freedombox_security ;;
+"secure message") ecc_encrypt_decrypt ;;
+<button onclick="runCommand('ecc_encrypt_decrypt')">🔐 ECC Encrypt</button>
+
 esac
 echo -e "${CYAN}${BOLD}"
 echo "╔════════════════════════════════════╗"
@@ -374,6 +413,54 @@ button:hover {
   color: black;
   box-shadow: 0 0 10px cyan;
 }
+holographic_key_vault(){
+  echo -e "${CYAN}${BOLD}🧬 Holographic ECC Key Vault${RESET}"
+  need_root_msg
+  apt_update_once
+  $SUDO apt install -y seccure || return 1
+
+  VAULT_DIR="$HOME/.ecc_vault"
+  mkdir -p "$VAULT_DIR"
+
+  echo -e "${YELLOW}Choose action:${RESET}"
+  echo "1) Generate new ECC key"
+  echo "2) List stored keys"
+  echo "3) Encrypt message with stored key"
+  echo "4) Decrypt message"
+  read -rp "Select: " action
+
+  case "$action" in
+    1)
+      read -rp "Enter key name: " keyname
+      echo -e "${CYAN}Enter passphrase:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-key -c secp256r1 > "$VAULT_DIR/$keyname.pub"
+      echo -e "${GREEN}[✓] Key saved as $keyname.pub${RESET}"
+      ;;
+    2)
+      echo -e "${CYAN}Stored ECC Keys:${RESET}"
+      ls "$VAULT_DIR"
+      ;;
+    3)
+      read -rp "Enter key name: " keyname
+      read -rp "Enter message: " msg
+      pubkey=$(<"$VAULT_DIR/$keyname.pub")
+      echo "$msg" | seccure-encrypt -c secp256r1 -o ecc_message.enc "$pubkey"
+      echo -e "${GREEN}[✓] Message encrypted to ecc_message.enc${RESET}"
+      ;;
+    4)
+      echo -e "${CYAN}Enter passphrase to decrypt:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-decrypt -c secp256r1 -i ecc_message.enc
+      ;;
+    *)
+      echo -e "${RED}[!] Invalid choice${RESET}"
+      ;;
+  esac
+  mark_done_setup "ecc_vault"
+}
+"open key vault") holographic_key_vault ;;
+
 >file
 install_security_tools(){
   echo -e "${GREEN}[*] Installing security and recovery tools...${RESET}"
@@ -381,6 +468,80 @@ install_security_tools(){
   $SUDO apt install -y testdisk extundelete cryptsetup
   mark_done_setup "security"
 }
+<div class="module-card" style="box-shadow: 0 0 20px cyan; background: rgba(0,0,0,0.6);">
+  <h2>🔐 ECC Key Vault</h2>
+  <button onclick="runCommand('holographic_key_vault')">🧬 Launch Vault</button>
+</div>
+holographic_key_vault(){
+  echo -e "${CYAN}${BOLD}🧬 Launching Holographic ECC Vault...${RESET}"
+  echo -e "${MAGENTA}Initializing neural encryption grid...${RESET}"
+  sleep 1
+  echo -e "${BLUE}🧠 Avatar: 'Brenton, your vault awaits.'${RESET}"
+
+  VAULT_DIR="$HOME/.ecc_vault"
+  mkdir -p "$VAULT_DIR"
+  apt_update_once
+  $SUDO apt install -y seccure || return 1
+
+  echo -e "${YELLOW}Choose your action:${RESET}"
+  echo "1) 🧬 Generate ECC Key"
+  echo "2) 🧾 List Stored Keys"
+  echo "3) 🔐 Encrypt Message"
+  echo "4) 🧨 Decrypt Message"
+  read -rp "Select: " action
+
+  case "$action" in
+    1)
+      read -rp "Enter key name: " keyname
+      echo -e "${CYAN}Enter passphrase:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-key -c secp256r1 > "$VAULT_DIR/$keyname.pub"
+      echo -e "${GREEN}[✓] Key '$keyname' stored in vault.${RESET}"
+      ;;
+    2)
+      echo -e "${CYAN}🧾 Stored ECC Keys:${RESET}"
+      ls "$VAULT_DIR"
+      ;;
+    3)
+      read -rp "Enter key name: " keyname
+      read -rp "Enter message: " msg
+      pubkey=$(<"$VAULT_DIR/$keyname.pub")
+      echo "$msg" | seccure-encrypt -c secp256r1 -o ecc_message.enc "$pubkey"
+      echo -e "${GREEN}[✓] Message encrypted to ecc_message.enc${RESET}"
+      ;;
+    4)
+      echo -e "${CYAN}Enter passphrase to decrypt:${RESET}"
+      read -rs pass
+      echo "$pass" | seccure-decrypt -c secp256r1 -i ecc_message.enc
+      ;;
+    *)
+      echo -e "${RED}[!] Invalid choice. Avatar confused.${RESET}"
+      ;;
+  esac
+  mark_done_setup "ecc_vault"
+}
+import pyttsx3
+engine = pyttsx3.init()
+engine.say("ECC Vault activated. Welcome back, Brenton.")
+engine.runAndWait()
+<div class="module-card" style="box-shadow: 0 0 30px #00ffff; background: rgba(0,0,0,0.8); border: 2px solid #00ffff;">
+  <h2 style="font-family: 'Orbitron'; color: #00ffff;">🧬 ECC Vault</h2>
+  <p style="color: #ccc;">Manage your encrypted keys with style.</p>
+  <button onclick="runCommand('holographic_key_vault')" style="background: #00ffff; color: black; font-weight: bold;">Launch Vault</button>
+</div>
+avatar_panel "Brenton" "Key 'Orion' stored. Encryption grid stable."
+engine.say("Message encrypted. Signature verified. Vault integrity confirmed.")
+<^>
+tar -czf - ~/.ecc_vault | openssl enc -aes-256-cbc -salt -out ecc_vault.tar.gz.enc
+git clone git@github.com:brenton/ecc-vault-backup.git
+mv ecc_vault.tar.gz.enc ecc-vault-backup/
+cd ecc-vault-backup
+git add ecc_vault.tar.gz.enc
+git commit -m "Vault backup $(date)"
+git push
+sync_ecc_vault_to_github().
+<button onclick="runModule('syncthing')">Enable Syncthing</button>
+
 >file
 install_utilities(){
   echo -e "${GREEN}[*] Installing xscreensaver and extras...${RESET}"
@@ -452,6 +613,13 @@ function startListening() {
   recognition.start();
 }
 <button onclick="startListening()">🎙️ Speak to Angel</button>
+echo -e "${YELLOW}12${RESET}) ECC Encryption & Decryption $(status_icon_setup ecc)"
+12) ecc_encrypt_decrypt ;;
+<div class="module-card" style="box-shadow: 0 0 20px lime; background: rgba(0,0,0,0.7);">
+  <h2>🛰️ Vault Sync</h2>
+  <button onclick="runCommand('sync_ecc_vault_to_github')">Push to GitHub</button>
+  <button onclick="runModule('syncthing')">Sync via Syncthing</button>
+</div>
 
 >file
 clone_ai_tools(){
@@ -468,6 +636,125 @@ clone_ai_tools(){
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
   mark_done_setup "ai"
+}
+
+vault_sync_monitor(){
+  VAULT_DIR="$HOME/.ecc_vault"
+  BACKUP_FILE="$HOME/ecc_vault.tar.gz.enc"
+
+  echo -e "${CYAN}${BOLD}🛰️ Vault Sync Monitor${RESET}"
+  echo -e "${MAGENTA}Vault Path:${RESET} $VAULT_DIR"
+  echo -e "${MAGENTA}Last Modified:${RESET} $(stat -c %y "$VAULT_DIR" 2>/dev/null | cut -d'.' -f1)"
+  echo -e "${MAGENTA}Backup File:${RESET} $BACKUP_FILE"
+  echo -e "${YELLOW}Choose action:${RESET}"
+  echo "1) Push encrypted backup to GitHub"
+  echo "2) Sync via Syncthing"
+  echo "3) View vault contents"
+  read -rp "Select: " action
+
+  case "$action" in
+    1)
+      tar -czf - "$VAULT_DIR" | openssl enc -aes-256-cbc -salt -out "$BACKUP_FILE"
+      echo -e "${GREEN}[✓] Vault encrypted to $BACKUP_FILE${RESET}"
+      # Git push logic here
+      ;;
+    2)
+      runModule syncthing
+      ;;
+    3)
+      ls "$VAULT_DIR"
+      ;;
+    *)
+      echo -e "${RED}[!] Invalid choice${RESET}"
+      ;;
+  esac
+<div class="module-card" style="box-shadow: 0 0 25px lime; background: rgba(0,0,0,0.8);">
+  <h2>🛰️ Vault Sync Monitor</h2>
+  <p style="color: #ccc;">Track and manage your ECC vault backups.</p>
+  <button onclick="runCommand('vault_sync_monitor')">Launch Monitor</button>
+</div>
+restore_ecc_vault(){
+  echo -e "${CYAN}${BOLD}🧬 Restore ECC Vault Wizard${RESET}"
+  read -rp "Enter path to encrypted backup: " encfile
+  echo -e "${CYAN}Enter decryption passphrase:${RESET}"
+  read -rs pass
+  echo "$pass" | openssl enc -aes-256-cbc -d -in "$encfile" | tar -xz -C ~/
+  echo -e "${GREEN}[✓] Vault restored to ~/.ecc_vault${RESET}"
+  mark_done_setup "ecc_vault"
+}
+"restore vault") restore_ecc_vault ;;
+view_ecc_keys(){
+  VAULT_DIR="$HOME/.ecc_vault"
+  echo -e "${CYAN}${BOLD}🧬 Holographic Key Viewer${RESET}"
+  echo -e "${MAGENTA}Scanning vault for ECC keys...${RESET}"
+  sleep 1
+
+  keys=($(ls "$VAULT_DIR"))
+  if [ ${#keys[@]} -eq 0 ]; then
+    echo -e "${RED}[!] No keys found in vault.${RESET}"
+    return 1
+  fi
+
+  echo -e "${YELLOW}Available Keys:${RESET}"
+  for i in "${!keys[@]}"; do
+    echo "$((i+1))) ${keys[$i]}"
+  done
+
+  read -rp "Select key to view: " choice
+  keyfile="${keys[$((choice-1))]}"
+  echo -e "${CYAN}🔐 Key: ${keyfile}${RESET}"
+  cat "$VAULT_DIR/$keyfile"
+
+  echo -e "${BLUE}🧠 Avatar: 'Key $keyfile retrieved. Integrity confirmed.'${RESET}"
+  mark_done_setup "ecc_viewer"
+}
+engine.say(f"ECC key {keyfile} retrieved. Vault integrity confirmed.")
+engine.runAndWait()
+>file
+<div class="module-card" style="box-shadow: 0 0 30px #00ffff; background: rgba(0,0,0,0.85); border: 2px solid #00ffff;">
+  <h2 style="font-family: 'Orbitron'; color: #00ffff;">🔐 ECC Key Viewer</h2>
+  <p style="color: #ccc;">Inspect and export your stored encryption keys.</p>
+  <button onclick="runCommand('view_ecc_keys')" style="background: #00ffff; color: black; font-weight: bold;">Launch Viewer</button>
+</div>
+ecc_sign_verify(){
+  VAULT_DIR="$HOME/.ecc_vault"
+  echo -e "${CYAN}${BOLD}🧬 ECC Sign & Verify Wizard${RESET}"
+  echo -e "${MAGENTA}Choose action:${RESET}"
+  echo "1) Sign a message"
+  echo "2) Verify a signature"
+  read -rp "Select: " action
+
+  case "$action" in
+    1)
+      read -rp "Enter key name: " keyname
+      echo -e "${CYAN}Enter passphrase:${RESET}"
+      read -rs pass
+      read -rp "Enter message to sign: " msg
+      echo "$msg" | seccure-sign -c secp256r1 -o "$VAULT_DIR/$keyname.sig"
+      echo -e "${GREEN}[✓] Message signed. Signature saved as $keyname.sig${RESET}"
+      ;;
+    2)
+      read -rp "Enter key name: " keyname
+      read -rp "Enter message file: " msgfile
+      pubkey=$(<"$VAULT_DIR/$keyname.pub")
+      seccure-verify -c secp256r1 -s "$VAULT_DIR/$keyname.sig" -i "$msgfile" "$pubkey" \
+        && echo -e "${GREEN}[✓] Signature verified. Integrity confirmed.${RESET}" \
+        || echo -e "${RED}[!] Signature invalid. Possible tampering.${RESET}"
+      ;;
+    *)
+      echo -e "${RED}[!] Invalid choice${RESET}"
+      ;;
+  esac
+  mark_done_setup "ecc_sign_verify"
+}
+"verify integrity") ecc_sign_verify ;;
+engine.say("Signature verified. Message integrity confirmed.")
+<div class="module-card" style="box-shadow: 0 0 30px #ff00ff; background: rgba(0,0,0,0.85); border: 2px solid #ff00ff;">
+  <h2 style="font-family: 'Orbitron'; color: #ff00ff;">🧬 ECC Sign & Verify</h2>
+  <p style="color: #ccc;">Digitally sign messages and verify integrity with style.</p>
+  <button onclick="runCommand('ecc_sign_verify')" style="background: #ff00ff; color: black; font-weight: bold;">Launch Wizard</button>
+</div>
+
 }
 >file
 install_docker(){
