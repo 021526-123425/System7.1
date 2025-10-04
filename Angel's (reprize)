@@ -15,12 +15,8 @@ Allright:: Lets Hit it!
 
 sudo get upgrade
 flash install system
-mosquitto_pub -t "angelbot/command" -m "summon brenton"
-case "$VOICE_CMD" in
-  "summon robot angel") curl -X POST http://robot.local/api/summon ;;
-  "deploy rescue") curl -X POST http://robot.local/api/rescue ;;
-esac
 >file
+<^>
 *Amon Tobin - Rosies*
 w3m https://www.youtube.com/watch?v=NcV1QR4_B-M&t=10s
 
@@ -282,6 +278,11 @@ handle_voice_command(){
     "summon angel") echo -e "${BOLD}🪽 Angel deployed.${RESET}" ;;
     *) echo -e "${RED}[!] Unknown command: $CMD${RESET}" ;;
   esac
+mosquitto_pub -t "angelbot/command" -m "summon brenton"
+case "$VOICE_CMD" in
+  "summon robot angel") curl -X POST http://robot.local/api/summon ;;
+  "deploy rescue") curl -X POST http://robot.local/api/rescue ;;
+esac
 }
 >file
 voice_control_loop(){
