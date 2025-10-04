@@ -20,7 +20,7 @@ case "$VOICE_CMD" in
   "summon robot angel") curl -X POST http://robot.local/api/summon ;;
   "deploy rescue") curl -X POST http://robot.local/api/rescue ;;
 esac
-
+>file
 *Amon Tobin - Rosies*
 w3m https://www.youtube.com/watch?v=NcV1QR4_B-M&t=10s
 
@@ -46,6 +46,7 @@ mkdir -p "$LOG_DIR"
 LOGFILE="$LOG_DIR/ops-$(date '+%Y%m%d-%H%M%S').log"
 exec > >(tee -a "$LOGFILE") 2>&1
 
+>file
 # ---------- Progress files ----------
 SETUP_PROGRESS_FILE="$BASE_DIR/setup_progress"
 PRIV_PROGRESS_FILE="$BASE_DIR/privacy_progress"
@@ -64,6 +65,7 @@ mark_done_priv(){  DONE_PRIV["$1"]=1;  save_priv_progress;  }
 status_icon_setup(){ [[ ${DONE_SETUP["$1"]+_} ]] && echo -e "${GREEN}✔${RESET}" || echo -e "${RED}✘${RESET}"; }
 status_icon_priv(){  [[ ${DONE_PRIV["$1"]+_}  ]] && echo -e "${GREEN}✔${RESET}" || echo -e "${RED}✘${RESET}"; }
 
+>file
 # ---------- Common helpers ----------
 need_root_msg(){ echo -e "${YELLOW}[!] Some actions need admin rights. You may be prompted for your password.${RESET}"; }
 apt_update_once(){
@@ -73,6 +75,7 @@ apt_update_once(){
   fi
 }
 git clone https://github.com/sophos/solarwinds-threathunt
+>file
 # ============================================
 # Module A: Setup & Install (Debian)
 # ============================================
@@ -93,6 +96,7 @@ setup_firewall(){
   mark_done_setup "firewall"
 }
 
+>file
 install_flatpak_snap(){
   echo -e "${GREEN}[*] Installing Flatpak and Snap...${RESET}"
   need_root_msg; apt_update_once
@@ -101,6 +105,7 @@ install_flatpak_snap(){
   mark_done_setup "flatpak"
 }
 
+>file
 install_core_apps(){
   echo -e "${GREEN}[*] Installing core applications...${RESET}"
   # Flatpak apps (best-effort)
@@ -123,6 +128,7 @@ install_core_apps(){
   mark_done_setup "apps"
 }
 sudo resizepart /dev/sda2 300000
+>file
 install_freedombox_autoconfig(){
   echo -e "${GREEN}[*] Installing FreedomBox and applying auto-config...${RESET}"
   need_root_msg
@@ -138,6 +144,7 @@ install_freedombox_autoconfig(){
   mark_done_setup "freedombox_autoconfig"
 }
 
+>file
 sudo apt update
 sudo apt install freedombox
 Delay: 600
@@ -158,6 +165,8 @@ enable_freedombox_modules(){
     $SUDO plinth --enable "$module" || echo -e "${RED}[!] Failed to enable $module${RESET}"
   done
 }
+
+>file
 install_freedombox_core(){
   echo -e "${GREEN}[*] Installing FreedomBox core...${RESET}"
   need_root_msg
@@ -168,6 +177,7 @@ install_freedombox_core(){
   $SUDO plinth --setup || echo "${RED}[!] Plinth setup failed or already initialized.${RESET}"
   mark_done_setup "freedombox_core"
 }
+>file
 enable_freedombox_modules(){
   echo -e "${GREEN}[*] Enabling FreedomBox modules...${RESET}"
   local modules=(syncthing radicale cockpit openvpn tor transmission matrix ejabberd)
@@ -182,6 +192,7 @@ enable_freedombox_modules(){
   done
   mark_done_setup "freedombox_modules"
 }
+>file
 harden_freedombox_security(){
   echo -e "${GREEN}[*] Applying security hardening...${RESET}"
   $SUDO apt install -y unattended-upgrades
@@ -191,6 +202,7 @@ harden_freedombox_security(){
   $SUDO ufw reload
   mark_done_setup "freedombox_security"
 }
+>file
 configure_freedombox_services(){
   echo -e "${GREEN}[*] Configuring FreedomBox system settings...${RESET}"
   $SUDO hostnamectl set-hostname "freedom-node"
@@ -205,6 +217,7 @@ install_freedombox_autoconfig(){
   echo -e "${GREEN}[✓] FreedomBox auto-config complete!${RESET}"
   mark_done_setup "freedombox_autoconfig"
 }
+>file
 cd setup_menu()
 echo -e "${YELLOW}13${RESET}) Install & Auto-config FreedomBox $(status_icon_setup freedombox_autoconfig)"
 13) install_freedombox_autoconfig ;;
@@ -220,6 +233,7 @@ extend_freedombox_with_ai(){
   do git clone "$repo" || echo "[-] Failed to clone $repo"; done
   mark_done_setup "freedombox_ai"
 }
+>file
 install_freedombox_autoconfig(){
   install_freedombox_core
   enable_freedombox_modules
@@ -229,9 +243,10 @@ install_freedombox_autoconfig(){
   echo -e "${GREEN}[✓] FreedomBox Mega Module complete!${RESET}"
   mark_done_setup "freedombox_autoconfig"
 }
+>file
 echo -e "${YELLOW}13${RESET}) Install & Auto-config FreedomBox $(status_icon_setup freedombox_autoconfig)"
 13) install_freedombox_autoconfig ;;
-
+git clone https://github.com/jellybabypsi/Meet/blob/main/MeSomewhere
 arecord -d 5 -f cd voice.wav
 python3 -m speech_recognition voice.wav
 case "$COMMAND" in
@@ -239,6 +254,7 @@ case "$COMMAND" in
   "install freedombox") install_freedombox_autoconfig ;;
   "clone games") clone_games ;;
 esac
+>file
   *NOW TO GET A SAMPLE OF YOUR VOICE FOR THER VOICE COMMAND for cybernetic dream team* 
 record_voice(){
   echo -e "${CYAN}[*] Listening for command...${RESET}"
@@ -267,6 +283,7 @@ handle_voice_command(){
     *) echo -e "${RED}[!] Unknown command: $CMD${RESET}" ;;
   esac
 }
+>file
 voice_control_loop(){
   while true; do
     record_voice
@@ -295,6 +312,7 @@ summon_robot_angel(){
   curl -X POST http://robot.local/api/summon
   notify-send "🤖 Robot Angel deployed"
 }
+>file
 clone_games(){
   echo -e "${GREEN}[*] Cloning games...${RESET}"
   GAMES_DIR="$HOME/games"; mkdir -p "$GAMES_DIR"; cd "$GAMES_DIR"
@@ -316,6 +334,7 @@ clone_games(){
   done
   mark_done_setup "games"
 }
+>file
 <div class="holo-panel">
   <h1>🧠 Angel Ops Dashboard</h1>
   <button onclick="runCommand('install_freedombox_autoconfig')">🚀 Deploy FreedomBox</button>
@@ -327,7 +346,7 @@ body {
   font-family: 'Orbitron', sans-serif;
   color: cyan;
 }
-
+>file
 .holo-panel {
   background: rgba(0, 255, 255, 0.1);
   border: 2px solid cyan;
@@ -354,14 +373,14 @@ button:hover {
   color: black;
   box-shadow: 0 0 10px cyan;
 }
-
+>file
 install_security_tools(){
   echo -e "${GREEN}[*] Installing security and recovery tools...${RESET}"
   need_root_msg; apt_update_once
   $SUDO apt install -y testdisk extundelete cryptsetup
   mark_done_setup "security"
 }
-
+>file
 install_utilities(){
   echo -e "${GREEN}[*] Installing xscreensaver and extras...${RESET}"
   need_root_msg; apt_update_once
@@ -382,7 +401,7 @@ install_utilities(){
     <h1>🧠 Angel Ops Dashboard</h1>
     <button onclick="runCommand('install_freedombox_autoconfig')">🚀 Deploy FreedomBox</button>
     <button onclick="runCommand('clone_games')">🎮 Clone Games</button>
-
+>file
 function runCommand(cmd) {
   fetch(`/run?cmd=${cmd}`)
     .then(response => response.text())
@@ -401,7 +420,7 @@ def run_command():
         return output.decode()
     except subprocess.CalledProcessError as e:
         return f"Error: {e.output.decode()}"
-
+>file
 app.run(host='0.0.0.0', port=5000)
 <div class="avatar-panel">
   <img src="angel-avatar.gif" alt="Angel AI">
@@ -422,6 +441,7 @@ app.run(host='0.0.0.0', port=5000)
   width: 100px;
   border-radius: 50%;
 }
+>file
 const recognition = new webkitSpeechRecognition();
 recognition.onresult = function(event) {
   const command = event.results[0][0].transcript.toLowerCase();
@@ -432,7 +452,7 @@ function startListening() {
 }
 <button onclick="startListening()">🎙️ Speak to Angel</button>
 
-
+>file
 clone_ai_tools(){
   echo -e "${GREEN}[*] Cloning AI and security tools...${RESET}"
   TOOLS_DIR="$HOME/tools"; mkdir -p "$TOOLS_DIR"; cd "$TOOLS_DIR"
@@ -448,7 +468,7 @@ clone_ai_tools(){
   done
   mark_done_setup "ai"
 }
-
+>file
 install_docker(){
   echo -e "${GREEN}[*] Installing Docker Engine...${RESET}"
   need_root_msg; apt_update_once
@@ -463,7 +483,7 @@ $(. /etc/os-release; echo $VERSION_CODENAME) stable" | $SUDO tee /etc/apt/source
   $SUDO systemctl enable --now docker
   mark_done_setup "docker"
 }
-
+>file
 deploy_threatmapper(){
   echo -e "${GREEN}[*] Deploying ThreatMapper (Docker Compose)...${RESET}"
   if ! command -v docker >/dev/null 2>&1; then
@@ -475,6 +495,7 @@ deploy_threatmapper(){
   docker compose -f docker-compose.yml up -d || docker-compose -f docker-compose.yml up -d || true
   mark_done_setup "threatmapper"
 }
+>file
 Delay: 125
 docker run -dit \
     --cpus=".2" \
@@ -498,7 +519,7 @@ docker run -dit \
     -e https_proxy="" \
     -e no_proxy="" \
     quay.io/deepfenceio/deepfence_agent_ce:2.5.7
-
+>file
 setup_menu(){
   while true; do
     clear
@@ -522,6 +543,7 @@ setup_menu(){
     echo
     read -rp "Choose: " c
     case "$c" in
+>file
       1) update_system ;;
       2) setup_firewall ;;
       3) install_flatpak_snap ;;
@@ -533,6 +555,7 @@ setup_menu(){
       9) install_docker ;;
       10) deploy_threatmapper ;;
       11)
+      13) install_freedombox_autoconfig ;;
         update_system
         setup_firewall
         install_flatpak_snap
@@ -543,14 +566,14 @@ setup_menu(){
         clone_ai_tools
         install_docker
         deploy_threatmapper
-        ;;
+        install_freedombox_autoconfig ;;
       0) break ;;
       *) echo -e "${RED}Invalid choice${RESET}"; sleep 1 ;;
     esac
     echo; read -rp "Press Enter to return..."
   done
 }
-13) install_freedombox_autoconfig ;;
+
 # ============================================
 # Module B: Privacy & De-bloat (Debian)
 # ============================================
@@ -562,7 +585,7 @@ remove_bloat(){
   $SUDO apt autoremove -y
   mark_done_priv "bloat"
 }
-
+>file
 disable_telemetry(){
   echo -e "${GREEN}[*] Disabling telemetry & noisy services...${RESET}"
   need_root_msg
@@ -576,7 +599,7 @@ disable_telemetry(){
   fi
   mark_done_priv "telemetry"
 }
-
+>file
 harden_browser(){
   echo -e "${GREEN}[*] Applying Firefox privacy hardening (user.js)...${RESET}"
   PROFILE_DIR=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name "*.default*" 2>/dev/null | head -n 1 || true)
@@ -596,7 +619,7 @@ EOF
   fi
   mark_done_priv "browser"
 }
-
+>file
 secure_shell_history(){
   echo -e "${GREEN}[*] Securing shell history...${RESET}"
   {
@@ -635,7 +658,7 @@ privacy_menu(){
     echo; read -rp "Press Enter to return..."
   done
 }
-
+>file
 # ============================================
 # Diagnostics / About
 # ============================================
@@ -653,7 +676,7 @@ health_checks(){
   echo
   read -rp "Press Enter to return..."
 }
-
+>file
 # ============================================
 # Master Menu
 # ============================================
