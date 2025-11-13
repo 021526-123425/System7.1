@@ -97,7 +97,8 @@ install_flatpak_snap(){
   echo -e "${GREEN}[*] Installing Flatpak and Snap...${RESET}"
   need_root_msg; apt_update_once
   $SUDO apt install -y flatpak gnome-software-plugin-flatpak snapd
-  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
+  flatpak remote-add --if-not-exists flathub 
+https://dl.flathub.org/repo/flathub.flatpakrepo || true
   mark_done_setup "flatpak"
 }
 
@@ -122,6 +123,9 @@ install_core_apps(){
   need_root_msg
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
+
+
+git clone https://GitHub.com/exploding-octapus/sick-filth-dope
 }
 sudo resizepart /dev/sda2 300000
 >file
