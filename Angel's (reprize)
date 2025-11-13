@@ -108,8 +108,11 @@ install_core_apps(){
   # Flatpak apps (best-effort)
   flatpak install -y flathub \
     net.studio08.xbplay \
-    com.heroicgameslauncher.hgl \
+    com.heroicgameslauncher.hgl \                  
+  . com.google.EarthPro \
     com.sindresorhus.Caprine \
+    com.stremio.Stremio
+.   com.google.EarthPro
     com.discordapp.Discord \
     com.google.Chrome \
     org.mozilla.firefox \
