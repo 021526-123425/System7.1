@@ -1,3 +1,4 @@
+<off>
 mkfs ext4 dev/sda0
 mkfs ext4 dev/sda1
 mkfs ext4 dev/sda2
