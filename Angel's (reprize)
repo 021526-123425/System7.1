@@ -130,8 +130,8 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 
-
-git clone https://GitHub.com/exploding-octapus/sick-filth-dope
+git clone https://github.com/jellybabypsi/meet
+git clone https://github.com/exploding-octapus/sick-filth-dope
 }
 sudo resizepart /dev/sda2 300000
 >file
