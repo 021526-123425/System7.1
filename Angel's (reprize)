@@ -6,12 +6,23 @@ it's a joint effort of Exploding Octapus, $#@P€W∆T¢H and Co-Pilot
 
 Allright:: Lets Hit it!
 
+GlyphOS v7.2
+Powered by Solara
+
+Awakening constellation...
+Harmonizing modules...
+Tuning frequencies...
+
+Welcome, Beautiful Morgellon.
+Let the symphony begin.
+
 sudo get upgrade
 flash install system
 >file
 <^>
 *Amon Tobin - Rosies*
 w3m https://www.youtube.com/watch?v=NcV1QR4_B-M&t=10s
+
 
 #!/bin/bash
 set -euo pipefail
@@ -1003,10 +1014,76 @@ while true; do
   esac
 done
 
-encrypt_device() {
-  local target="$1"
-  echo "About to encrypt $target with LUKS..."
-  read -p "Are you sure? This will erase all data on $target [y/N]: " confirm
-  [[ "$confirm" == "y" ]] || return 1
-  cryptsetup --type luks2 --hash sha512 --cipher aes-xts-plain64 --key-size 512 luksFormat "$target"
+source modules/encryption.sh
+
+show_menu() {
+  echo "1) Encrypt a device"
+  # ... other options
 }
+
+handle_choice() {
+  case "$1" in
+    1) read -p "Enter device path (e.g. /dev/sda0): " dev; encrypt_device "$dev" ;;
+    # ... other cases
+  esac
+}
+
+alien_arcade() {
+  echo -e "\n👾 Alien Arcade activated!"
+  # Trigger toy/game modules here
+}
+
+echo "5) Alien Arcade"
+
+sacred_ip_button() {
+  local mode="$1"
+  if [[ "$mode" == "random" ]]; then
+    ip=$(shuf -i 10-250 -n 1).$(shuf -i 0-255 -n 1).$(shuf -i 0-255 -n 1).$(shuf -i 0-255 -n 1)
+  else
+    ip="$mode"
+  fi
+  echo "🌐 Sacred IP set to $ip"
+  # Optional: apply with `ip addr add $ip/24 dev eth0`
+}
+
+truth_serum() {
+  echo "💡 Truth Serum activated. Frequency band: 0.21–5.26 nm"
+  # Trigger sound/light module here
+}
+
+echo "7) Sacred IP Switcher"
+echo "8) Truth Serum"
+echo "9) Comfort & Warmth"
+
+
+good_sun() {
+  echo -e "\n🌞 The Good Sun rises..."
+  # Trigger symbolic frequency modules here
+  # Example: play ambient tones, shift UI colors
+}
+
+def solara_voice_prompt(command):
+    prompts = {
+        "boot": "Welcome back, Brenton. The constellation is aligned. Your symphony awaits.",
+        "update system": "System harmonics recalibrating… frequencies tuned.",
+        "install freedombox": "FreedomBox module deploying… sanctuary online.",
+        "summon angel": "🪽 Angel deployed. Guidance beacon active.",
+        "comfort drift": "Soft amber tones flowing… comfort module engaged.",
+        "resilience chamber": "Titan’s pulse steady… resilience shield activated.",
+        "alien arcade": "Io sparks joy… playful synth energy released.",
+        "truth serum": "Cassiopeia sings… crystalline clarity unlocked."
+    }
+    return prompts.get(command, "Unknown command. The stars are silent.")
+
+def solara_voice_prompt(command, user_id=None):
+    prompts = {
+        "boot": f"Welcome, beautiful Morgellon {user_id or '00000000'}. The constellation is aligned. Your symphony awaits.",
+        "update system": "System harmonics recalibrating… frequencies tuned.",
+        "install freedombox": "FreedomBox module deploying… sanctuary online.",
+        "summon angel": "🪽 Angel deployed. Guidance beacon active.",
+        "comfort drift": "Soft amber tones flowing… comfort module engaged.",
+        "resilience chamber": "Titan’s pulse steady… resilience shield activated.",
+        "alien arcade": "Io sparks joy… playful synth energy released.",
+        "truth serum": "Cassiopeia sings… crystalline clarity unlocked."
+    }
+    return prompts.get(command, "Unknown command. The stars are silent.")
