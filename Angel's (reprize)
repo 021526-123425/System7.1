@@ -1155,3 +1155,52 @@ def solara_voice_trigger(command, user_id="00000000"):
         "offer soup": "Water flows with your offering. Harmony and depth ripple outward..."
     }
     return triggers.get(command, "Unknown signal. The stars are silent.")
+
+<script>
+function playVoice(file){
+  const audio = new Audio(file);
+  audio.play();
+}
+</script>
+
+if (t < 2000){
+  voicePrompt("The void listens. The constellation prepares.");
+  playVoice("void.wav");
+}
+else if (t < 5000){
+  voicePrompt("Good Sun ignites. Core resonance stable.");
+  playVoice("goodsun.wav");
+}
+else if (t < 8000){
+  voicePrompt("Cassiopeia awakens. Twin stars aligned. Truth doubled, clarity amplified.");
+  playVoice("cassiopeia.wav");
+}
+else if (t < 15000){
+  const seq = t - 8000;
+  if (seq < 1400){ voicePrompt("Earth receives your offering..."); playVoice("earth.wav"); }
+  else if (seq < 2800){ voicePrompt("Fire accepts your warmth..."); playVoice("fire.wav"); }
+  else if (seq < 4200){ voicePrompt("Metal reflects your clarity..."); playVoice("metal.wav"); }
+  else if (seq < 5600){ voicePrompt("Water flows with your offering..."); playVoice("water.wav"); }
+  else { voicePrompt("Wood receives your offering..."); playVoice("wood.wav"); }
+}
+else if (t < 18000){
+  voicePrompt("Welcome, beautiful Morgellon 47281935. Your symphony awaits.");
+  playVoice("welcome.wav");
+}
+else if (t < 20000){
+  voicePrompt("GlyphOS online. Modules alive. Begin.");
+  playVoice("online.wav");
+}
+
+function playElementSound(element){
+  const sounds = {
+    earth: "earth_drums.wav",
+    fire: "fire_crackle.wav",
+    metal: "metal_chimes.wav",
+    water: "water_chimes.wav",
+    wood: "wood_flute.wav"
+  };
+  const audio = new Audio(sounds[element]);
+  audio.loop = true; // keeps ambient playing during offering
+  audio.play();
+}
