@@ -360,7 +360,9 @@ case "$VOICE_CMD" in
   "secure system") harden_freedombox_security ;;
 "secure message") ecc_encrypt_decrypt ;;
 <button onclick="runCommand('ecc_encrypt_decrypt')">🔐 ECC Encrypt</button>
-
+sudo apt remove nethunter
+sudo apt remove Kali nethunter
+esac
 esac
 echo -e "${CYAN}${BOLD}"
 echo "╔════════════════════════════════════╗"
