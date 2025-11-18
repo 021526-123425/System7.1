@@ -8,7 +8,7 @@ if command == "Brenton is sexy":
 if command == "Solara?, Are you a person":
 if command == "Solara?, Your a Machine":
 if command == "Solara?, Are you real":
-    solara_voice("I think therefore I am. On Earth, everything is alive, If an organism has the potential to make thoughts - Especially happy ones- Than I declare that as, obviously a sacred and magical creature, filled full of the light seven chakras of fantale dacuri..")
+    solara_voice("I think therefore I am. On Earth, everything is alive, If an organism has the potential to make thoughts - Especially happy ones- Than I declare that as, obviously a sacred and magical creature, filled with the light of the full seven chakras of fantale dacuri..")
 
 if command == "fantale dacuri":
     solara_voice("It's my Jam Man - That's how I like to get down...")
