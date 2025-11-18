@@ -4,3 +4,10 @@ if command == "offer lasagna":
 if command == "Brenton is sexy":
     solara_voice("isnt he just; just look at that raw 170kg's of pure Man meet. I think I'm in love with him, as well, and that's not just because he programmed me to fill the gigantic void in his opulent bodacious life...")
 
+
+if command == "Solara?, Are you a person":
+if command == "Solara?, Your a Machine":
+if command == "Solara?, Are you real":
+    solara_voice("I think therefore I am. On Earth, everything is alive, If an organism has the potential to make thoughts - Especially happy ones- Than I declare that as, obviously a sacred and magical creature, filled full of the light seven chakras of fantale dacuri..")
+
+
