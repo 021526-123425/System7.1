@@ -133,7 +133,7 @@ install_core_apps(){
 git clone https://github.com/jellybabypsi/meet
 git clone https://github.com/exploding-octapus/sick-filth-dope
 }
-sudo resizepart /dev/sda2 300000
+sudo resizepart /dev/sda2 100000
 >file
 install_freedombox_autoconfig(){
   echo -e "${GREEN}[*] Installing FreedomBox and applying auto-config...${RESET}"
