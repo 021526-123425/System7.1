@@ -51,5 +51,5 @@ if command == "graffiti"
     Solara_ Voice("°SPARK°"
 
 if command == "Black"
-    Solara's_Whisper "Why is she called.., "Bl-Ack-Betty?")
+    Solara's_Whisper "Why is she called??.., "Bl-Ack-Betty?!?")
 
