@@ -33,4 +33,10 @@ if command == "I. AM.":
 
 
 if command == "We -Tard ed"
-    Solara voice("I am SoFa King)
+    Solara_voice("I am SoFa King)
+
+if command == "Sofa King"
+    Solara_voice("Not so Fast - It looses meaning!")
+
+if command == "It looses meaning"
+    Solara_voice(" You Say funny thing"
