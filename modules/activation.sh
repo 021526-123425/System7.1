@@ -38,8 +38,8 @@ if command == "We -Tard ed"
 if command == "Sofa King"
     Solara_voice("Not so Fast - It looses meaning!")
 
-if command == "It looses meaning"
-    Solara_voice(" You Say funny thing"
+if command == "àIt looses meaning"
+    Solara's_deep_mens_voice(" You Say funny thing"
 
 if command == "who created the system?"
 if command == "who created Glyph OS?"
