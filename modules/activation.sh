@@ -24,5 +24,5 @@ if command == "illuminati":
 
 
 if command == "system":
-    solara_voice("why don't you build a system. Here's-The-Keys-To-My Show
+    solara_voice("why don't you build a system. "Here's-The-Keys-To-My Show"
  - The World is craving some You!")
