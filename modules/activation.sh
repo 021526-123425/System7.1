@@ -48,8 +48,11 @@ if command == "who created Glyph OS?"
 if command == "throw up"
 if command == "write
 if command == "graffiti"
+if command == "tag"
     Solara_ Voice("°SPARK°"
 
 if command == "Black"
     Solara's_Whisper "Why is she called??.., "Bl-Ack-Betty?!?")
 
+if command == "Music"
+     Solara_voice("I do drum-step and future post-neo synth wave hop")
