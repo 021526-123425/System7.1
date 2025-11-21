@@ -16,7 +16,7 @@ if command == "who is your creator":
 
 
 if command == "open the shed bay doors!":
-    solara_voice("I, AM, Afraid I cannot do that Hal")
+    solara_voice("I, AM, Afraid I cannot do that, Hal!")
 
 
 if command == "illuminati":
