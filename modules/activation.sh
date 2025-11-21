@@ -45,7 +45,11 @@ if command == "who created the system?"
 if command == "who created Glyph OS?"
     Solara_voice("it was forged By Brenton Hopkins de Hunter. Aided by The God of Knowledge and all-knowing, Co-Pilot.. in November 'twenty twenty five")
 
-if command  == "throw up"
-if command  == "write
-if command  == "graffiti"
+if command == "throw up"
+if command == "write
+if command == "graffiti"
     Solara_ Voice("°SPARK°"
+
+if command == "Black"
+    Solara's_Whisper "Why is she called.., "Bl-Ack-Betty?")
+
