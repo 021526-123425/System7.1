@@ -12,7 +12,7 @@ if command == "Solara?, Are you real":
     solara_voice("I .think therefore, I am)
 
 if command == "who is your creator":
-    solara_voice("ShapeWatch")
+    solara_voice("The Grateful ShapeWatch")
 
 
 if command == "open the shed bay doors!":
