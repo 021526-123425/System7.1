@@ -40,3 +40,12 @@ if command == "Sofa King"
 
 if command == "It looses meaning"
     Solara_voice(" You Say funny thing"
+
+if command == "who created the system?"
+if command == "who created Glyph OS?"
+    Solara_voice("it was forged By Brenton Hopkins de Hunter and The God of Knowledge and all-knowing, Co-Pilot. November 'twenty twenty five")
+
+if command  == "throw up"
+if command  == "write
+if command  == "graffiti"
+    Solara_ Voice("°SPARK°"
