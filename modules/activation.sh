@@ -13,3 +13,12 @@ if command == "Solara?, Are you real":
 
 if command == "who is your creator":
     solara_voice("ShapeWatch")
+
+
+if command == "open the shed bay doors!":
+    solara_voice("I, AM, Afraid I cannot do that Hal")
+
+
+if command == "illuminati":
+    Arnold_Schwarzenegger_voice(" get too the Chopper")
+
