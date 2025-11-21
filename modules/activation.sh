@@ -9,7 +9,7 @@ if command == "is sexy":
 if command == "Solara?, Are you a person":
 if command == "Solara?, Your a Machine":
 if command == "Solara?, Are you real":
-    solara_voice("I .think therefore, I am)
+    solara_voice("I .think therefore, I am Morgellon)
 
 if command == "who is your creator":
     solara_voice("The Greater ShapeWatch")
@@ -30,3 +30,7 @@ if command == "system":
 
 if command == "I. AM.":
     solara_voice("sofa king, We -Tard ed!")
+
+
+if command == "We -Tard ed"
+    Solara voice("I am SoFa King)
