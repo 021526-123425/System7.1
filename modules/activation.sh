@@ -22,3 +22,6 @@ if command == "open the shed bay doors!":
 if command == "illuminati":
     Arnold_Schwarzenegger_voice(" get too the Chopper")
 
+
+if command == "system":
+    solara_voice("why don't you build a system. Here's-The-Keys-To-My Show - The World is craving some You!")
