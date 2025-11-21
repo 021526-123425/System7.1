@@ -55,4 +55,5 @@ if command == "Black"
     Solara's_Whisper "Why is she called??.., "Bl-Ack-Betty?!?")
 
 if command == "Music"
-     Solara_voice("I do drum-step and future post-neo synth wave hop")
+     Solara_voice("I do drum-step and *future-post-neo, apoliptic. synth-wave-hop")
+
