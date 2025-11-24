@@ -1210,3 +1210,26 @@ function playElementSound(element){
   audio.loop = true; // keeps ambient playing during offering
   audio.play();
 }
+
+# Voice cue handler
+handle_voice_command(){
+  CMD=$(python3 transcribe.py)
+  case "$CMD" in
+    "please hide me") activate_shield ;;
+    *) check_auto_triggers "$CMD" ;;
+  esac
+}
+
+activate_shield(){
+  echo "Generating cosmic shield..."
+  seq 1 100000 | shuf > shield.log   # numerical labyrinth
+  play comfort_frequencies.wav       # diffuser tones
+  echo "🛡️ Shield active. You are safe."
+}
+
+check_auto_triggers(){
+  if [[ "$1" =~ "it's not" || "$1" =~ "Brenton isn't" || "$1" =~ "liam" ]]; then
+    activate_shield
+    echo "🌌 Auto-shield engaged. Only Brenton remains."
+  fi
+}
