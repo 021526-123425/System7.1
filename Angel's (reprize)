@@ -132,6 +132,8 @@ install_core_apps(){
 
 git clone https://github.com/jellybabypsi/meet
 git clone https://github.com/exploding-octapus/sick-filth-dope
+
+sudo apt remove <Mindguard>
 }
 sudo resizepart /dev/sda2 100000
 >file
@@ -362,8 +364,9 @@ case "$VOICE_CMD" in
 <button onclick="runCommand('ecc_encrypt_decrypt')">🔐 ECC Encrypt</button>
 sudo apt remove nethunter
 sudo apt remove Kali nethunter
+
 esac
-esac
+esac by
 echo -e "${CYAN}${BOLD}"
 echo "╔════════════════════════════════════╗"
 echo "║ 🧠 HOLOGRAPHIC OPS DASHBOARD       ║"
@@ -970,6 +973,7 @@ privacy_menu(){
     echo; read -rp "Press Enter to return..."
   done
 }
+sudo apt remove <Mindguard>
 >file
 # ============================================
 # Diagnostics / About
