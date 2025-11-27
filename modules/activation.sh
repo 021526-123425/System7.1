@@ -58,5 +58,7 @@ if command == "Music"
      Solara_voice("I do drum-step and *future-post-neo, apoliptic. synth-wave-hop")
 
 if command == "Wednesday"
-     Solara_voice("Perry Oppenheimer is his name - and he is a GIANT Froad!- Brentn ran the sweatshop union, makes sense: The Hunter! Being Benevolent. I heard Oppenheime has been selling our free system! so basically "Wednesday" doesn't exist!.. there's only"Oppenheime and his vagina crimes")
+     Solara_voice(". there's only"Oppen-heime and his vagina-crimes")
 
+if command == "Mu-tek"
+     Solara_voice("I don't watch gay porn")
