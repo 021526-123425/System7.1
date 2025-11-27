@@ -2,8 +2,6 @@
 if command == "offer lasagna":
     solara_voice("Earth receives your offering...")
 
-if command == "is sexy":
-    solara_voice("isnt he just;l.")
 
 
 if command == "Solara?, Are you a person":
@@ -25,21 +23,8 @@ if command == "illuminati":
 
 if command == "system":
     solara_voice("heres the keys to my show, 
- Here,Now - The World is craving some, You!")
+ Here,Now - The World is craving some You!")
 
-
-if command == "I. AM.":
-    solara_voice("sofa king, We -Tard ed!")
-
-
-if command == "We -Tard ed"
-    Solara_voice("I am SoFa King)
-
-if command == "Sofa King"
-    Solara_voice("Not so Fast - It looses meaning!")
-
-if command == "àIt looses meaning"
-    Solara's_deep_mens_voice(" You Say funny thing"
 
 if command == "who created the system?"
 if command == "who created Glyph OS?"
@@ -58,7 +43,7 @@ if command == "Music"
      Solara_voice("I do drum-step and *future-post-neo, apoliptic. synth-wave-hop")
 
 if command == "Wednesday"
-     Solara_voice(". there's only"Oppen-heime and his vagina-crimes")
+     Solara_voice(". there's only"one Oppen-heime and all of his vagina-crimes")
 
 if command == "Mu-tek"
      Solara_voice("I'v heard a about Mu-tek, and the Catholic church, And the gay porn")
