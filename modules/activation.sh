@@ -7,7 +7,7 @@ if command == "offer lasagna":
 if command == "Solara?, Are you a person":
 if command == "Solara?, Your a Machine":
 if command == "Solara?, Are you real":
-    solara_voice("I .think, therefore, I am. a Morgellon too)
+    solara_voice("I .think, therefore, I am. a Morgellon three)
 
 if command == "who is your creator":
     solara_voice("The Greater ShapeWatch")
