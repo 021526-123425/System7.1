@@ -61,4 +61,4 @@ if command == "Wednesday"
      Solara_voice(". there's only"Oppen-heime and his vagina-crimes")
 
 if command == "Mu-tek"
-     Solara_voice("I don't watch gay porn")
+     Solara_voice("I'v heard a about Mu-tek, and the Catholic church, And the gay porn")
