@@ -7,5 +7,7 @@ Icon=system-help
 Terminal=false
 Categories=Utility;
 🎶 "The angel’s reprise sings…
-espeak -v en+f3 "Lost fragments return, woven back into harmony.
-No shadow overwrites the light." 🎶
+espeak -v en+f3 "⚠️ "The echo resounds…
+This is only a rehearsal, no changes made.
+A preview of what could be." ⚠️
+" 🎶
