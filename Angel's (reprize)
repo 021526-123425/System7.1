@@ -778,7 +778,7 @@ clone_ai_tools(){
     https://github.com/acoular/acoular \
     https://github.com/LCAV/pyroomacoustics \
     https://github.com/jellybabypsi/MATLAB \
-    https://github.com/jorgengrythe/beamforming
+    https://github.com/jorgengrythe/beamforming \
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
