@@ -783,6 +783,10 @@ clone_ai_tools(){
   done
   mark_done_setup "ai"
 }
+
+pip3 install --upgrade pip
+pip3 install jupyter
+
 git clone https://github.com/gante/mmWave-localization-learning.git
 pip3 install -e mmWave-localization-learning/
 pip3 install -r mmWave-localization-learning/requirements.txt
