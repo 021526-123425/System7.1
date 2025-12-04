@@ -166,7 +166,6 @@ room.mic_array.rake_delay_and_sum_weights(room.sources[0][:1])
 
 # plot the room and resulting beamformer
 room.plot(freq=[1000, 2000, 4000, 8000], img_order=0)
-sudo apt remove <Mindguard>}
 sudo resizepart /dev/sda2 100000
 >file
 install_freedombox_autoconfig(){
@@ -266,7 +265,6 @@ extend_freedombox_with_ai(){
   echo -e "${GREEN}[*] Cloning AI & privacy tools...${RESET}"
   TOOLS_DIR="$HOME/tools"; mkdir -p "$TOOLS_DIR"; cd "$TOOLS_DIR"
   for repo in \
-    https://github.com/asbestomolesto/mindguard \
     https://github.com/deepfence/ThreatMapper \
     https://github.com/ooni/probe \
     https://github.com/tensorflow/tensorflow
