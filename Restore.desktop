@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Partition Restore (Safe)
+Comment=Run safe restore without overwriting newer data
+Exec=/usr/local/bin/partitions.sh restore
+Icon=drive-harddisk
+Terminal=false
+Categories=Utility;
