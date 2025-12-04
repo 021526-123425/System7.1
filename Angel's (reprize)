@@ -133,9 +133,7 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 
-git clone https://github.com/jellybabypsi/meet
-git clone https://github.com/exploding-octapus/sick-filth-dope
-git clone https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design
+
 
 git clone https://github.com/shy1132/VacuumTube
 cd VacuumTube
@@ -778,8 +776,11 @@ clone_ai_tools(){
     https://github.com/egodigital/node-google-play-store \
     https://github.com/deepfence/ThreatMapper \
     https://github.com/ooni/probe \
-    https://github.com/tensorflow/tensorflow
-    https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design
+    https://github.com/tensorflow/tensorflow \
+    https://github.com/jellybabypsi/meet \
+    https://github.com/exploding-octapus/sick-filth-dope \
+    https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design \
+
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
