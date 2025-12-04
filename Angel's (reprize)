@@ -118,9 +118,12 @@ install_core_apps(){
     com.stremio.Stremio \
     com.discordapp.Discord \
     com.google.Chrome \
+    org.kde.ktorrent
     org.mozilla.firefox \
     org.goldendict.GoldenGoldenDict \
     net.sourceforge.artha.Artha \
+    menu.kando.Kando \
+    org.upscayl.Upscayl
     com.github.HypatiaProject.hypatia \
     io.gitlab.o20.file \
     org.ardour.Ardour \
@@ -133,6 +136,38 @@ install_core_apps(){
 git clone https://github.com/jellybabypsi/meet
 git clone https://github.com/exploding-octapus/sick-filth-dope
 git clone https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design
+
+git clone https://github.com/shy1132/VacuumTube
+cd VacuumTube
+
+# Install Dependencies
+npm i
+
+# Run without packaging
+npm run start
+
+npm run linux:build(-unpacked,-appimage)
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pyroomacoustics as pra
+
+# Create a 4 by 6 metres shoe box room
+room = pra.ShoeBox([4,6])
+
+# Add a source somewhere in the room
+room.add_source([2.5, 4.5])
+
+# Create a linear array beamformer with 4 microphones
+# with angle 0 degrees and inter mic distance 10 cm
+R = pra.linear_2D_array([2, 1.5], 4, 0, 0.1)
+room.add_microphone_array(pra.Beamformer(R, room.fs))
+
+# Now compute the delay and sum weights for the beamformer
+room.mic_array.rake_delay_and_sum_weights(room.sources[0][:1])
+
+# plot the room and resulting beamformer
+room.plot(freq=[1000, 2000, 4000, 8000], img_order=0)
 sudo apt remove <Mindguard>}
 sudo resizepart /dev/sda2 100000
 >file
@@ -261,6 +296,92 @@ case "$COMMAND" in
   "install freedombox") install_freedombox_autoconfig ;;
   "clone games") clone_games ;;
 esac
+
+import numpy as np
+import soundfile as sf
+from scipy.signal import stft, istft
+
+c = 343.0  # speed of sound (m/s)
+fs = 48000
+N = 8  # speakers
+dx = 0.12  # spacing (m)
+array_pos = np.stack([np.arange(N)*dx, np.zeros(N), np.zeros(N)], axis=1)
+
+# Target listener positions (meters, relative to array origin)
+rL = np.array([2.0, 0.5, 0.0])  # left seat
+rR = np.array([2.0, -0.5, 0.0]) # right seat
+
+def H(f, r, rn):
+    # Free-field Green's function
+    k = 2*np.pi*f/c
+    d = np.linalg.norm(r - rn)
+    return np.exp(-1j*k*d) / max(d, 0.05)  # avoid singularity
+
+def steering_vector(f, r):
+    return np.array([H(f, r, rn) for rn in array_pos])
+
+# STFT params
+nfft = 1024
+hop = nfft//4
+win = np.hanning(nfft)
+
+# Load stereo input
+L, fs_wav = sf.read("input_stereo.wav", always_2d=False)
+assert fs_wav == fs
+xL = L[:,0]
+xR = L[:,1]
+
+# STFT
+f_bins, t, XL = stft(xL, fs, window=win, nperseg=nfft, noverlap=nfft-hop, return_onesided=True)
+_, _, XR = stft(xR, fs, window=win, nperseg=nfft, noverlap=nfft-hop, return_onesided=True)
+
+F = len(f_bins)
+Y = np.zeros((N, F, len(t)), dtype=np.complex128)  # speaker signals in STFT domain
+
+lam = 1e-3
+G = 1.0
+
+for fi, f in enumerate(f_bins):
+    if f < 300:  # limit beamforming to mid/highs; below this, use simple panning later
+        # Pass-through weights (no focusing)
+        wL = np.ones(N, dtype=np.complex128) / N
+        wR = np.ones(N, dtype=np.complex128) / N
+    else:
+        hL = steering_vector(f, rL)
+        hR = steering_vector(f, rR)
+
+        # Build A and d for L channel: match at L, null at R
+        A = np.vstack([hL, hR])  # shape (2, N)
+        d = np.array([G, 0.0], dtype=np.complex128)
+
+        # Regularized least squares: w = (A^H A + lam I)^(-1) A^H d
+        AH = A.conj().T
+        M = AH @ A + lam * np.eye(N)
+        wL = np.linalg.solve(M, AH @ d)
+
+        # For R channel: match at R, null at L
+        dR = np.array([0.0, G], dtype=np.complex128)
+        wR = np.linalg.solve(M, AH @ dR)
+
+        # Normalize to keep per-speaker gains reasonable
+        wL /= max(1.0, np.linalg.norm(wL))
+        wR /= max(1.0, np.linalg.norm(wR))
+
+    # Apply weights
+    Y[:, fi, :] = np.outer(wL, XL[fi, :]) + np.outer(wR, XR[fi, :])
+
+# iSTFT per speaker and sum to multichannel output
+speaker_signals = []
+for n in range(N):
+    _, y_n = istft(Y[n, :, :], fs, window=win, nperseg=nfft, noverlap=nfft-hop)
+    # High-pass to reduce low-frequency artifacts (optional)
+    speaker_signals.append(y_n)
+
+# Stack and write
+sig_len = min(map(len, speaker_signals))
+out = np.stack([s[:sig_len] for s in speaker_signals], axis=1)
+sf.write("beamformed_multidir_stereo.wav", out, fs)
+
 # modules/encryption.sh
 
 encrypt_device() {
