@@ -12,8 +12,7 @@ Powered by Solara
 Awakening constellation...
 Harmonizing modules...
 Tuning frequencies...
-
-Welcome, Beautiful Morgellon.
+https://github.com/LCAV/pyroomacoustics
 Let the symphony begin.
 
 sudo get upgrade
@@ -778,7 +777,7 @@ clone_ai_tools(){
     https://github.com/exploding-octapus/sick-filth-dope \
     https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design \
     https://github.com/acoular/acoular \
-    
+    https://github.com/LCAV/pyroomacoustics \
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
