@@ -6,3 +6,6 @@ Exec=/usr/local/bin/partitions.sh restore
 Icon=drive-harddisk
 Terminal=false
 Categories=Utility;
+espeak -v en+f3 🎶 "The angel’s reprise sings…
+Lost fragments return, woven back into harmony.
+No shadow overwrites the light." 🎶
