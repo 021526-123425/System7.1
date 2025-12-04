@@ -6,8 +6,7 @@ Exec=/usr/local/bin/partitions.sh dry-run
 Icon=system-help
 Terminal=false
 Categories=Utility;
-🎶 "The angel’s reprise sings…
-espeak -v en+f3 "⚠️ "The echo resounds…
+espeak -v en+f3 🎶 "The angel’s reprise sings… "⚠️ "The echo resounds…
 This is only a rehearsal, no changes made.
 A preview of what could be." ⚠️
 " 🎶
