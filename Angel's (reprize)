@@ -123,7 +123,7 @@ install_core_apps(){
     org.goldendict.GoldenGoldenDict \
     net.sourceforge.artha.Artha \
     menu.kando.Kando \
-    org.upscayl.Upscayl
+    org.upscayl.Upscayl \
     com.github.HypatiaProject.hypatia \
     io.gitlab.o20.file \
     org.ardour.Ardour \
