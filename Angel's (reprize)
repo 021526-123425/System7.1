@@ -132,9 +132,8 @@ install_core_apps(){
 
 git clone https://github.com/jellybabypsi/meet
 git clone https://github.com/exploding-octapus/sick-filth-dope
-
-sudo apt remove <Mindguard>
-}
+git clone https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design
+sudo apt remove <Mindguard>}
 sudo resizepart /dev/sda2 100000
 >file
 install_freedombox_autoconfig(){
@@ -659,6 +658,7 @@ clone_ai_tools(){
     https://github.com/deepfence/ThreatMapper \
     https://github.com/ooni/probe \
     https://github.com/tensorflow/tensorflow
+    https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
