@@ -22,3 +22,12 @@ case "$CHOICE" in
     /usr/local/bin/partitions.sh dry-run
     ;;
 esac
+sudo chmod +x /usr/local/bin/partition-manager.sh
+[Desktop Entry]
+Type=Application
+Name=Partition Manager
+Comment=Symphony of Safety - Backup, Restore, Preview
+Exec=/usr/local/bin/partition-manager.sh
+Icon=drive-harddisk
+Terminal=false
+Categories=Symphony;Utility;
