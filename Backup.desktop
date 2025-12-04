@@ -6,3 +6,6 @@ Exec=/usr/local/bin/partitions.sh backup
 Icon=drive-harddisk
 Terminal=false
 Categories=Utility;
+🎵 "The prelude begins…
+espeak -v en+f3 Your memories are gathered, guarded, and carried into the light.
+Every note a promise of safety." 🎵
