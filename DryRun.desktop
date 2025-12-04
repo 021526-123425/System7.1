@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Partition Restore Preview
+Comment=Preview restore changes (dry-run)
+Exec=/usr/local/bin/partitions.sh dry-run
+Icon=system-help
+Terminal=false
+Categories=Utility;
+🎶 "The angel’s reprise sings…
+espeak -v en+f3 "Lost fragments return, woven back into harmony.
+No shadow overwrites the light." 🎶
