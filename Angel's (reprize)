@@ -768,7 +768,6 @@ clone_ai_tools(){
   echo -e "${GREEN}[*] Cloning AI and security tools...${RESET}"
   TOOLS_DIR="$HOME/tools"; mkdir -p "$TOOLS_DIR"; cd "$TOOLS_DIR"
   for repo in \
-    https://github.com/asbestomolesto/mindguard \
     https://github.com/egodigital/node-google-play-store \
     https://github.com/deepfence/ThreatMapper \
     https://github.com/ooni/probe \
