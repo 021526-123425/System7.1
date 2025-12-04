@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Partition Backup
+Comment=Run automated backup
+Exec=/usr/local/bin/partitions.sh backup
+Icon=drive-harddisk
+Terminal=false
+Categories=Utility;
