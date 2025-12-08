@@ -1,0 +1,14 @@
+# environment.yml
+name: beamforming-suite
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - matplotlib
+  - numba
+  - soundfile
+  - pip
+  - pip:
+      - acoular
