@@ -1,0 +1,15 @@
+{
+  "linear_16": {
+    "type": "linear",
+    "mics": 16,
+    "spacing_m": 0.035,
+    "orientation": "x",
+    "sample_rate": 48000
+  },
+  "circular_32": {
+    "type": "circular",
+    "mics": 32,
+    "radius_m": 0.25,
+    "sample_rate": 48000
+  }
+}
