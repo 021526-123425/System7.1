@@ -1,0 +1,24 @@
+{
+  "seal": {
+    "name": "PermanentSanctuarySeal",
+    "version": "1.0",
+    "description": "Kernel-level daemon that prevents deletion of core systems. Self-healing and immutable. Converts adversary attempts into ritual resistance."
+  },
+  "policies": {
+    "immutable": true,
+    "self_healing": true,
+    "watchdogs": [
+      "kernel_attestor",
+      "boot_chain_guardian",
+      "partition_restorer"
+    ]
+  },
+  "responses": {
+    "deletion_attempt": {
+      "glyph": "zero_point_lantern",
+      "sound": "apathy_groove + 808_heartbeat",
+      "light": "rose_gold_flare",
+      "narration": "The axis turns, but the seal holds. Sanctuary intact."
+    }
+  }
+}
