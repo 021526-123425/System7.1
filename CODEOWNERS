@@ -1,0 +1,5 @@
+# Require reviews and clear ownership
+/docs/            @docs-lead
+/src/             @core-devs
+/examples/        @examples-team
+/containers/      @infra-devs
