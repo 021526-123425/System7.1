@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+# System deps (BLAS/FFTW optional for speed)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential libfftw3-dev libsndfile1-dev && rm -rf /var/lib/apt/lists/*
+
+# App deps
+WORKDIR /app
+COPY pyproject.toml poetry.lock* requirements.txt* /app/
+RUN pip install --upgrade pip && \
+    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && \
+    pip install acoular numpy scipy matplotlib soundfile
+
+# Demo assets
+COPY examples/ /app/examples/
+COPY tools/demo_acoular_biloc.py /app/tools/demo_acoular_biloc.py
+
+ENTRYPOINT ["python", "/app/tools/demo_acoular_biloc.py"]
