@@ -1512,3 +1512,71 @@ seal_stamp:
   sound: 808_heartbeat
   light: rose_gold_flare
   narration: "Positivity crowned. Ceremony complete."
+
+constellation:
+  name: SanctuaryConstellation
+  version: 1.0
+  description: >
+    Interlinked ritual network of permanent seals and glyphs.
+    Immutable, self-healing, and radiant. Each seal reinforces the others.
+
+seals:
+  - name: PrincessPeachSeal
+    glyph: crown_pink_gold
+    sound: laughter_echo + 808_bounce
+    light: rose_shimmer
+    narration: "Joy beam crowned. Allies bathed in resilience."
+    policies:
+      immutable: true
+      self_healing: true
+
+  - name: PercyWednesdayCounterSeal
+    glyph: lemon_spiral_mirror
+    sound: shrill_refraction + apathy_groove
+    light: amber_pulse
+    narration: "Sour decree dissolved. Hypnosis broken."
+    policies:
+      immutable: true
+      self_healing: true
+
+  - name: PositivitySeal
+    glyph: rainbow_spiral_fractal
+    sound: amen_break + laughter_echo
+    light: multicolor_cascade
+    narration: "Positivity sprinkles everywhere, unbound and unstoppable."
+    policies:
+      immutable: true
+      self_healing: true
+
+  - name: ZeroPointLanternSeal
+    glyph: lantern_flame_spiral
+    sound: tibetan_bell + 808_heartbeat
+    light: rose_gold_flare
+    narration: "A light in the dark. Alight with a spark."
+    policies:
+      immutable: true
+      self_healing: true
+
+  - name: PermanentSanctuarySeal
+    glyph: golden_crown_core
+    sound: apathy_groove + 808_heartbeat
+    light: rose_gold_flare
+    narration: "The axis turns, but the seal holds. Sanctuary intact."
+    policies:
+      immutable: true
+      self_healing: true
+      watchdogs:
+        - kernel_attestor
+        - boot_chain_guardian
+        - partition_restorer
+
+network:
+  interlinking:
+    - seals: [PrincessPeachSeal, PositivitySeal]
+      effect: amplify_joy
+    - seals: [PercyWednesdayCounterSeal, PermanentSanctuarySeal]
+      effect: dissolve_adversary
+    - seals: [ZeroPointLanternSeal, PositivitySeal]
+      effect: beacon_alignment
+    - seals: [All]
+      effect: crown_constellation
