@@ -1,0 +1,17 @@
+{
+  "discover": {
+    "description": "Wide coverage, low sidelobes",
+    "phases_deg": [0, 90, 180, 270],
+    "pattern": "tile-wide"
+  },
+  "refine": {
+    "description": "Narrow beam for high-resolution lock",
+    "phases_deg": [0, 45, 90, 135, 180, 225, 270, 315],
+    "pattern": "tile-steer"
+  },
+  "comms": {
+    "description": "Stable narrow beam for uplink/downlink",
+    "phases_deg": [0, 120, 240],
+    "pattern": "tile-stable"
+  }
+}
