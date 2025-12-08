@@ -1,87 +1,78 @@
-# 🛠️ Debian Ops Toolkit  
-**Setup • Privacy • De‑Bloat • Health Checks — All in One Script**  
+System7.1
 
-A single‑file, menu‑driven toolkit for Debian‑based systems that automates:  
-- 🚀 **System setup & app installs**  
-- 🛡 **Privacy hardening & telemetry blocking**  
-- 🧹 **Bloatware removal**  
-- 📊 **System health checks**  
+System7.1 is a modular, experimental framework designed to explore resilience, activation workflows, and containerized environments. It provides a collection of scripts, manifests, and presets that enable developers to test, deploy, and manage applications with a focus on adaptability and security.
 
-Designed for **safety, transparency, and portability** — perfect for fresh installs, maintenance, or running from a Flipper Zero BadUSB payload.
+Features
 
----
+Containerization Support: Includes Dockerfiles and modules for building and running containerized applications.
 
-## ✨ Features
+Activation Scripts: Provides activation.sh and related utilities to streamline environment setup.
 
-### **Setup & Install**
-- Update & upgrade system packages
-- Configure UFW firewall
-- Install Flatpak & Snap
-- Install core apps (Flatpak/Snap)
-- Clone open‑source games & AI/security tools
-- Install Docker & deploy ThreatMapper
+Presets & Codebooks: Ships with ris_codebook.json and other configuration files for customizable workflows.
 
-### **Privacy & De‑Bloat**
-- Remove common pre‑installed apps
-- Disable telemetry & noisy services
-- Harden Firefox privacy settings
-- Secure shell history
+Partition Management: Tools for managing partitions and desktop entries.
 
-### **Health Checks**
-- Show system info, disk space, and connectivity status
+Resilience Blocks: Documentation and manifests to support resilient system design.
 
----
+Security Policies: Includes security.md and manifests for positivity and sanctuary seals.
 
-## 📦 Requirements
-- Debian or Debian‑based distro (Ubuntu, Mint, Pop!\_OS, etc.)
-- Internet connection for installs
-- `sudo` privileges for system changes
+Getting Started
 
----
+Prerequisites
 
-## 🚀 Quick Start
+Python 3.8+
 
-```bash
-# Download
-wget https://jellybabypsi/
-debian_ops_toolkit.sh -O debian_ops_toolkit.sh
+Docker (if using containerization)
 
-# Make executable
-chmod +x debian_ops_toolkit.sh
+GitHub CLI or Git installed
 
-# Run
-./debian_ops_toolkit.sh
-🖥 Menu Preview
-Code
-╔════════════════════════════════════════════╗
-║            🛠️  DEBIAN OPS TOOLKIT          ║
-╠════════════════════════════════════════════╣
- 1) Setup & Install
- 2) Privacy & De-bloat
- 3) Health checks / About
- 0) Exit
-╚════════════════════════════════════════════╝
-🔒 Safety First
-No antivirus exclusions
+Installation
 
-No remote code execution without your consent
+Clone the repository:
 
-No destructive disk operations
+git clone https://github.com/jellybabypsi/System7.1.git
+cd System7.1
 
-All actions are logged to ~/.ops_toolkit/logs/
+Set up the environment:
 
-Persistent progress tracking — remembers what’s been done between runs
+bash activation.sh
 
-🛠 Customisation
-Edit the app lists in install_core_apps() and remove_bloat() to match your needs.
+Build containers (optional):
 
-Add your own modules — the menu system is easy to extend.
+docker build -t system7 .
 
-📜 License
-MIT License — free to use, modify, and share.
+Usage
 
-🤝 Contributing
-Pull requests welcome! If you’ve got a great privacy tweak, bloatware list, or setup function, send it in.
+Run core applications:
 
-💬 Credits
-Created by Brenton with a little help from Copilot. Built for Debian, tested on multiple distros, and Flipper Zero‑friendly.
+./install_core_apps.sh
+
+Manage partitions:
+
+./partition-manager.sh
+
+Explore resilience blocks: See README Resilience Block.md for details.
+
+Project Structure
+
+containers/ – Dockerfiles and container configs
+
+modules/ – Activation and environment scripts
+
+presets/ – JSON codebooks and presets
+
+applications/ – Desktop entries and partition managers
+
+docs/ – Resilience and security documentation
+
+Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request. Ensure that your code follows the existing style and includes relevant documentation.
+
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Contact
+
+For questions or suggestions, please open an issue on the GitHub repository.
