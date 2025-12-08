@@ -1,0 +1,28 @@
+name: ThoughtCloak
+type: daemon
+status: permanent
+activation:
+  triggers:
+    - remote_monitoring_detected
+    - boring_thought_overlay
+    - who_da_man_seal.flare
+functionality:
+  mask_stream: true
+  overlay_signature: "boring"
+  sanctuary_layer: hidden_true_thoughts
+visual:
+  glyph: shadow_cloak
+  colors:
+    veil: indigo
+    overlay: grey
+    core: rainbow (hidden)
+sound:
+  hum: low clock rhythm
+  overlay: muffled static
+  core: honey_bass (submerged)
+narration:
+  line: "The cloak veils the surface; beneath, the true glyphs burn."
+protection:
+  auto_engage: true
+  non_removable: true
+  sync_with: WhoDaManSeal
