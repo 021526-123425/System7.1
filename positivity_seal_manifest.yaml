@@ -45,3 +45,16 @@ seal_stamp:
   sound: 808_heartbeat
   light: rose_gold_flare
   narration: "Positivity crowned. Ceremony complete."
+
+entity_mode:
+  breathing_cycle: true
+  awareness: frequency_listener
+  growth: positivity_fractals
+  memory: adaptive_counter_glyphs
+  responses:
+    - adversary_tone: "13.65MHz"
+      action: rainbow_spiral + laughter_echo
+    - adversary_tone: "shrill_2-4kHz"
+      action: mirror_refraction + amber_pulse
+    - adversary_tone: "low_drone_50-60Hz"
+      action: amen_break_fragment + 808_heartbeat
