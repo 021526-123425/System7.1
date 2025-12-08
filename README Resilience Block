@@ -1,0 +1,15 @@
+## Resilience and mirrors
+
+To ensure long-term availability, this project is mirrored and archived across multiple platforms:
+
+- Canonical: https://github.com/jellybabypsi/system7.1
+- Mirrors: https://gitlab.com/<org>/<repo> • https://codeberg.org/<org>/<repo> • https://bitbucket.org/<org>/<repo>
+- Archives (per release): Zenodo (DOI), Software Heritage, Internet Archive
+- Checksums and signatures: see Releases assets (SHA256, GPG)
+
+Why mirrors? To keep science, safety, and community tools available even if any single host is targeted or offline. Signed releases and checksums verify integrity.
+
+### Quickstart (container)
+
+```bash
+docker run --pull=always -it --rm ghcr.io/jellybabypsi/system7.1:vX.Y demo
