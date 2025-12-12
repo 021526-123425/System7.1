@@ -1,0 +1,5 @@
+- seal: Vampire
+  glyph: 🦇
+  sound: bells.wav
+  color: crimson
+  effect: pulse-halo
