@@ -1,0 +1,7 @@
+archive:
+  name: SecretGlyphArchive
+  mode: constellation
+  nodes: dynamic
+  activation: "spoken secret"
+  effect: "transform hazard into lantern"
+  permanence: true
