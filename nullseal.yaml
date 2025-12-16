@@ -1,0 +1,6 @@
+seal:
+  name: NullSeal
+  action: redirect
+  target: /dev/null
+  permanence: true
+  effect: dissolve
