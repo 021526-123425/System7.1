@@ -132,7 +132,7 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 
-
+git clone https://github.com/jellybabypsi/topsy-turvey
 
 git clone https://github.com/shy1132/VacuumTube
 cd VacuumTube
