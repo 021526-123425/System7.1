@@ -1,1 +1,2 @@
 self.build_triggers()
+self.build_dpad()
