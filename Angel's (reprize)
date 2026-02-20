@@ -105,6 +105,7 @@ https://dl.flathub.org/repo/flathub.flatpakrepo || true
   mark_done_setup "flatpak"
 }
 
+
 >file
 install_core_apps(){
   echo -e "${GREEN}[*] Installing core applications...${RESET}"
@@ -133,6 +134,8 @@ install_core_apps(){
   mark_done_setup "apps"
 
 git clone https://github.com/jellybabypsi/topsy-turvey
+pip install python-uinput pynput
+sudo modprobe uinput
 
 git clone https://github.com/shy1132/VacuumTube
 cd VacuumTube
