@@ -142,11 +142,106 @@ cd VacuumTube
 
 # Install Dependencies
 npm i
-
+sudo apt install python3-uinput python3-pip
+pip install pynput
+sudo modprobe uinput
+sudo apt install python3-uinput python3-pip
+pip install pynput
+sudo modprobe uinput
+echo uinput | sudo tee /etc/modules-load.d/uinput.conf
 # Run without packaging
 npm run start
+import uinput
 
-npm run linux:build(-unpacked,-appimage)
+class LinuxVirtualController:
+    def __init__(self):
+        self.device = uinput.Device([
+            uinput.BTN_A, uinput.BTN_B, uinput.BTN_X, uinput.BTN_Y,
+            uinput.BTN_TL, uinput.BTN_TR,
+            uinput.BTN_SELECT, uinput.BTN_START,
+            uinput.ABS_X + (-32768, 32767, 0, 0),
+            uinput.ABS_Y + (-32768, 32767, 0, 0),
+        ])
+def move(self, axis, value): self.device.emit(axis, value)
+    def press(self, code):
+        self.device.emit(code, 1)
+
+    def release(self, code):
+        self.device.emit(code, 0)
+
+    def move(self, axis, value):
+        self.device.emit(axis, value)
+import json
+
+class MappingEngine:
+    def __init__(self, mapping_file):
+        self.load(mapping_file)
+
+    def load(self, mapping_file):
+        with open(mapping_file) as f:
+            self.mapping = json.load(f)
+
+    def get_button_for_key(self, key):
+        for button, mapped_key in self.mapping["buttons"].items():
+            if key == mapped_key:
+                return button
+        return None
+
+import platform
+from pynput import keyboard
+from mapping_engine import MappingEngine
+from driver.linux_uinput import LinuxVirtualController
+
+import uinput
+
+MAPPING_FILE = "mappings/xbox.json"
+
+BUTTON_CODES = {
+    "A": uinput.BTN_A,
+    "B": uinput.BTN_B,
+    "X": uinput.BTN_X,
+    "Y": uinput.BTN_Y,
+}
+
+def get_driver():
+    system = platform.system().lower()
+    if system != "linux":
+        raise RuntimeError("This demo is Linux-only for now")
+    return LinuxVirtualController()
+
+def main():
+    controller = get_driver()
+    engine = MappingEngine(MAPPING_FILE)
+
+    def on_press(key):
+        try:
+            k = key.char.lower()
+        except AttributeError:
+            k = key.name.lower() if hasattr(key, "name") else None
+        if not k:
+            return
+
+        btn = engine.get_button_for_key(k)
+        if btn and btn in BUTTON_CODES:
+            controller.press(BUTTON_CODES[btn])
+
+    def on_release(key):
+        try:
+            k = key.char.lower()
+        except AttributeError:
+            k = key.name.lower() if hasattr(key, "name") else None
+        if not k:
+            return
+
+        btn = engine.get_button_for_key(k)
+        if btn and btn in BUTTON_CODES:
+            controller.release(BUTTON_CODES[btn])
+
+    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+        listener.join()
+
+if __name__ == "__main__":
+    main()
 
 import numpy as np
 import matplotlib.pyplot as plt
