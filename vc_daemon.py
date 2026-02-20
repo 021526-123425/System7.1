@@ -57,3 +57,51 @@ class MappingEngine:
                 direction = -1 if key == pair[0] else 1
                 return axis, direction
         return None, None
+
+
+import json
+import platform
+import time
+import threading
+import os
+
+from mapping_engine import MappingEngine
+from driver.linux_uinput import LinuxVirtualController
+from driver.windows_vigem import WindowsVirtualController
+from driver.macos_hid import MacOSVirtualController
+
+MAPPING_FILE = "mappings/xbox.json"
+
+def get_driver():
+    system = platform.system().lower()
+
+    if system == "linux":
+        return LinuxVirtualController()
+    if system == "windows":
+        return WindowsVirtualController()
+    if system == "darwin":
+        return MacOSVirtualController()
+
+    raise RuntimeError("Unsupported platform")
+
+def watch_mapping(engine):
+    last_mtime = os.path.getmtime(MAPPING_FILE)
+    while True:
+        time.sleep(0.5)
+        new_mtime = os.path.getmtime(MAPPING_FILE)
+        if new_mtime != last_mtime:
+            print("Mapping updated — reloading")
+            engine.load(MAPPING_FILE)
+            last_mtime = new_mtime
+
+def main():
+    controller = get_driver()
+    engine = MappingEngine(MAPPING_FILE)
+
+    threading.Thread(target=watch_mapping, args=(engine,), daemon=True).start()
+
+    print("Virtual controller running with live mapping updates")
+
+    while True:
+        # Example: replace with real key listener
+        time.sleep(0.01)
