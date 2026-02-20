@@ -1,0 +1,20 @@
+{
+  "buttons": {
+    "A": "BTN_A",
+    "B": "BTN_B",
+    "X": "BTN_X",
+    "Y": "BTN_Y",
+    "LB": "BTN_TL",
+    "RB": "BTN_TR",
+    "BACK": "BTN_SELECT",
+    "START": "BTN_START"
+  },
+  "axes": {
+    "LX": "ABS_X",
+    "LY": "ABS_Y",
+    "RX": "ABS_RX",
+    "RY": "ABS_RY",
+    "LT": "ABS_Z",
+    "RT": "ABS_RZ"
+  }
+}
