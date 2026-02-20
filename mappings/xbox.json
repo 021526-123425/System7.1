@@ -1,0 +1,18 @@
+{
+  "buttons": {
+    "A": "space",
+    "B": "left_shift",
+    "X": "e",
+    "Y": "q",
+    "LB": "1",
+    "RB": "3",
+    "BACK": "backspace",
+    "START": "enter"
+  },
+  "axes": {
+    "LX": ["a", "d"],
+    "LY": ["w", "s"],
+    "RX": ["left", "right"],
+    "RY": ["up", "down"]
+  }
+}
