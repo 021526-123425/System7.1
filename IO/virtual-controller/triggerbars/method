@@ -1,0 +1,8 @@
+def update_trigger(self, which, value):
+    # value is 0–255
+    width = int((value / 255) * 120)
+
+    if which == "LT":
+        self.lt_bar.coords(self.lt_fill, 0, 0, width, 20)
+    else:
+        self.rt_bar.coords(self.rt_fill, 0, 0, width, 20)
