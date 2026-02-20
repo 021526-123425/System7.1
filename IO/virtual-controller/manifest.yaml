@@ -1,0 +1,14 @@
+name: virtual-controller
+version: 1.0.0
+type: io-service
+description: Software-defined Xbox-style virtual controller
+entrypoint: vc_daemon.py
+
+autostart: true
+restart: on-failure
+
+platform_drivers:
+  linux: driver/linux_uinput.py
+
+mappings:
+  - mappings/xbox.json
