@@ -1,1 +1,12 @@
 if btn and btn in BUTTON_CODES: controller.press(BUTTON_CODES[btn]) notify_tester(btn)
+# Left Trigger (LT) mapped to "z"
+if k == "z":
+    lt_value = TRIGGER_MAX
+    controller.move(uinput.ABS_Z, lt_value)
+    notify_tester(f"LT:{lt_value}")
+
+# Right Trigger (RT) mapped to "x"
+if k == "x":
+    rt_value = TRIGGER_MAX
+    controller.move(uinput.ABS_RZ, rt_value)
+    notify_tester(f"RT:{rt_value}")
