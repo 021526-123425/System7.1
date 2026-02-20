@@ -133,3 +133,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+TRIGGER_MIN = 0 TRIGGER_MAX = 255
+lt_value = 0 rt_value = 0
