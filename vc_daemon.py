@@ -105,3 +105,59 @@ def main():
     while True:
         # Example: replace with real key listener
         time.sleep(0.01)
+
+import platform
+from pynput import keyboard
+from mapping_engine import MappingEngine
+from driver.linux_uinput import LinuxVirtualController
+
+import uinput
+
+MAPPING_FILE = "mappings/xbox.json"
+
+BUTTON_CODES = {
+    "A": uinput.BTN_A,
+    "B": uinput.BTN_B,
+    "X": uinput.BTN_X,
+    "Y": uinput.BTN_Y,
+}
+
+def get_driver():
+    system = platform.system().lower()
+    if system != "linux":
+        raise RuntimeError("This demo is Linux-only for now")
+    return LinuxVirtualController()
+
+def main():
+    controller = get_driver()
+    engine = MappingEngine(MAPPING_FILE)
+
+    def on_press(key):
+        try:
+            k = key.char.lower()
+        except AttributeError:
+            k = key.name.lower() if hasattr(key, "name") else None
+        if not k:
+            return
+
+        btn = engine.get_button_for_key(k)
+        if btn and btn in BUTTON_CODES:
+            controller.press(BUTTON_CODES[btn])
+
+    def on_release(key):
+        try:
+            k = key.char.lower()
+        except AttributeError:
+            k = key.name.lower() if hasattr(key, "name") else None
+        if not k:
+            return
+
+        btn = engine.get_button_for_key(k)
+        if btn and btn in BUTTON_CODES:
+            controller.release(BUTTON_CODES[btn])
+
+    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+        listener.join()
+
+if __name__ == "__main__":
+    main()
