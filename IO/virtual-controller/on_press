@@ -10,3 +10,12 @@ if k == "x":
     rt_value = TRIGGER_MAX
     controller.move(uinput.ABS_RZ, rt_value)
     notify_tester(f"RT:{rt_value}")
+# D-pad mapping
+if k == "i":
+    notify_tester("DPAD:UP")
+if k == "k":
+    notify_tester("DPAD:DOWN")
+if k == "j":
+    notify_tester("DPAD:LEFT")
+if k == "l":
+    notify_tester("DPAD:RIGHT")
