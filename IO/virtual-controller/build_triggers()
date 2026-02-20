@@ -1,0 +1,16 @@
+def build_triggers(self):
+    self.lt_label = tk.Label(self.stick_frame, text="LT", fg="white", bg="black")
+    self.lt_label.grid(row=1, column=0)
+
+    self.rt_label = tk.Label(self.stick_frame, text="RT", fg="white", bg="black")
+    self.rt_label.grid(row=1, column=1)
+
+    self.lt_bar = tk.Canvas(self.stick_frame, width=120, height=20, bg="gray20", highlightthickness=0)
+    self.rt_bar = tk.Canvas(self.stick_frame, width=120, height=20, bg="gray20", highlightthickness=0)
+
+    self.lt_bar.grid(row=2, column=0, pady=5)
+    self.rt_bar.grid(row=2, column=1, pady=5)
+
+    # Fill rectangles
+    self.lt_fill = self.lt_bar.create_rectangle(0, 0, 0, 20, fill="orange")
+    self.rt_fill = self.rt_bar.create_rectangle(0, 0, 0, 20, fill="orange")
