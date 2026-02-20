@@ -1,0 +1,6 @@
+# Trigger event: "LT:value" or "RT:value"
+if msg.startswith("LT:") or msg.startswith("RT:"):
+    parts = msg.split(":")
+    trig = parts[0]
+    val = int(parts[1])
+    self.root.after(0, lambda t=trig, v=val: self.update_trigger(t, v))
