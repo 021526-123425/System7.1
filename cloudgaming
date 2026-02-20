@@ -6,3 +6,48 @@ IO/
        presets/
            latency_profiles.json
            controller_map.json
+
+
+IO/
+   virtual-controller/
+       manifest.yaml
+       vc_daemon.py
+       vc_device_driver.py
+       presets/
+           xbox.json
+           playstation.json
+           switch.json
+           custom_glyph_map.json
+
+
+import uinput
+
+device = uinput.Device([
+    uinput.BTN_A,
+    uinput.BTN_B,
+    uinput.BTN_X,
+    uinput.BTN_Y,
+    uinput.BTN_TL,
+    uinput.BTN_TR,
+    uinput.ABS_X + (-32768, 32767, 0, 0),
+    uinput.ABS_Y + (-32768, 32767, 0, 0),
+    uinput.ABS_RX + (-32768, 32767, 0, 0),
+    uinput.ABS_RY + (-32768, 32767, 0, 0),
+])
+
+
+device.emit(uinput.BTN_A, 1)  # press A
+device.emit(uinput.BTN_A, 0)  # release A
+device.emit(uinput.ABS_X, 12000)  # move left stick
+This daemon becomes your “virtual controller 
+
+IO/
+   virtual-controller/
+       manifest.yaml
+       vc_daemon.py
+       driver/
+           linux_uinput.py
+           windows_vigem.py
+           macos_hid.py
+       presets/
+           xbox.json
