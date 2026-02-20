@@ -158,3 +158,31 @@ class ControllerTester:
 
 if __name__ == "__main__":
     ControllerTester().run()
+
+def build_dpad(self):
+    self.dpad_frame = tk.Frame(self.root, bg="black")
+    self.dpad_frame.grid(row=0, column=2, padx=20)
+
+    self.dpad = {}
+
+    layout = {
+        "UP":    (0, 1),
+        "LEFT":  (1, 0),
+        "RIGHT": (1, 2),
+        "DOWN":  (2, 1)
+    }
+
+    for name, pos in layout.items():
+        lbl = tk.Label(
+            self.dpad_frame,
+            text=name,
+            width=6,
+            height=2,
+            bg="gray20",
+            fg="white",
+            relief="raised",
+            font=("Arial", 12)
+        )
+        lbl.grid(row=pos[0], column=pos[1], padx=5, pady=5)
+        self.dpad[name] = lbl
+
