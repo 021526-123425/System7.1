@@ -6,3 +6,8 @@ def update_trigger(self, which, value):
         self.lt_bar.coords(self.lt_fill, 0, 0, width, 20)
     else:
         self.rt_bar.coords(self.rt_fill, 0, 0, width, 20)
+
+def light_dpad(self, direction):
+    if direction in self.dpad:
+        self.dpad[direction].config(bg="cyan")
+        self.root.after(150, lambda d=direction: self.dpad[d].config(bg="gray20"))
