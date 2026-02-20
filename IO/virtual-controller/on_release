@@ -1,0 +1,9 @@
+if k == "z":
+    lt_value = 0
+    controller.move(uinput.ABS_Z, lt_value)
+    notify_tester(f"LT:{lt_value}")
+
+if k == "x":
+    rt_value = 0
+    controller.move(uinput.ABS_RZ, rt_value)
+    notify_tester(f"RT:{rt_value}")
