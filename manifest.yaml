@@ -11,3 +11,14 @@ platform_drivers:
 
 presets:
   - presets/xbox.json
+
+
+name: controller-mapper
+version: 1.0.0
+type: io-module
+description: UI and engine for mapping keyboard/mouse inputs to virtual controller events
+entrypoint: mapper_ui.py
+
+mappings:
+  - mappings/default.json
+  - mappings/xbox.json
