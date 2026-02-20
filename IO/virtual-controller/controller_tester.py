@@ -1,6 +1,17 @@
 import tkinter as tk
 import uinput
 from mapping_engine import MappingEngine
+import threading
+import socket
+def listen_for_events(self):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind(("127.0.0.1", 9999))
+
+    while True:
+        data, _ = sock.recvfrom(1024)
+        button = data.decode()
+        self.root.after(0, lambda b=button: self.light(b))
+threading.Thread(target=self.listen_for_events, daemon=True).start()
 
 BUTTON_CODES = {
     "A": uinput.BTN_A,
