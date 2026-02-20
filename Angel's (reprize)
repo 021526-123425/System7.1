@@ -152,7 +152,7 @@ echo uinput | sudo tee /etc/modules-load.d/uinput.conf
 # Run without packaging
 npm run start
 import uinput
-
+python3 io_service_manager.py
 class LinuxVirtualController:
     def __init__(self):
         self.device = uinput.Device([
