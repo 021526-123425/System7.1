@@ -35,6 +35,16 @@ device = uinput.Device([
     uinput.ABS_RY + (-32768, 32767, 0, 0),
 ])
 
+IO/
+  controller-mapper/
+    manifest.yaml
+    mapper_ui.py
+    mapping_engine.py
+    mappings/
+      default.json
+      xbox.json
+
+
 
 device.emit(uinput.BTN_A, 1)  # press A
 device.emit(uinput.BTN_A, 0)  # release A
