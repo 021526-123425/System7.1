@@ -1,0 +1,13 @@
+name: virtual-controller
+version: 1.0.0
+type: io-module
+description: Software-defined Xbox-style virtual controller
+entrypoint: vc_daemon.py
+
+platform_drivers:
+  linux: driver/linux_uinput.py
+  windows: driver/windows_vigem.py
+  macos: driver/macos_hid.py
+
+presets:
+  - presets/xbox.json
