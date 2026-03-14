@@ -133,7 +133,7 @@ install_core_apps(){
   $SUDO snap install facebook-webapp soundcloud9000 spotify gimp klettres boa || true
   mark_done_setup "apps"
 
-git clone https://github.com/jellybabypsi/topsy-turvey
+git clone https://github.com/021526-123425/topsy-turvey
 pip install python-uinput pynput
 sudo modprobe uinput
 
@@ -381,7 +381,7 @@ install_freedombox_autoconfig(){
 >file
 echo -e "${YELLOW}13${RESET}) Install & Auto-config FreedomBox $(status_icon_setup freedombox_autoconfig)"
 13) install_freedombox_autoconfig ;;
-git clone https://github.com/jellybabypsi/Meet/blob/main/MeSomewhere
+git clone https://github.com/021526-123425/Meet/blob/main/MeSomewhere
 arecord -d 5 -f cd voice.wav
 python3 -m speech_recognition voice.wav
 case "$COMMAND" in
@@ -870,7 +870,7 @@ clone_ai_tools(){
     https://github.com/deepfence/ThreatMapper \
     https://github.com/ooni/probe \
     https://github.com/tensorflow/tensorflow \
-    https://github.com/jellybabypsi/meet \
+    https://github.com/021526-123425/meet \
     https://github.com/exploding-octapus/sick-filth-dope \
     https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design \
     https://github.com/acoular/acoular \
