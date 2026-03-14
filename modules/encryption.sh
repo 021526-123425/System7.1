@@ -9,3 +9,4 @@ encrypt_device() {
   cryptsetup --type luks2 --hash sha512 --cipher aes-xts-plain64 --key-size 512 --verbose luksFormat "dev/sda0"
   echo "✅ Encryption complete. You can now open the device with luksOpen."
 }
+
