@@ -14,11 +14,24 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "sound": "hum.wav",     # Cosmic hum
             "glyph": "🍬"
         },
-        "volutrite": {
+        "vulturite": {
             "description": "Vulturite archetype detected",
             "sound": "wings.wav",   # Wingbeat sample
             "glyph": "🪽"
-        }
+        
+        },
+        "theincubus": {
+            "description": "incubus archetype detected",
+          "sound": "bells.wav",   # Tibetan bells
+            "glyph": "🪽"
+    
+     },
+        "ssuccubus": {
+            "description": "succubus archetype detected",
+          "sound": "bells.wav",   # Tibetan bells
+            "glyph": "🪽"
+    
+    
     }
 
     found = []
