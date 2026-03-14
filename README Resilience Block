@@ -12,4 +12,5 @@ Why mirrors? To keep science, safety, and community tools available even if any 
 ### Quickstart (container)
 
 ```bash
+docker run --pull=always -it --rm ghcr.io/021526-123425/system7.1:vX.Y demo
 docker run --pull=always -it --rm ghcr.io/jellybabypsi/system7.1:vX.Y demo
