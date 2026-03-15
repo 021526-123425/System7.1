@@ -10,12 +10,12 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "glyph": "🦇"
         },
         "jellybean": {
-            "description": "Jellybaby archetype detected",
+            "description": "Jellybaby archetype detected. a morgellon of a morgellon,"
             "sound": "hum.wav",     # Cosmic hum
             "glyph": "🍬"
         },
         "vulturite": {
-            "description": "Vulturite archetype detected",
+            "description": "weird blue bird archetype detected",
             "sound": "wings.wav",   # Wingbeat sample
             "glyph": "🪽"
         
