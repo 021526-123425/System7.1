@@ -21,13 +21,13 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
         
         },
         "theincubus": {
-            "description": "incubus archetype detected",
+            "description": "sex demon archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
      },
         "ssuccubus": {
-            "description": "succubus archetype detected",
+            "description": "sex demon archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
