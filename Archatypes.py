@@ -5,7 +5,7 @@ import time
 def ritual_scan(mount_path="/mnt/sda7.1"):
     archetypes = {
         "vvampire": {
-            "description": "Vampire archetype detected",
+            "description": "devo Vampire archetype detected",
             "sound": "bells.wav",   # Tibetan bells
             "glyph": "🦇"
         },
@@ -21,13 +21,13 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
         
         },
         "theincubus": {
-            "description": "sex demon archetype detected",
+            "description": "male sex demon archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
      },
         "ssuccubus": {
-            "description": "sex demon archetype detected",
+            "description": "female sex demon archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
