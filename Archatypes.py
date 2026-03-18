@@ -3,7 +3,7 @@ import playsound  # for audio cues
 import time
 
 def ritual_scan(mount_path="/mnt/sda7.1"):
-    archetypes = {
+    archetypes = { 
         "vvampire": {
             "description": "devo Vampire archetype detected",
             "sound": "bells.wav",   # Tibetan bells
