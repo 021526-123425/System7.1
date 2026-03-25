@@ -2,7 +2,7 @@ import os
 import playsound  # for audio cues
 import time
 
-def ritual_scan(mount_path="/mnt/sda7.1"):
+def ritual_scan(mount_path="/mnt/sda7.1"): 
     archetypes = { 
         "vvampire": {
             "description": "devo Vampire archetype detected",
@@ -10,7 +10,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "glyph": "🦇"
         },
         "jellybean": {
-            "description": "Jellybaby archetype detected. a morgellon of a morgellon,"
+            "description": "Jellybaby archetype detected. (single cell organisim),"
             "sound": "hum.wav",     # Cosmic hum
             "glyph": "🍬"
         },
