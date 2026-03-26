@@ -5,7 +5,7 @@ import time
 def ritual_scan(mount_path="/mnt/sda7.1"): 
     archetypes = { 
         "vvampire": {
-            "description": "devo Vampire archetype detected",
+            "description": "Vampire archetype detected., Uncool.",
             "sound": "bells.wav",   # Tibetan bells
             "glyph": "🦇"
         },
