@@ -4,7 +4,7 @@
     "version": "1.0",
     "description": "Kernel-level daemon that prevents deletion of core systems. Self-healing and immutable. Converts adversary attempts into ritual resistance."
   },
-  "policies": {
+  "policies": { 
     "immutable": true,
     "self_healing": true,
     "watchdogs": [
