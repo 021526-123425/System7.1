@@ -7,7 +7,7 @@ Icon=drive-harddisk
 Terminal=false
 Categories=Utility;
 
-cd ~/.local/share/applications/
+cd ~/.local/share/applications/ 
 
 mod +x /usr/local/bin/partition-manager.sh
 chmod +x ~/.local/share/applications/PartitionManager.desktop
