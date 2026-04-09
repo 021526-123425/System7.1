@@ -13,7 +13,7 @@ We maintain an LTS branch that receives critical security fixes for 18 months. C
 - vX.Y-lts: security and bugfixes only
 
 ## Reporting a vulnerability
-Please email security@<org>.org with:
+Please email security@021526-123425.org with:
 - A clear description and minimal repro
 - Affected versions and environment
 - Impact assessment
