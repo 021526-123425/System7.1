@@ -11,7 +11,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
         },
         "jellybean": {
             "description": "Jellybaby archetype detected. (single cell organisim),"
-            "sound": "hum.wav",     # Cosmic hum
+            "sound": "hum.wav",     # Cosmic hum 
             "glyph": "🍬"
         },
         "vulturite": {
