@@ -1,6 +1,6 @@
 import json
 
-class MappingEngine:
+class MappingEngine: 
     def __init__(self, mapping_file):
         with open(mapping_file) as f:
             self.mapping = json.load(f)
