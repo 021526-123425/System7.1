@@ -1,0 +1,13 @@
+#!/bin/bash
+# update_fstab_option.sh <mountpoint> <new_options>
+
+MNT="$1"
+OPTS="$2"
+
+cp /etc/fstab /etc/fstab.bak.$(date +%s)
+
+awk -v mnt="$MNT" -v opts="$OPTS" '
+$2 == mnt { $4 = opts }
+{ print }
+' /etc/fstab.bak.$(date +%s) > /etc/fstab
+
