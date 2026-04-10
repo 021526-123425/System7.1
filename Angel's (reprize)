@@ -112,20 +112,20 @@ install_core_apps(){
   # Flatpak apps (best-effort)
   flatpak install -y flathub \
     net.studio08.xbplay \
-    com.heroicgameslauncher.hgl \                  
-  . com.google.EarthPro \
-    com.sindresorhus.Caprine \
-    com.stremio.Stremio \
-    com.discordapp.Discord \
     com.google.Chrome \
-    org.kde.ktorrent
-    org.mozilla.firefox \
+    com.google.EarthPro \
     org.goldendict.GoldenGoldenDict \
     net.sourceforge.artha.Artha \
     menu.kando.Kando \
     org.upscayl.Upscayl \
     com.github.HypatiaProject.hypatia \
     io.gitlab.o20.file \
+    com.sindresorhus.Caprine \
+    com.stremio.Stremio \
+    com.discordapp.Discord \
+    com.heroicgameslauncher.hgl \
+    org.kde.ktorrent
+    org.mozilla.firefox \
     org.ardour.Ardour \
     org.jjazzlab.JJazzLab || true
   # Snap apps (best-effort)
