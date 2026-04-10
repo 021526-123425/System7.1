@@ -27,3 +27,6 @@ sudo parted /dev/sda
 (parted) resizepart 14 2000GB
 (parted) quit
 >file
+
+sudo btrfs filesystem resize max /home/_Claude
+
