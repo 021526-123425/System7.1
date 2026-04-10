@@ -20,3 +20,6 @@ $2 == mnt {
 sudo ./update_fstab_option.sh /home "defaults,usrquota,grpquota"
 
 df -h /home/_Claude
+
+lsblk -f /dev/sda14
+
