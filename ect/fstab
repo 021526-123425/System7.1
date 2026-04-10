@@ -11,3 +11,4 @@ $2 == mnt { $4 = opts }
 { print }
 ' /etc/fstab.bak.$(date +%s) > /etc/fstab
 
+sudo ./update_fstab_option.sh /home/_Claude "defaults,usrquota,grpquota"
