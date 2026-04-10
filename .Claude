@@ -1,2 +1,22 @@
 sudo su -_Claude
 df -h
+#!/bin/bash
+# update_fstab_option.sh <mountpoint> <new_options>
+
+MNT="$1"
+OPTS="$2"
+
+# Backup first
+cp /etc/fstab /etc/fstab.bak.$(date +%s)
+
+# Replace the options column for the given mountpoint
+awk -v mnt="$MNT" -v opts="$OPTS" '
+$2 == mnt {
+    $4 = opts
+}
+{ print }
+' /etc/fstab.bak.$(date +%s) > /etc/fstab
+
+sudo ./update_fstab_option.sh /home "defaults,usrquota,grpquota"
+
+df -h /home/claude
