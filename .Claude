@@ -23,3 +23,6 @@ df -h /home/_Claude
 
 lsblk -f /dev/sda14
 
+sudo parted /dev/sda
+(parted) resizepart 14 2000GB
+(parted) quit
