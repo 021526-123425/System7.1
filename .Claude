@@ -30,3 +30,5 @@ sudo parted /dev/sda
 
 sudo btrfs filesystem resize max /home/_Claude
 
+lsblk -f /dev/sda14
+
