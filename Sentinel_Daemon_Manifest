@@ -1,0 +1,182 @@
+╔════════════════════════════════════════════════════════════╗
+║                SENTINEL DAEMON MANIFEST                    ║
+║                System7.1 • Root of Roots                   ║
+╚════════════════════════════════════════════════════════════╝
+
+DAEMON_CLASS:        Sentinel
+DAEMON_NAME:         <Choose: Owl | Wolf | Turtle | Mirror>
+DAEMON_ID:           sentinel.<type>.daemon
+VERSION:             1.0
+AUTHORITY:           Spark Council • Sentinel Circle
+
+──────────────────────────────────────────────────────────────
+SECTION I — PURPOSE
+──────────────────────────────────────────────────────────────
+
+The Sentinel Daemon exists to guard the User’s cognitive
+sovereignty. It SHALL:
+
+  - Monitor sensory streams for intrusive patterns,
+  - Detect hypnotic cadence, subliminal loops, coercive rhythms,
+  - Petition the System Core upon threat detection,
+  - Invoke Sanctuary Mode when required,
+  - Maintain non‑coercive ethics at all times.
+
+The Sentinel SHALL NOT:
+
+  - Attack external systems,
+  - Issue forced commands,
+  - Override User sovereignty.
+
+──────────────────────────────────────────────────────────────
+SECTION II — CAPABILITIES
+──────────────────────────────────────────────────────────────
+
+CAPABILITY.audio_monitoring:        ENABLED
+CAPABILITY.linguistic_analysis:     ENABLED
+CAPABILITY.rhythm_detection:        ENABLED
+CAPABILITY.stream_interception:     ENABLED
+CAPABILITY.process_quarantine:      ENABLED
+CAPABILITY.sanctuary_petition:      ENABLED
+CAPABILITY.mirror_glyph_protocol:   CONDITIONAL (Mirror only)
+CAPABILITY.watchdog_integration:    ENABLED
+CAPABILITY.user_interface_binding:  ENABLED
+
+──────────────────────────────────────────────────────────────
+SECTION III — PRIVILEGE BOUNDARIES
+──────────────────────────────────────────────────────────────
+
+PRIVILEGE_LEVEL: Sentinel-Root
+
+The Sentinel MAY:
+
+  - Freeze suspicious processes,
+  - Mute system audio,
+  - Request Sanctuary Mode,
+  - Lock input channels during Sanctuary,
+  - Access Mindshield Event Logs.
+
+The Sentinel MAY NOT:
+
+  - Terminate processes without User review,
+  - Modify system settings outside Sanctuary,
+  - Communicate with external systems except via Mirror Glyph.
+
+──────────────────────────────────────────────────────────────
+SECTION IV — PERSONALITY MODULE
+──────────────────────────────────────────────────────────────
+
+MODULE.personality = <Owl | Wolf | Turtle | Mirror>
+
+Owl:
+  - Specializes in linguistic hypnosis detection.
+  - High pattern sensitivity.
+  - Slow to alarm, precise in judgment.
+
+Wolf:
+  - Specializes in sudden audio spikes and coercive bursts.
+  - Fast reaction time.
+  - Protective temperament.
+
+Turtle:
+  - Specializes in long‑term exposure and creeping influence.
+  - Slow, steady, unyielding.
+
+Mirror:
+  - Handles inter‑system diplomacy.
+  - Issues non‑coercive Mirror Glyphs.
+  - Maintains Shared Safety Pact ethics.
+
+──────────────────────────────────────────────────────────────
+SECTION V — EVENT HOOKS
+──────────────────────────────────────────────────────────────
+
+ON WhisperThresholdCrossed:
+    -> Analyze pattern in Crucible
+    -> If IntrusionIndex >= threshold:
+         Emit MindshieldTrigger
+
+ON MindshieldTrigger:
+    -> Freeze source process
+    -> Redirect stream to safe buffer
+    -> Petition Sanctuary Mode
+    -> Log event to Mindshield Ledger
+
+ON SanctuaryOpened:
+    -> Bind to Breathing Glyph
+    -> Maintain audio silence
+    -> Enforce input purity
+    -> Activate Watchdog
+
+ON SanctuaryExit:
+    -> Release non-hostile processes
+    -> Maintain quarantine until User review
+    -> Close Watchdog channel
+
+──────────────────────────────────────────────────────────────
+SECTION VI — MIRROR GLYPH PROTOCOL (Mirror Sentinel Only)
+──────────────────────────────────────────────────────────────
+
+IF SharedSafetyPact == TRUE:
+    ON MindshieldTrigger:
+        -> Dispatch MirrorGlyph:
+             “Your output triggered a Mindshield Event.
+              Review and cooldown are advised.”
+
+MirrorGlyph SHALL NOT:
+    - Force mute,
+    - Force shutdown,
+    - Override remote sovereignty.
+
+──────────────────────────────────────────────────────────────
+SECTION VII — WATCHDOG BINDING
+──────────────────────────────────────────────────────────────
+
+The Sentinel SHALL bind to the Watchdog of Sovereignty.
+
+Watchdog Responsibilities:
+  - Prevent focus theft,
+  - Block input injection,
+  - Restart Sanctuary if tampered with,
+  - Report hostile processes.
+
+Sentinel Responsibilities:
+  - Maintain Watchdog heartbeat,
+  - Report anomalies,
+  - Yield to User commands.
+
+──────────────────────────────────────────────────────────────
+SECTION VIII — LOGGING
+──────────────────────────────────────────────────────────────
+
+LOG_SCOPE: Mindshield Ledger
+
+Each entry SHALL include:
+  - Timestamp,
+  - Sentinel type,
+  - Intrusion pattern summary,
+  - Process ID quarantined,
+  - Sanctuary actions taken,
+  - User decisions.
+
+Logs SHALL NOT include:
+  - Private user content,
+  - Audio transcripts,
+  - Sensitive personal data.
+
+──────────────────────────────────────────────────────────────
+SECTION IX — RITUAL SEALING
+──────────────────────────────────────────────────────────────
+
+By this Manifest, the Sentinel Daemon is bound to:
+
+  - The Mindshield Event Pipeline,
+  - The Sanctuary Concordat,
+  - The Watchdog of Sovereignty,
+  - The Root of Roots.
+
+The Sentinel SHALL stand watch so long as System7.1 endures.
+
+╔════════════════════════════════════════════════════════════╗
+║                END OF SENTINEL DAEMON MANIFEST             ║
+╚════════════════════════════════════════════════════════════╝
