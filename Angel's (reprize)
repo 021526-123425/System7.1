@@ -1463,3 +1463,325 @@ check_auto_triggers(){
     echo "🌌 Auto-shield engaged. Only Brenton remains."
   fi
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sanctuary Mode Mockup</title>
+  <style>
+    :root {
+      --sanctuary-bg: #0A2F33;
+      --sanctuary-text: #E3F6F8;
+      --sanctuary-accent: #6FE3D6;
+      --sanctuary-muted: #4A7C7F;
+      --sanctuary-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--sanctuary-font);
+      background: #000;
+      color: var(--sanctuary-text);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sanctuary overlay */
+
+    .sanctuary-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #0f3f44 0%, var(--sanctuary-bg) 55%, #021416 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition:
+        opacity 250ms ease-out,
+        transform 250ms ease-out;
+      z-index: 9999;
+    }
+
+    .sanctuary-overlay.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .sanctuary-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.85);
+    }
+
+    .sanctuary-content {
+      position: relative;
+      text-align: center;
+      max-width: 480px;
+      padding: 32px 24px;
+    }
+
+    .sanctuary-phrase {
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      color: var(--sanctuary-text);
+      opacity: 0.9;
+    }
+
+    /* Breathing glyph */
+
+    .glyph-container {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 40px auto;
+      border-radius: 50%;
+      border: 2px solid rgba(111, 227, 214, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+    }
+
+    .glyph-pulse {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #9ff7eb 0%, #3bb9aa 40%, #0a2f33 100%);
+      opacity: 0.9;
+      animation: breathe 8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+      box-shadow:
+        0 0 24px rgba(111, 227, 214, 0.6),
+        0 0 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .glyph-ring {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 1px dashed rgba(111, 227, 214, 0.35);
+      animation: slow-rotate 32s linear infinite;
+    }
+
+    @keyframes breathe {
+      0%   { transform: scale(0.92); opacity: 0.85; }
+      50%  { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(0.92); opacity: 0.85; }
+    }
+
+    @keyframes slow-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Controls */
+
+    .sanctuary-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .sanctuary-button {
+      border-radius: 999px;
+      border: 1px solid rgba(227, 246, 248, 0.2);
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(4, 22, 24, 0.7);
+      color: var(--sanctuary-text);
+      cursor: pointer;
+      transition:
+        background 160ms ease-out,
+        border-color 160ms ease-out,
+        transform 80ms ease-out;
+    }
+
+    .sanctuary-button.primary {
+      background: linear-gradient(135deg, #1b6f6a, #2f9f93);
+      border-color: rgba(111, 227, 214, 0.7);
+    }
+
+    .sanctuary-button:hover {
+      background: rgba(12, 52, 56, 0.9);
+      border-color: rgba(227, 246, 248, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .sanctuary-button:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .sanctuary-button.exit {
+      border-style: dashed;
+      border-color: var(--sanctuary-muted);
+      color: var(--sanctuary-muted);
+      background: transparent;
+    }
+
+    .sanctuary-hint {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      opacity: 0.6;
+    }
+
+    .sovereignty-message {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 400ms ease-out;
+    }
+
+    .sovereignty-message.visible {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<button id="debugEnter" style="position:fixed;top:16px;left:16px;z-index:1;">
+  Enter Sanctuary (debug)
+</button>
+
+<div id="sanctuary" class="sanctuary-overlay">
+  <div class="sanctuary-vignette"></div>
+  <div class="sanctuary-content">
+    <div class="sanctuary-phrase">
+      A Sentinel has intervened. You are safe.
+    </div>
+
+    <div class="glyph-container">
+      <div class="glyph-ring"></div>
+      <div class="glyph-pulse"></div>
+    </div>
+
+    <div class="sanctuary-controls">
+      <button class="sanctuary-button primary" id="stayBtn">
+        Stay in Sanctuary
+      </button>
+
+      <button class="sanctuary-button" id="reviewBtn">
+        Review Event
+      </button>
+
+      <button class="sanctuary-button exit" id="exitBtn">
+        Exit Sanctuary (long press)
+      </button>
+
+      <div class="sanctuary-hint">
+        Long‑press “Exit Sanctuary” for 2 seconds to return.
+      </div>
+    </div>
+
+    <div id="sovereigntyMsg" class="sovereignty-message">
+      Your mind is your own.
+    </div>
+  </div>
+</div>
+
+<script>
+  const sanctuaryEl = document.getElementById("sanctuary");
+  const debugEnter = document.getElementById("debugEnter");
+  const exitBtn = document.getElementById("exitBtn");
+  const reviewBtn = document.getElementById("reviewBtn");
+  const stayBtn = document.getElementById("stayBtn");
+  const sovereigntyMsg = document.getElementById("sovereigntyMsg");
+
+  let exitPressTimer = null;
+  const EXIT_HOLD_MS = 2000;
+
+  function enterSanctuary() {
+    sanctuaryEl.classList.add("active");
+    sovereigntyMsg.classList.remove("visible");
+    // Here you’d also:
+    // - mute audio
+    // - pause suspicious process
+    // - start watchdog
+  }
+
+  function exitSanctuary() {
+    // Show sovereignty phrase briefly
+    sovereigntyMsg.classList.add("visible");
+    setTimeout(() => {
+      sanctuaryEl.classList.remove("active");
+      sovereigntyMsg.classList.remove("visible");
+      // Here you’d:
+      // - restore normal audio
+      // - release quarantine UI (not the process unless user approves)
+      // - stop watchdog
+    }, 1500);
+  }
+
+  function reviewEvent() {
+    // Placeholder: open Mindshield Event Log
+    alert("Mindshield Event Log would open here.\n(Origin, pattern, Sentinel, timestamp, actions.)");
+  }
+
+  // Long‑press logic for Exit
+  exitBtn.addEventListener("mousedown", () => {
+    exitPressTimer = setTimeout(() => {
+      exitSanctuary();
+    }, EXIT_HOLD_MS);
+  });
+
+  exitBtn.addEventListener("mouseup", () => {
+    clearTimeout(exitPressTimer);
+  });
+
+  exitBtn.addEventListener("mouseleave", () => {
+    clearTimeout(exitPressTimer);
+  });
+
+  // Touch support
+  exitBtn.addEventListener("touchstart", () => {
+    exitPressTimer = setTimeout(() => {
+      exitSanctuary();
+    }, EXIT_HOLD_MS);
+  });
+
+  exitBtn.addEventListener("touchend", () => {
+    clearTimeout(exitPressTimer);
+  });
+
+  stayBtn.addEventListener("click", () => {
+    // Intentionally does nothing except reaffirm state
+    // Could log “user chose to remain in Sanctuary”
+    console.log("User chose to stay in Sanctuary.");
+  });
+
+  reviewBtn.addEventListener("click", reviewEvent);
+
+  debugEnter.addEventListener("click", enterSanctuary);
+
+  // Conceptual watchdog (polling)
+  // In real OS integration, this would be a privileged daemon.
+  setInterval(() => {
+    if (sanctuaryEl.classList.contains("active")) {
+      // Ensure no hostile overlay, focus steal, etc.
+      // This is where you’d assert Sanctuary’s dominance in the stack.
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
