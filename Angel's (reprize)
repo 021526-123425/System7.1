@@ -880,9 +880,9 @@ clone_ai_tools(){
     https://github.com/zhaolin820/ris-aided-dual-functional-radar-and-communications-beamforming-design \
     https://github.com/acoular/acoular \
     https://github.com/LCAV/pyroomacoustics \
-    https://github.com/affaan-m/everything-claude-code
-\
+    https://github.com/affaan-m/everything-claude-code \
     https://github.com/jorgengrythe/beamforming \
+    https://github.com/NawfalMotii79/PLFM_RADAR
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
