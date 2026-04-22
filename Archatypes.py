@@ -8,7 +8,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "description": "Vampire archetype detected., Uncool.", 
             "sound": "bells.wav",   # Tibetan bells
             "glyph": "🦇"
-        },
+        }, 
         "jellybean": {
             "description": "Jellybaby archetype detected. (single cell organisim),"
             "sound": "hum.wav",     # Cosmic hum 
