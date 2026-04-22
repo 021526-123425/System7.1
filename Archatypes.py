@@ -15,19 +15,19 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "glyph": "🍬"
         },
         "vulturite": {
-            "description": "weird blue bird archetype detected",
+            "description": "voulturite archetype detected",
             "sound": "wings.wav",   # Wingbeat sample
             "glyph": "🪽"
         
         },
         "theincubus": {
-            "description": "male sex demon archetype detected",
+            "description": "incubus archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
      },
         "ssuccubus": {
-            "description": "female sex demon archetype detected",
+            "description": "Succubus archetype detected",
           "sound": "bells.wav",   # Tibetan bells
             "glyph": "🪽"
     
