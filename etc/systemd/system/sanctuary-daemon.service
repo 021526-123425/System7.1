@@ -1,0 +1,10 @@
+[Unit]
+Description=Sanctuary Mode Filesystem Watcher
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/sanctuary_daemon.py
+Restart=always
+User=_
+
+[Install]
+WantedBy=multi-user.target
