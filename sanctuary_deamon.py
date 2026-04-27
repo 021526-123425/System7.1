@@ -1,8 +1,9 @@
+pip install watchdog
 import os
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-
+pip install watchdog
 WATCH_PATH = "/mnt/sda7.1"
 SANCTUARY_FLAG = os.path.join(WATCH_PATH, ".sanctuary_mode")
 
