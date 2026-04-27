@@ -48,3 +48,16 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
         return "\n".join(found)
 
 print(ritual_scan("/mnt/sda7.1"))
+
+import sys
+
+FORBIDDEN = "ssuccubus"
+
+while True:
+    line = input("> ")
+    if FORBIDDEN in line:
+        print("⚠️  This term is blocked.")
+        continue
+    # otherwise pass it through
+    print(f"Executing: {line}")
+
