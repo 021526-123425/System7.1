@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+CONF="/etc/system7/sanctuary.conf"
+FLAG=$(awk -F'=' '/flag_file/ {gsub(/ /,"",$2); print $2}' "$CONF")
+
+case "$1" in
+  status)
+    if [[ -f "$FLAG" ]]; then
+      echo "🛡️ Sanctuary: ON"
+    else
+      echo "🛡️ Sanctuary: OFF"
+    fi
+    ;;
+  scan)
+    python3 /path/to/archscan.py
+    ;;
+  off)
+    rm -f "$FLAG"
+    echo "🛡️ Sanctuary: OFF (manual override)"
+    ;;
+  *)
+    echo "Usage: sanctuary {status|scan|off}"
+    ;;
+esac
