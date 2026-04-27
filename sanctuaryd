@@ -1,0 +1,39 @@
+import os, time, configparser
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+cfg = configparser.ConfigParser()
+cfg.read("/etc/system7/sanctuary.conf")
+
+WATCH_PATH   = cfg["paths"]["watch_path"]
+FLAG_FILE    = cfg["paths"]["flag_file"]
+MARKERS      = set(cfg["archetypes"]["markers"].split(","))
+
+def update_flag():
+    active = any(os.path.exists(os.path.join(WATCH_PATH, m)) for m in MARKERS)
+    if active and not os.path.exists(FLAG_FILE):
+        open(FLAG_FILE, "w").write("Sanctuary ON\n")
+        print("🛡️ Sanctuary: ON")
+    if not active and os.path.exists(FLAG_FILE):
+        os.remove(FLAG_FILE)
+        print("🛡️ Sanctuary: OFF")
+
+class Handler(FileSystemEventHandler):
+    def on_any_event(self, event):
+        update_flag()
+
+def main():
+    if not os.path.isdir(WATCH_PATH):
+        print("Missing watch path:", WATCH_PATH); return
+    update_flag()
+    obs = Observer()
+    obs.schedule(Handler(), WATCH_PATH, recursive=False)
+    obs.start()
+    try:
+        while True: time.sleep(1)
+    except KeyboardInterrupt:
+        obs.stop()
+    obs.join()
+
+if __name__ == "__main__":
+    main()
