@@ -1785,3 +1785,7 @@ check_auto_triggers(){
 
 </body>
 </html>
+
+sudo systemctl daemon-reload
+sudo systemctl enable sanctuary-daemon
+sudo systemctl start sanctuary-daemon
