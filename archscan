@@ -1,0 +1,9 @@
+def archscan():
+    found = []
+    for m in MARKERS:
+        if os.path.exists(os.path.join(WATCH_PATH, m)):
+            found.append(m)
+    if not found:
+        print("🌱 Sanctuary field clear.")
+    else:
+        print("🜁 Active archetypes:", ", ".join(found))
