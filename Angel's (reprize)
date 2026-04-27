@@ -582,7 +582,9 @@ case "$VOICE_CMD" in
 <button onclick="runCommand('ecc_encrypt_decrypt')">🔐 ECC Encrypt</button>
 sudo apt remove nethunter
 sudo apt remove Kali nethunter
-
+sudo systemctl daemon-reload
+sudo systemctl enable sanctuary-daemon
+sudo systemctl start sanctuary-daemon
 esac
 esac by
 echo -e "${CYAN}${BOLD}"
@@ -1786,6 +1788,4 @@ check_auto_triggers(){
 </body>
 </html>
 
-sudo systemctl daemon-reload
-sudo systemctl enable sanctuary-daemon
-sudo systemctl start sanctuary-daemon
+
