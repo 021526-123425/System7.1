@@ -1,37 +1,34 @@
 import os
-import playsound  # for audio cues
-import time  
+import playsound
+import time
 
-def ritual_scan(mount_path="/mnt/sda7.1"):     
-    archetypes = { 
+def ritual_scan(mount_path="/mnt/sda7.1"):
+    archetypes = {
         "vvampire": {
-            "description": "Vampire archetype detected., Uncool.", 
-            "sound": "bells.wav",   # Tibetan bells
+            "description": "Vampire archetype detected. Uncool.",
+            "sound": "bells.wav",
             "glyph": "🦇"
-        }, 
+        },
         "jellybean": {
-            "description": "Jellybaby archetype detected. (single cell organisim),"
-            "sound": "hum.wav",     # Cosmic hum 
+            "description": "Jellybaby archetype detected (single cell organism).",
+            "sound": "hum.wav",
             "glyph": "🍬"
         },
         "vulturite": {
-            "description": "voulturite archetype detected",
-            "sound": "wings.wav",   # Wingbeat sample
+            "description": "Vulturite archetype detected.",
+            "sound": "wings.wav",
             "glyph": "🪽"
-        
         },
         "theincubus": {
-            "description": "incubus archetype detected",
-          "sound": "bells.wav",   # Tibetan bells
+            "description": "Incubus archetype detected.",
+            "sound": "bells.wav",
             "glyph": "🪽"
-    
-     },
+        },
         "ssuccubus": {
-            "description": "Succubus archetype detected",
-          "sound": "bells.wav",   # Tibetan bells
+            "description": "Succubus archetype detected.",
+            "sound": "bells.wav",
             "glyph": "🪽"
-    
-    
+        }
     }
 
     found = []
@@ -39,13 +36,15 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
         marker_path = os.path.join(mount_path, marker)
         if os.path.exists(marker_path):
             found.append(f"{ritual['glyph']} {ritual['description']}")
-            playsound.playsound(ritual["sound"])
-            time.sleep(1)  # pause for ceremonial effect
+            try:
+                playsound.playsound(ritual["sound"])
+            except Exception as e:
+                found.append(f"(sound error: {e})")
+            time.sleep(1)
 
     if not found:
-        return "🌱 No archetype markers found — Morgellon remains natural (golem sanctuary state)."
+        return "🌱 No archetype markers found — sanctuary state."
     else:
         return "\n".join(found)
 
-# Example usage:
 print(ritual_scan("/mnt/sda7.1"))
