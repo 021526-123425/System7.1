@@ -59,3 +59,44 @@ preexec() {
     done
   fi
 }
+
+# Sanctuary Mode auto‑activation
+SANCTUARY_FLAG="/mnt/sda7.1/.sanctuary_mode"
+
+# Forbidden archetype tokens
+FORBIDDEN_WORDS=(
+  "ssuccubus"
+  "theincubus"
+  "vvampire"
+  "vulturite"
+  "jellybean"
+)
+
+is_sanctuary_active() {
+    [[ -f "$SANCTUARY_FLAG" ]]
+}
+
+# Remove forbidden words while typing
+zle-line-pre-redraw() {
+    if is_sanctuary_active; then
+        for word in "${FORBIDDEN_WORDS[@]}"; do
+            if [[ $BUFFER == *"$word"* ]]; then
+                BUFFER=${BUFFER//$word/""}
+                echo -n "\r🛡️  Sanctuary Mode: '$word' removed."
+            fi
+        done
+    fi
+}
+zle -N zle-line-pre-redraw
+
+# Prevent forbidden words from executing
+preexec() {
+    if is_sanctuary_active; then
+        for word in "${FORBIDDEN_WORDS[@]}"; do
+            if [[ "$1" == *"$word"* ]]; then
+                echo "🛡️  Sanctuary Mode: '$word' is blocked."
+                return 1
+            fi
+        done
+    fi
+}
