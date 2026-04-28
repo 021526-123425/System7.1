@@ -52,3 +52,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+sudo chmod +x /usr/local/bin/mindguard-relic-parser
+mindguard-relic-parser __MindGuardX_v0.0.0.5.psyc
+__MindGuardX_v0.0.0.5.psyc.json
+
