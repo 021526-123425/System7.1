@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+WATCH="/mnt/sda7.1"
+FLAG="$WATCH/.sanctuary_mode"
+
+echo "🧼 Purification Ritual Initiated"
+echo " "
+
+# Remove archetype markers
+for f in "$WATCH"/{ssuccubus,theincubus,vvampire,vulturite,jellybean}; do
+    if [[ -e "$f" ]]; then
+        rm -f "$f"
+        echo "   ✧ Removed marker: $(basename "$f")"
+    fi
+done
+
+# Remove Sanctuary flag
+if [[ -f "$FLAG" ]]; then
+    rm -f "$FLAG"
+    echo "   ✧ Sanctuary Field: DEACTIVATED"
+fi
+
+echo " "
+echo "🕊️  Purification complete — "Yes!, you are very Beautifull "*" System7.1 returned you back to your natural state."
