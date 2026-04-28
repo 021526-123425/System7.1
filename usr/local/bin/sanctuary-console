@@ -167,3 +167,4 @@ if __name__ == "__main__":
 
 
 sudo chmod +x /usr/local/bin/sentinel-dashboard
+sentinel-dashboard
