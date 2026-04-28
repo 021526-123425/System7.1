@@ -61,3 +61,5 @@ while True:
     # otherwise pass it through
     print(f"Executing: {line}")
 
+if marker in ["ssuccubus", "theincubus", "vvampire", "vulturite"]:
+    activate_sanctuary()
