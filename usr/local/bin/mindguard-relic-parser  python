@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+import json
+import re
+import sys
+import os
+
+SECTION_HEADERS = ["LING", "EMOT", "SENS", "PICT"]
+
+def parse_relic(path):
+    with open(path, "r", errors="ignore") as f:
+        data = f.read()
+
+    parsed = {
+        "file": os.path.basename(path),
+        "sections": {},
+        "raw_blocks": [],
+        "glyphs": []
+    }
+
+    # Extract LING/EMOT/SENS/PICT blocks
+    for header in SECTION_HEADERS:
+        pattern = rf"{header}\s+(.*?)&&"
+        matches = re.findall(pattern, data, flags=re.DOTALL)
+        if matches:
+            parsed["sections"][header] = [
+                " ".join(m.split()) for m in matches
+            ]
+
+    # Extract raw && blocks
+    raw_blocks = re.findall(r"&&\s+(.*?)\s+&&", data, flags=re.DOTALL)
+    parsed["raw_blocks"] = [" ".join(b.split()) for b in raw_blocks]
+
+    # Extract non‑ASCII glyphs
+    glyphs = re.findall(r"[^\x00-\x7F]+", data)
+    parsed["glyphs"] = glyphs
+
+    return parsed
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: mindguard-relic-parser <file.psyc>")
+        return
+
+    relic = sys.argv[1]
+    result = parse_relic(relic)
+
+    out = relic + ".json"
+    with open(out, "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(f"MindGuard relic parsed → {out}")
+
+if __name__ == "__main__":
+    main()
