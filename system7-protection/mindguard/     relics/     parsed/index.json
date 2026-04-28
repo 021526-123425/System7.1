@@ -1,0 +1,15 @@
+/system7-protection/mindguard/relics/mindguard_x.psyc
+Delay: 20
+system7-protection/mindguard/parsed/mindguard_x.psyc.json
+
+{
+  "relics": [
+    {
+      "id": "mindguard_x",
+      "file": "mindguard_x.psyc",
+      "parsed": "mindguard_x.psyc.json",
+      "origin": "MindGuard X source",
+      "mode": "symbolic_only"
+    }
+  ]
+}
