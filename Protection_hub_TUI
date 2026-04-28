@@ -1,0 +1,7 @@
+stdscr.addstr(25, 4, "MindGuard Relics:", curses.A_BOLD)
+
+relic = "/system7-protection/mindguard/relics/mindguard_x.psyc"
+parsed = "/system7-protection/mindguard/parsed/mindguard_x.psyc.json"
+
+status = "parsed" if os.path.exists(parsed) else "unparsed"
+stdscr.addstr(26, 6, f"mindguard_x: {status}")
