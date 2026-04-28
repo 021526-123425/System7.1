@@ -7,3 +7,9 @@ def archscan():
         print("🌱 Sanctuary field clear.")
     else:
         print("🜁 Active archetypes:", ", ".join(found))
+
+SANCTUARY_FLAG = "/mnt/sda7.1/.sanctuary_mode"
+
+def activate_sanctuary():
+    with open(SANCTUARY_FLAG, "w") as f:
+        f.write("Sanctuary Mode activated.\n")
