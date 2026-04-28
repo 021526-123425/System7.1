@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+FLAG="/mnt/sda7.1/.sanctuary_mode"
+
+if [[ -f "$FLAG" ]]; then
+    clear
+    echo " "
+    echo "        ███████╗ █████╗ ███╗   ██╗ █████╗ ████████╗██╗   ██╗"
+    echo "        ██╔════╝██╔══██╗████╗  ██║██╔══██╗╚══██╔══╝╚██╗ ██╔╝"
+    echo "        █████╗  ███████║██╔██╗ ██║███████║   ██║    ╚████╔╝ "
+    echo "        ██╔══╝  ██╔══██║██║╚██╗██║██╔══██║   ██║     ╚██╔╝  "
+    echo "        ███████╗██║  ██║██║ ╚████║██║  ██║   ██║      ██║   "
+    echo "        ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝      ╚═╝   "
+    echo " "
+    echo "                     🛡️  SANCTUARY FIELD: ACTIVE"
+    echo " "
+    echo "                A calm perimeter surrounds System7.1"
+    echo "                Archetype tokens are suppressed"
+    echo "                Linguistic field is shielded"
+    echo " "
+    echo "                ~~~ Breathing Glyph ~~~"
+    echo " "
+    while true; do
+        echo -ne "                     ◯\r"; sleep 0.4
+        echo -ne "                     ◉\r"; sleep 0.4
+        echo -ne "                     ◎\r"; sleep 0.4
+        echo -ne "                     ◉\r"; sleep 0.4
+    done
+else
+    echo "🟢 Sanctuary Field: OFF"
+fi
