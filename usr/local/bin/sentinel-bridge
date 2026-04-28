@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+import os
+import time
+import json
+
+FLAG = "/mnt/sda7.1/.sanctuary_mode"
+SENTINEL_STATE = "/var/system7/sentinel_state.json"
+
+DEFAULT_STATE = {
+    "owl":    {"sensitivity": 1},
+    "wolf":   {"boundary": 1},
+    "turtle": {"stability": 1},
+    "mirror": {"reflection": 1},
+}
+
+SANCTUARY_STATE = {
+    "owl":    {"sensitivity": 3},
+    "wolf":   {"boundary": 3},
+    "turtle": {"stability": 3},
+    "mirror": {"reflection": 3},
+}
+
+def write_state(state):
+    os.makedirs("/var/system7", exist_ok=True)
+    with open(SENTINEL_STATE, "w") as f:
+        json.dump(state, f, indent=2)
+
+def main():
+    last_state = None
+
+    while True:
+        active = os.path.exists(FLAG)
+        new_state = SANCTUARY_STATE if active else DEFAULT_STATE
+
+        if new_state != last_state:
+            write_state(new_state)
+            if active:
+                print("🛡️  Sentinel Bridge: Sanctuary Mode → Sentinels elevated.")
+            else:
+                print("🕊️  Sentinel Bridge: Field clear → Sentinels normalized.")
+            last_state = new_state
+
+        time.sleep(1)
+
+if __name__ == "__main__":
+    main()
