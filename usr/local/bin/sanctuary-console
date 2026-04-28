@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+import curses
+import time
+import os
+import configparser
+
+CONFIG = "/etc/system7/sanctuary.conf"
+
+cfg = configparser.ConfigParser()
+cfg.read(CONFIG)
+
+WATCH_PATH   = cfg["paths"]["watch_path"]
+FLAG_FILE    = cfg["paths"]["flag_file"]
+MARKERS      = set(cfg["archetypes"]["markers"].split(","))
+
+def field_strength():
+    """Return a number 0–100 based on how many markers exist."""
+    count = sum(os.path.exists(os.path.join(WATCH_PATH, m)) for m in MARKERS)
+    total = len(MARKERS)
+    return int((count / total) * 100)
+
+def breathing_glyph(t):
+    frames = ["◯", "◉", "◎", "◉"]
+    return frames[t % len(frames)]
+
+def draw_console(stdscr):
+    curses.curs_set(0)
+    t = 0
+
+    while True:
+        stdscr.clear()
+
+        active = os.path.exists(FLAG_FILE)
+        strength = field_strength()
+
+        # Title Banner
+        stdscr.addstr(1, 4,
+            "███████╗ █████╗ ███╗   ██╗ █████╗ ████████╗██╗   ██╗",
+            curses.A_BOLD)
+        stdscr.addstr(2, 4,
+            "██╔════╝██╔══██╗████╗  ██║██╔══██╗╚══██╔══╝╚██╗ ██╔╝")
+        stdscr.addstr(3, 4,
+            "█████╗  ███████║██╔██╗ ██║███████║   ██║    ╚████╔╝ ")
+        stdscr.addstr(4, 4,
+            "██╔══╝  ██╔══██║██║╚██╗██║██╔══██║   ██║     ╚██╔╝  ")
+        stdscr.addstr(5, 4,
+            "███████╗██║  ██║██║ ╚████║██║  ██║   ██║      ██║   ")
+        stdscr.addstr(6, 4,
+            "╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝      ╚═╝   ")
+
+        # Status
+        status = "ACTIVE" if active else "OFF"
+        color = curses.color_pair(2 if active else 1)
+        stdscr.addstr(9, 10, f"Sanctuary Field: {status}", color)
+
+        # Field Strength Meter
+        bar_len = 30
+        filled = int((strength / 100) * bar_len)
+        bar = "█" * filled + "░" * (bar_len - filled)
+        stdscr.addstr(11, 10, f"Field Strength: [{bar}] {strength}%")
+
+        # Breathing Glyph
+        glyph = breathing_glyph(t)
+        stdscr.addstr(14, 10, f"Breathing Glyph: {glyph}")
+
+        # Active markers
+        stdscr.addstr(17, 10, "Active Archetypes:")
+        y = 18
+        for m in MARKERS:
+            if os.path.exists(os.path.join(WATCH_PATH, m)):
+                stdscr.addstr(y, 12, f"• {m}")
+                y += 1
+
+        stdscr.refresh()
+        time.sleep(0.3)
+        t += 1
+
+def main():
+    curses.wrapper(draw_console)
+
+if __name__ == "__main__":
+    main()
