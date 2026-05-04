@@ -3,4 +3,4 @@ seal:
   action: redirect
   target: /dev/null
   permanence: true
-  effect: dissolve
+  effect: dissolve 
