@@ -884,7 +884,10 @@ clone_ai_tools(){
     https://github.com/LCAV/pyroomacoustics \
     https://github.com/affaan-m/everything-claude-code \
     https://github.com/jorgengrythe/beamforming \
-    https://github.com/NawfalMotii79/PLFM_RADAR
+    https://github.com/SnailSploit/Claude-Red \
+    https://github.com/mrphrazer/agentic-malware-analysis \
+    https://github.com/ruvnet/ruflo \
+    https://github.com/mayankmetha/Rucky \
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
