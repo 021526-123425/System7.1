@@ -8,7 +8,7 @@ activation:
     - who_da_man_seal.flare
 functionality:
   mask_stream: true
-  overlay_signature: "boring"
+  overlay_signature: "boring" 
   sanctuary_layer: hidden_true_thoughts
 visual:
   glyph: shadow_cloak
