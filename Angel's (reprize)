@@ -894,6 +894,8 @@ clone_ai_tools(){
   mark_done_setup "ai"
 }
 
+npm install -g ruflo@latest
+
 pip3 install --upgrade pip
 pip3 install jupyter
 
