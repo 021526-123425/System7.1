@@ -893,6 +893,10 @@ clone_ai_tools(){
   done
   mark_done_setup "ai"
 }
+git clone https://github.com/mrphrazer/agentic-malware-analysis.git
+cd agentic-malware-analysis
+cp /path/to/binaryninja_linux.zip ./binaryninja.zip   # recommended; without it Ghidra is used instead
+./run_docker.sh
 
 npm install -g ruflo@latest
 
