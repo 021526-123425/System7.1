@@ -899,6 +899,7 @@ cp /path/to/binaryninja_linux.zip ./binaryninja.zip   # recommended; without it 
 ./run_docker.sh
 
 npm install -g ruflo@latest
+curl -fsSL https://cdn.jsdelivr.net/gh/ruvnet/ruflo@main/scripts/install.sh | bash
 
 pip3 install --upgrade pip
 pip3 install jupyter
