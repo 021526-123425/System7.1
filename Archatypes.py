@@ -8,7 +8,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "description": "deception Vampire archetype detected..", 
             "sound": "bells.wav",
             "glyph": "🦇"
-        },
+        }, 
         "jellybean": {
             "description": "Low Fedelity Jellybaby archetype detectes.",
             "sound": "hum.wav",
