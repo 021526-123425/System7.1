@@ -14,7 +14,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "sound": "hum.wav",
             "glyph": "🍬"
         },
-        "vulturite": {
+        "volturite": {
             "description": "Vulturite bird archetype detected.",
             "sound": "wings.wav",
             "glyph": "🪽"
