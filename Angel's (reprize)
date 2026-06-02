@@ -118,6 +118,7 @@ install_core_apps(){
   flatpak install -y flathub \
     net.studio08.xbplay \
     com.google.Chrome \
+    tv.plex.PlexDesktop \
     com.google.EarthPro \
     org.goldendict.GoldenGoldenDict \
     net.sourceforge.artha.Artha \
@@ -906,6 +907,7 @@ curl -fsSL https://cdn.jsdelivr.net/gh/ruvnet/ruflo@main/scripts/install.sh | ba
 
 pip3 install --upgrade pip
 pip3 install jupyter
+flatpak run tv.plex.PlexDesktop
 
 git clone https://github.com/gante/mmWave-localization-learning.git
 pip3 install -e mmWave-localization-learning/
@@ -966,7 +968,6 @@ view_ecc_keys(){
     echo -e "${RED}[!] No keys found in vault.${RESET}"
     return 1
   fi
-
   echo -e "${YELLOW}Available Keys:${RESET}"
   for i in "${!keys[@]}"; do
     echo "$((i+1))) ${keys[$i]}"
