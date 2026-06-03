@@ -55,7 +55,7 @@ FORBIDDEN = "ssuccubus"
 FORBIDDEN = "theincubus"
 FORBIDDEN = "vvampire"
 FORBIDDEN = "volturite"
-FORBIDDEN = "jellybean
+FORBIDDEN = "jellybean"
 "
 while True:
     line = input("> ")
