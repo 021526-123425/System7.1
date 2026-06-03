@@ -1,0 +1,45 @@
+import os
+import time
+import signal
+import threading
+
+FLAG = "/mnt/sda7.1/.sanctuary_mode"
+
+class SanctuaryDaemon:
+    def __init__(self, loop_rate=0.5):
+        self.loop_rate = loop_rate
+        self.running = threading.Event()
+        self.running.set()
+
+    def start(self):
+        self._install_signal_handlers()
+        self._ensure_flag()
+        self._run_loop()
+
+    def stop(self):
+        self.running.clear()
+
+    def _install_signal_handlers(self):
+        signal.signal(signal.SIGINT, self._handle_signal)
+        signal.signal(signal.SIGTERM, self._handle_signal)
+
+    def _handle_signal(self, *args):
+        self.stop()
+
+    def _ensure_flag(self):
+        if not os.path.exists(FLAG):
+            open(FLAG, "w").close()
+
+    def _run_loop(self):
+        try:
+            while self.running.is_set():
+                # Reassert Sanctuary Mode if anything tries to disable it
+                self._ensure_flag()
+                time.sleep(self.loop_rate)
+        finally:
+            pass  # Sanctuary Mode persists until user performs the ritual
+
+    def sovereign_exit(self):
+        """User‑initiated exit ritual."""
+        if os.path.exists(FLAG):
+            os.remove(FLAG)
