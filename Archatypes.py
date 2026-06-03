@@ -52,7 +52,11 @@ print(ritual_scan("/mnt/sda7.1"))
 import sys
 
 FORBIDDEN = "ssuccubus"
-
+FORBIDDEN = "theincubus"
+FORBIDDEN = "vvampire"
+FORBIDDEN = "volturite"
+FORBIDDEN = "jellybean
+"
 while True:
     line = input("> ")
     if FORBIDDEN in line:
