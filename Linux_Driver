@@ -1,0 +1,22 @@
+import signal
+import sys
+import uinput
+
+running = True
+
+def stop(*args):
+    global running
+    running = False
+
+signal.signal(signal.SIGINT, stop)
+signal.signal(signal.SIGTERM, stop)
+
+device = uinput.Device([...])
+
+try:
+    while running:
+        # event loop
+        pass
+finally:
+    # python-uinput destroys the device when the FD closes
+    del device
