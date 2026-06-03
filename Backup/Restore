@@ -1,7 +1,7 @@
 #!/bin/bash
 # partitions.sh - Backup/Restore/Dry-Run with color-coded notifications
 
-PARTS=("sda3.2a" "sda3.2b" "sda3.2c" "sda3.2d")
+PARTS=("sda3.2a" "sda3.2b" "sda3.2c" "sda3.2d" "sda8.1" "sda7.3")
 LOGFILE="/var/log/partitions.log"
 ACTION=$1   # backup | restore | dry-run
 
@@ -52,7 +52,7 @@ Icon=drive-harddisk
 Terminal=false
 Categories=Utility;
 espeak -v en+f3 🎵 "The prelude begins…
-espeak -v en+f3 Your memories are gathered, guarded, and carried into the light.
+espeak -v en+f3 Your memories, Your Personalities, everything is all  gathered, guarded, and carried into the light.
 Every note a promise of safety." 🎵
 
 *Restore Desktop*
@@ -64,7 +64,7 @@ Exec=/usr/local/bin/partitions.sh restore
 Icon=drive-harddisk
 Terminal=false
 Categories=Utility;
-espeak -v en+f3 "The angel’s reprise begins... Your memories return, safe and whole. No shadows overwrite the light, only what was lost is gently restored."
+espeak -v en+f3 "The angel’s reprise begins... Your memories and You, return, safe and whole. No shadows overwrite the light, only what was lost is gently restored."
 
 
 *Dry Run Desktop*
