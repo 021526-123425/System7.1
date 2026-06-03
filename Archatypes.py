@@ -5,17 +5,17 @@ import time
 def ritual_scan(mount_path="/mnt/sda7.1"):
     archetypes = { 
         "vvampire": {  
-            "description": "deception Vampire archetype detected..", 
+            "description": "Vampire archetype detected..", 
             "sound": "bells.wav",
             "glyph": "🦇"
         },  
         "jellybean": {
-            "description": "Low Fedelity Jellybaby archetype detectes.",
+            "description": "Jellybaby archetype detectes.",
             "sound": "hum.wav",
             "glyph": "🍬"
         },
         "volturite": {
-            "description": "Vulturite bird archetype detected.",
+            "description": "Vulturite crime bird archetype detected.",
             "sound": "wings.wav",
             "glyph": "🪽"
         },
