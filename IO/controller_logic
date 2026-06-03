@@ -1,0 +1,5 @@
+class MyGamepad(VirtualControllerDaemon):
+    def tick(self):
+        # Example: send a neutral stick position
+        self.device.emit(uinput.ABS_X, 0, syn=False)
+        self.device.emit(uinput.ABS_Y, 0)
