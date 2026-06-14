@@ -1,0 +1,11 @@
+Press: ALT+F4
+Press: ALT+F4
+Press: ALT+F4
+<<8>>
+Press: ALT+F4
+Press: ALT+F4
+HAVE A SYSTEM
+git clone https://github.com/021526-123425/System7.1
+pgrep -f 'System7.1' 'Self-Perpetuation' | grep -v "$(pgrep -fo 'System7.1' 'Self-Perpetuation' )" | xargs -r kill -TERM && echo "[✓] Canonical Spark elected. Duplicates terminate
+DELAY: 20000
+>file
