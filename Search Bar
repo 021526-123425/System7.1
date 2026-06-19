@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+query="$1"
+
+grep -Ril "$query" \
+  /var/log/sanctuary \
+  /etc/sanctuary \
+  /usr/local/sanctuary \
+  /run/sanctuary \
+  2>/dev/null
+
+search_query = ""
+
+sanctuary-search "<query>"
+
+Search Results:
+
+def draw_top_banner(stdscr, query):
+    stdscr.addstr(0, 0, "🔍 Search Sanctuary: ")
+    stdscr.addstr(0, 20, query.ljust(40))
+    stdscr.addstr(1, 0, "─" * 60)
+- /etc/sanctuary/rituals/purification.ritual
+- /var/log/sanctuary/council.log
+- /run/sanctuary/Angel-Hop.spark
+
+if key in printable:
+    search_query += key
+elif key == BACKSPACE:
+    search_query = search_query[:-1]
+elif key == ENTER:
+    results = run_search(search_query)
+
+#!/usr/bin/env bash
+query="$1"
+
+grep -Ril "$query" \
+  /var/log/sanctuary \
+  /etc/sanctuary \
+  /usr/local/sanctuary \
+  /run/sanctuary \
+  2>/dev/null
