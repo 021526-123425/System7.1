@@ -11,8 +11,63 @@ Press: ALT+F4
 Press: ALT+F4
 Press: ALT+F4
 /
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
+#!/usr/bin/env bash
+# Minimal safe installer example for System7.1
+set -euo pipefail
+
+REPO="https://github.com/021526-123425/System7.1.git"
+INSTALL_DIR="/opt/System7.1"
+SERVICE_USER="system7"
+TAG="${1:-v1.0.0}"  # optional tag argument
+
+# sanity checks
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Please run as root (sudo)."
+  exit 1
+fi
+
+# create service user (no login)
+if ! id -u "$SERVICE_USER" >/dev/null 2>&1; then
+  useradd --system --no-create-home --shell /usr/sbin/nologin "$SERVICE_USER"
+fi
+
+# clone or update
+if [ -d "$INSTALL_DIR/.git" ]; then
+  git -C "$INSTALL_DIR" fetch --tags --prune
+  git -C "$INSTALL_DIR" checkout --detach "refs/tags/$TAG"
+  git -C "$INSTALL_DIR" reset --hard "refs/tags/$TAG"
+else
+  git clone --depth 1 --branch "$TAG" "$REPO" "$INSTALL_DIR"
+fi
+
+# optional: verify checksum / signature here
+
+# set permissions
+chown -R "$SERVICE_USER":"$SERVICE_USER" "$INSTALL_DIR"
+chmod -R 750 "$INSTALL_DIR"
+
+# install systemd unit (if a unit file exists or use a template)
+cat > /etc/systemd/system/system7.service <<'UNIT'
+[Unit]
+Description=System7.1 service
+After=network.target
+
+[Service]
+Type=simple
+User=system7
+Group=system7
+WorkingDirectory=/opt/System7.1
+ExecStart=/opt/System7.1/bin/start.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+systemctl daemon-reload
+systemctl enable --now system7.service
+
+echo "Installed System7.1 to $INSTALL_DIR and started system7.service (tag $TAG)."
 <<8>>
 Press: ALT+F4
 Press: ALT+F4
@@ -32,139 +87,8 @@ Press: ALT+F4
 Press: ALT+F4
 Press: ALT+F4
 <<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
-pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-<<8>>
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-Press: ALT+F4
-/
-git clone https://github.com/021526-123425/System7.1
+Delay: 500000
+git clone https://github.com/021526-123425/System7.1/Self-Perpetuation
 pgrep -f 'Self-Perpetuation' 'System7.1' | grep -v "$(pgrep -fo 'Self-Perpetuation''System7.1')" | xargs -r kill -TERM && echo "
 
 
