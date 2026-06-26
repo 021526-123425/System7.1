@@ -1,0 +1,1 @@
+[Desktop Entry] Type=Application Name=System7 Start Menu Comment=Start Menu — System7 Exec=/usr/bin/env python3 /opt/System7.1/applications/start_menu.py Icon=system7 Terminal=false Categories=Utility;System;
