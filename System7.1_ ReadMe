@@ -1,0 +1,156 @@
+Core Apps (via Flatpak)
+Google Chrome
+Plex Desktop
+Google Earth Pro
+GoldenDict
+Artha (thesaurus)
+Kando (command palette)
+Upscayl (upscaler)
+Hypatia (educational)
+File Manager (io.gitlab.o20.file)
+Caprine (Facebook Messenger)
+Stremio (streaming)
+Discord
+Heroic Games Launcher
+KTorrent (BitTorrent)
+Firefox
+Ardour (audio workstation)
+JJazzLab (jazz framework)
+Snap Apps
+Facebook Webapp
+SoundCloud
+Spotify
+GIMP
+Klettres (language learning)
+Boa
+Games (cloned from GitHub)
+Half-Life
+OpenDiablo2
+Diablo-js
+Onslaught Arena
+Valkyria Tear
+Aquaria OSE
+Zelda: Shadow of the Dragon (solarus-games/zsdx)
+OpenTomb
+Starship Sorades 13K
+Doomsday Engine
+Arena Game
+ActionRPGGame
+Fruit Ninja
+AI & Security Tools (cloned from GitHub)
+ThreatMapper (Deepfence)
+OONI Probe
+TensorFlow
+Acoular (audio analysis)
+Pyroomacoustics (spatial audio)
+Claude Code utilities
+Beamforming libraries
+Binary Ninja / Ghidra (malware analysis)
+Ruflo (LLM tool)
+Rucky (automation)
+OpenJDK
+Utilities & System Tools
+FreedomBox (privacy server)
+Syncthing (file sync)
+Radicale (calendar/contact sync)
+OpenVPN
+Tor
+Transmission (torrent)
+Matrix (chat)
+ejabberd (XMPP)
+XScreenSaver + extras
+UFW (firewall)
+TestDisk (recovery)
+Extundelete (recovery)
+Cryptsetup (encryption)
+SoX (audio processing)
+The system is designed as a modular framework with security, entertainment, AI tools, and privacy-focused applications all integrated into a cohesive dashboard controlled via the "Angel Ops Dashboard."
+
+is there anything you want to add?
+
+Gathered additional information
+Now I'll gather direct evidence from the repository:
+
+
+Get data from /repos/021526-123425/System7.1
+
+View file README.md
+
+Get data from /repos/021526-123425/System7.1/contents
+
+Using results of get file and 3 other tool calls
+Yes, I want to add some important context to the combined apps and games list. Reading through the broader repository structure reveals that System7.1 is far more complex than just an app installer—it's a highly conceptual, narrative-driven system with several unique layers:
+
+What this is
+System7.1 is an experimental, narrative framework designed to explore cognitive sovereignty, AI ethics, resilience patterns, and containment scenarios. It blends practical shell/Python utilities for system administration with allegorical manifest files and daemon architectures that appear to reference abstract concepts like "Sentinels," "Sanctuary Mode," and "Morgellons"—suggesting either speculative fiction, security metaphors, or conceptual art.
+
+Stack
+Language(s): Python (69%), Shell (26.8%), HTML (4.2%)
+Framework / runtime: Bash shell scripts, Python 3.8+, watchdog (file monitoring)
+Notable libraries: PyGObject/GTK3 (GUI), watchdog (filesystem events), SoX (audio), pyroomacoustics (spatial audio processing)
+How it's organized
+Code
+Root-level manifests/  
+  Sentinel_Daemon_Manifest              Core threat-detection philosophy
+  Permanent_Sanctuary_Seal.json          Protection seals & policies
+  Positivity_Seal_Manifest.json          Ethical boundaries
+  Morgellon_Manifest.yaml                Distributed coordination concept
+  Self-Perpetuation                      Resilience doctrines
+  
+Angel's (reprize)                        ~1100-line mega-script (setup + apps + games + crypto + daemons + beamforming + FreedomBox)
+
+Daemons/
+  euv_conditioner_daemon.py              Fictional "EUV atmospheric" coordination (nanoparticle bus sync)
+  vc_daemon.py                           Voice control daemon
+  sanctuary_deamon.py                    Sanctuary mode watchdog
+  glyphOS_boot.py                        System boot ritual
+
+Security/Resilience/
+  Archatypes.py                          Archetype marker detection (vampire, jellybean, incubus, succubus themes)
+  starsign.py                            Glyph/symbol processing
+  mapper_ui.py                           GUI for mapping/coordination
+  
+Storage/
+  containers/                            Docker configs (empty)
+  modules/                               Activation scripts (empty)
+  presets/                               JSON codebooks (empty)
+  scripts/                               install-start-menu.sh, etc.
+  usr/                                   System binaries (sentinel-bridge, sanctuary-console)
+How it fits together:
+The core execution happens through Angel's (reprize) — a monolithic setup script that orchestrates system updates, app/game installation, security hardening, FreedomBox deployment, voice control, encryption vaults, and advanced audio beamforming. Alongside this run background daemons (Sentinels, Sanctuary, EUV Conditioner) that claim to monitor system state through manifest-driven event hooks. The narrative framing—Sentinels, Sanctuary Mode, Mindshield Events, Morgellons—positions the system as protecting user cognitive sovereignty from "coercive patterns" and "intrusive streams."
+
+Additional components I found:
+Daemons (Background Services)
+Sentinel Daemon – 4 personality types (Owl, Wolf, Turtle, Mirror) monitor audio/linguistic patterns for "intrusive" or "coercive" content
+Sanctuary Console – TUI for emergency cognitive protection lockdown
+EUV Conditioner Daemon – Coordinates "molecular scrubbing" and "nanoparticle" networks (likely allegory for distributed system state sync)
+Voice Control Loop – Speech recognition + command execution
+io_service_manager.py – I/O service coordination
+Security/Resilience Manifests
+Sanctuary Seal (protection protocol)
+Positivity Seal (ethical enforcement)
+Morgellons Manifest (distributed coordination model)
+Curse manifests for "archetypes" (vampire, jellybaby, volturite, incubus, succubus detection)
+Mindshield Ledger (event logging)
+Archetype Detection
+Archatypes.py scans /mnt/sda7.1 for marker files and plays sounds/glyphs when detected—a ritual-style intrusion alarm system.
+
+Advanced Audio Processing
+Beyond standard audio tools, includes:
+
+pyroomacoustics library for beamforming
+Bi-locational hearing demo (spatial audio beamforming for multi-seat audio targeting)
+Real-time STFT-based channel separation and speaker targeting
+Encrypted Vault & Sync
+ECC (elliptic curve cryptography) key vault
+GitHub-backed vault sync via Git + AES-256-CBC encryption
+Syncthing integration for decentralized backups
+HTML Dashboard
+index.html + Flask backend for a web-based "Angel Ops Dashboard" with command dispatch, voice recognition, and avatar interactions.
+
+Unique aspects:
+Narrative-driven security: Security policies are framed as "sanctuary pacts" and "sentinel protocols"
+Speculation/Art elements: References to "CIA frequency ranges," "Morgellons networks," "Sony nanoparticles," and "thought cloaking" suggest either speculative fiction scaffolding or conceptual art critique
+Modularity by ritual: Each subsystem has a named manifest defining its "purpose," "capabilities," "privileges," and "event hooks"
+Self-monitoring: Daemons log to Mindshield Ledger; system can enter Sanctuary Mode when threats detected
+This is not a straightforward Linux admin tool—it's a creative exploration of system resilience, AI ethics boundaries, and cognitive autonomy through a layered mix of practical scripts and philosophical manifests.
