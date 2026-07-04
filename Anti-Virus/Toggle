@@ -1,0 +1,98 @@
+from PySide6.QtWidgets import (
+    QApplication, QWidget, QPushButton, QVBoxLayout, QLabel, QCheckBox
+)
+from PySide6.QtCore import Qt, QThread, Signal
+import sys
+import time
+
+# -------------------------
+# Worker thread: Folder Scan
+# -------------------------
+class ScanWorker(QThread):
+    progress = Signal(str)
+    finished = Signal()
+
+    def run(self):
+        # Replace this with your real scan engine
+        for i in range(5):
+            time.sleep(0.5)
+            self.progress.emit(f"Scanning… step {i+1}/5")
+        self.finished.emit()
+
+
+# -------------------------
+# Main Window
+# -------------------------
+class AntivirusUI(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Hanoman‑Style Antivirus")
+        self.resize(400, 250)
+
+        # --- UI Elements ---
+        self.status_label = QLabel("Status: Idle")
+        self.status_label.setAlignment(Qt.AlignCenter)
+
+        self.scan_button = QPushButton("Scan Now")
+        self.scan_button.clicked.connect(self.start_scan)
+
+        self.live_toggle = QCheckBox("Live Protection")
+        self.live_toggle.stateChanged.connect(self.toggle_live_protection)
+
+        # --- Layout ---
+        layout = QVBoxLayout()
+        layout.addWidget(self.status_label)
+        layout.addWidget(self.scan_button)
+        layout.addWidget(self.live_toggle)
+        self.setLayout(layout)
+
+        # --- Background worker ---
+        self.scan_worker = None
+
+        # --- Live protection state ---
+        self.live_enabled = False
+
+    # -------------------------
+    # Scan Button Logic
+    # -------------------------
+    def start_scan(self):
+        self.status_label.setText("Status: Scanning…")
+        self.scan_button.setEnabled(False)
+
+        self.scan_worker = ScanWorker()
+        self.scan_worker.progress.connect(self.update_status)
+        self.scan_worker.finished.connect(self.scan_complete)
+        self.scan_worker.start()
+
+    def update_status(self, msg):
+        self.status_label.setText(msg)
+
+    def scan_complete(self):
+        self.status_label.setText("Status: Scan Complete")
+        self.scan_button.setEnabled(True)
+
+    # -------------------------
+    # Live Protection Toggle
+    # -------------------------
+    def toggle_live_protection(self, state):
+        self.live_enabled = bool(state)
+
+        if self.live_enabled:
+            self.status_label.setText("Status: Live Protection Enabled")
+            # Here you would start your watchdog/inotify listener
+            # e.g. self.live_thread.start()
+        else:
+            self.status_label.setText("Status: Live Protection Disabled")
+            # Here you would stop your watcher
+            # e.g. self.live_thread.stop()
+
+
+# -------------------------
+# App Entry
+# -------------------------
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = AntivirusUI()
+    window.show()
+    sys.exit(app.exec())
