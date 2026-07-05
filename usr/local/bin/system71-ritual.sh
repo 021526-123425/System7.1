@@ -81,3 +81,9 @@ sleep 1
 echo ""
 echo ">> SYSTEM 7.1 stands awake."
 echo ">> Awaiting your command, Architect."
+
+
+echo "⟐ Mindguard: Initializing threat‑index visualizer…"
+sleep 1
+/usr/local/bin/system71-mindguard-visualizer.sh
+
