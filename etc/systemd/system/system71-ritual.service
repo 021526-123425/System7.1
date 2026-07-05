@@ -1,0 +1,16 @@
+[Unit]
+Description=System 7.1 Mythic Boot Ritual
+DefaultDependencies=no
+After=local-fs.target
+Before=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/system71-ritual.sh
+StandardInput=tty
+StandardOutput=tty
+TTYPath=/dev/tty1
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
