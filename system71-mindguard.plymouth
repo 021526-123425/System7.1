@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=System 7.1 Mindguard
+Description=Cosmic Guardian Boot Animation
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/system71-mindguard
+ScriptFile=/usr/share/plymouth/themes/system71-mindguard/system71-mindguard.script
