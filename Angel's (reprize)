@@ -20,6 +20,7 @@ sudo apt install viu
 viu ~/glyphos/startup/octopus_hall.png
 exec glyphos
 
+sudo systemctl enable system71-ritual.service
 sudo get upgrade
 flash install system
 >file
