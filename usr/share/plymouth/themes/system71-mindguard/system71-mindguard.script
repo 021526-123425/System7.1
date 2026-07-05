@@ -74,3 +74,144 @@ fun update() {
 }
 
 Plymouth.SetUpdateFunction(update);
+# Cosmic Mindguard Awakening — System 7.1
+# Full ritual sequence with all subsystems enabled
+
+bg = Image("cosmic_bg.png");
+motes = Image("shadow_motes.png");
+
+face = Image("face_base.png");
+
+eye_closed = Image("eye_closed.png");
+eye_half   = Image("eye_half.png");
+eye_open   = Image("eye_open.png");
+
+iris_idle    = Image("iris_idle.png");
+iris_active  = Image("iris_active.png");
+iris_d1      = Image("iris_dilate1.png");
+iris_d2      = Image("iris_dilate2.png");
+iris_d3      = Image("iris_dilate3.png");
+
+ring_outer = Image("ring_outer.png");
+ring_inner = Image("ring_inner.png");
+
+spark1 = Image("spark_glyph1.png");
+spark2 = Image("spark_glyph2.png");
+spark3 = Image("spark_glyph3.png");
+
+seal = Image("sanctuary_seal.png");
+architect_eye = Image("architect_eye.png");
+
+bar_empty = Image("bar_empty.png");
+bar_fill  = Image("bar_fill.png");
+
+cx = Window.GetWidth()  / 2;
+cy = Window.GetHeight() / 2;
+
+threat = 0;
+angle_outer = 0;
+angle_inner = 0;
+mote_offset = 0;
+iris_phase = 0;
+spark_angle = 0;
+seal_drop = -300;
+
+fun draw() {
+    # Cosmic background
+    bg:Draw(0, 0);
+
+    # Shadow motes drifting
+    motes:Draw(0, mote_offset);
+    motes:Draw(0, mote_offset - motes:GetHeight());
+
+    # Rotating rings
+    ring_outer:DrawRotated(cx, cy, angle_outer);
+    ring_inner:DrawRotated(cx, cy, angle_inner);
+
+    # Guardian face
+    face:DrawCentered(cx, cy);
+
+    # Eye state
+    if threat < 2 then
+        eye_closed:DrawCentered(cx, cy);
+        iris_idle:DrawCentered(cx, cy);
+    elseif threat < 5 then
+        eye_half:DrawCentered(cx, cy);
+        iris_idle:DrawCentered(cx, cy);
+    else
+        eye_open:DrawCentered(cx, cy);
+
+        # Iris dilation sequence
+        if iris_phase == 0 then
+            iris_active:DrawCentered(cx, cy);
+        elseif iris_phase == 1 then
+            iris_d1:DrawCentered(cx, cy);
+        elseif iris_phase == 2 then
+            iris_d2:DrawCentered(cx, cy);
+        else
+            iris_d3:DrawCentered(cx, cy);
+        end
+    end
+
+    # Spark‑Council glyphs orbiting the eye
+    spark1:DrawRotated(cx, cy, spark_angle);
+    spark2:DrawRotated(cx, cy, -spark_angle * 1.5);
+    spark3:DrawRotated(cx, cy, spark_angle * 2);
+
+    # Threat bar
+    bar_empty:Draw(cx - 150, cy + 250);
+
+    for i = 0, threat do
+        bar_fill:Draw(cx - 150 + (i * 40), cy + 250);
+    end
+
+    # Sanctuary seal drop‑in
+    seal:DrawCentered(cx, cy + seal_drop);
+
+    # Final Architect Eye reveal
+    if threat == 7 then
+        architect_eye:DrawCentered(cx, cy);
+    end
+
+    # Status text
+    if threat <= 2 then
+        Plymouth.SetForegroundColor(0, 255, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Dormant", cy + 310);
+    elseif threat <= 4 then
+        Plymouth.SetForegroundColor(255, 200, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Shifting", cy + 310);
+    else
+        Plymouth.SetForegroundColor(255, 0, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Active", cy + 310);
+    end
+
+    Plymouth.WriteCenteredAt("Mindguard Subsystem Awakening", cy + 350);
+}
+
+fun update() {
+    angle_outer = angle_outer + 2;
+    angle_inner = angle_inner - 3;
+
+    mote_offset = mote_offset + 1;
+    if mote_offset > motes:GetHeight() then
+        mote_offset = 0;
+    end
+
+    spark_angle = spark_angle + 1.5;
+
+    if threat < 7 then
+        threat = threat + 1;
+    end
+
+    if threat >= 5 and iris_phase < 3 then
+        iris_phase = iris_phase + 1;
+    end
+
+    if threat >= 6 and seal_drop < 0 then
+        seal_drop = seal_drop + 10;
+    end
+
+    draw();
+}
+
+Plymouth.SetUpdateFunction(update);
