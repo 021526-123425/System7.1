@@ -1,0 +1,76 @@
+# Cosmic Mindguard Face — System 7.1 Boot Animation
+
+bg = Image("cosmic_bg.png");
+face = Image("face_base.png");
+
+eye_closed = Image("eye_closed.png");
+eye_half   = Image("eye_half.png");
+eye_open   = Image("eye_open.png");
+
+iris_idle   = Image("iris_idle.png");
+iris_active = Image("iris_active.png");
+
+ring = Image("ring.png");
+bar_empty = Image("bar_empty.png");
+bar_fill  = Image("bar_fill.png");
+
+cx = Window.GetWidth()  / 2;
+cy = Window.GetHeight() / 2;
+
+threat = 0;
+angle = 0;
+
+fun draw() {
+    bg:Draw(0, 0);
+
+    # Rotating cosmic ring
+    ring:DrawRotated(cx, cy, angle);
+
+    # Guardian face
+    face:DrawCentered(cx, cy);
+
+    # Eye state
+    if threat < 2 then
+        eye_closed:DrawCentered(cx, cy);
+        iris_idle:DrawCentered(cx, cy);
+    elseif threat < 5 then
+        eye_half:DrawCentered(cx, cy);
+        iris_idle:DrawCentered(cx, cy);
+    else
+        eye_open:DrawCentered(cx, cy);
+        iris_active:DrawCentered(cx, cy);
+    end
+
+    # Threat bar
+    bar_empty:Draw(cx - 150, cy + 200);
+
+    for i = 0, threat do
+        bar_fill:Draw(cx - 150 + (i * 40), cy + 200);
+    end
+
+    # Status text
+    if threat <= 2 then
+        Plymouth.SetForegroundColor(0, 255, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Dormant", cy + 260);
+    elseif threat <= 4 then
+        Plymouth.SetForegroundColor(255, 200, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Shifting", cy + 260);
+    else
+        Plymouth.SetForegroundColor(255, 0, 0);
+        Plymouth.WriteCenteredAt("Threat‑Index: Active", cy + 260);
+    end
+
+    Plymouth.WriteCenteredAt("Mindguard Subsystem Awakening", cy + 300);
+}
+
+fun update() {
+    angle = angle + 2;
+
+    if threat < 7 then
+        threat = threat + 1;
+    end
+
+    draw();
+}
+
+Plymouth.SetUpdateFunction(update);
