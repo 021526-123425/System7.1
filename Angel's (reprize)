@@ -28,6 +28,7 @@ exec glyphos
 sudo systemctl enable system71-ritual.service
 sudo chmod +x /usr/local/bin/system71-mindguard-visualizer.sh
 sudo systemctl enable system71-mindguard.service
+sudo plymouth-set-default-theme -R system71-mindguard
 sudo get upgrade
 flash install system
 >file
