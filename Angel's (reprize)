@@ -921,6 +921,7 @@ clone_ai_tools(){
     https://github.com/mrphrazer/agentic-malware-analysis \
     https://github.com/pleasedodisturb/llm-safe-haven \
     https://github.com/ruvnet/ruflo \
+    https://github.com/ruvnet/RuView \
     https://github.com/mayankmetha/Rucky \
     https://github.com/openjdk/jdk \
   do
