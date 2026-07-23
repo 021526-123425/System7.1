@@ -162,7 +162,7 @@ install_core_apps(){
     com.stremio.Stremio \
     com.discordapp.Discord \
     com.heroicgameslauncher.hgl \
-    org.kde.ktorrent
+    org.kde.ktorrent \
     org.mozilla.firefox \
     org.ardour.Ardour \
     org.jjazzlab.JJazzLab || true
