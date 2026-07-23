@@ -109,6 +109,7 @@ apt_update_once(){
   fi
 }
 git clone https://github.com/sophos/solarwinds-threathunt
+git clone https://github.com/021526-123425/Atlantis
 >file
 # ============================================
 # Module A: Setup & Install (Debian)
