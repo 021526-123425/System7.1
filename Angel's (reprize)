@@ -925,6 +925,7 @@ clone_ai_tools(){
     https://github.com/ruvnet/RuView \
     https://github.com/mayankmetha/Rucky \
     https://github.com/ruvnet/RuView \
+    https://github.com/huawei-noah/trustworthyAI
 >file
     https://github.com/openjdk/jdk \
   do
