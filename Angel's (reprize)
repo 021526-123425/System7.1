@@ -924,6 +924,8 @@ clone_ai_tools(){
     https://github.com/ruvnet/ruflo \
     https://github.com/ruvnet/RuView \
     https://github.com/mayankmetha/Rucky \
+    https://github.com/ruvnet/RuView \
+>file
     https://github.com/openjdk/jdk \
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
