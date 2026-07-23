@@ -147,7 +147,6 @@ install_core_apps(){
   echo -e "${GREEN}[*] Installing core applications...${RESET}"
   # Flatpak apps (best-effort)
   flatpak install -y flathub \
-    net.studio08.xbplay \
     io.github.Geocld.XStreamingDesktop \
     com.google.Chrome \
     tv.plex.PlexDesktop \
