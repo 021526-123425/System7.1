@@ -37,3 +37,5 @@ class AngelReprize:
     def re_harmonise_archetypes(self, archetype_engine):
         # Re‑harmonise archetypes using the angelic pattern.
         return self.core.harmonise(archetype_engine)
+
+mindguard.fallback_stance()
