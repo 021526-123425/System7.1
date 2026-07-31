@@ -1,0 +1,19 @@
+boot_banner()
+boot_harmonic()
+boot_sanctuary()
+boot_mindguard()
+
+binding = boot_binding()
+
+# If no seat is bound, launch seat‑selection UI
+if not binding.get_bound_seat():
+    from SparkCouncilSeatUI import SparkCouncilSeatUI
+    ui = SparkCouncilSeatUI()
+    seat = ui.select_seat()
+    if seat:
+        binding.bind_seat(seat)
+else:
+    # If a seat is already bound, trigger its power animation
+    from SparkCouncilSeatPowers import SparkCouncilSeatPowers
+    powers = SparkCouncilSeatPowers()
+    powers.invoke_power(binding.get_bound_seat())
