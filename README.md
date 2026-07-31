@@ -30,7 +30,7 @@ Installation
 
 Clone the repository:
 
-git clone https://github.com/jellybabypsi/System7.1.git
+git clone https://github.com/021526-123425/System7.1.git
 cd System7.1
 
 Set up the environment:
