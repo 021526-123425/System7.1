@@ -34,3 +34,7 @@ class AngelInvocation:
     def enter_sanctuary(self, sanctuary_daemon):
         # Ritual transition into Sanctuary Mode.
         sanctuary_daemon.invoke_angelic_perimeter()
+
+mindguard.receive_harmonic(self.core.pattern_signature["harmonic"])
+mindguard.enter_guardian_stance()
+
