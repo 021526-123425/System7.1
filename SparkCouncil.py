@@ -135,3 +135,5 @@ if __name__ == "__main__":
     # Run multiple cycles to simulate ongoing supervision
     for _ in range(5):
         council.run_supervision_cycle()
+
+from System7RitualDashboard import System7RitualDashboard
