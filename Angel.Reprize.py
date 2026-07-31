@@ -39,3 +39,5 @@ class AngelReprize:
         return self.core.harmonise(archetype_engine)
 
 mindguard.fallback_stance()
+seal_manager.restore(seal_name)
+sanctuary_daemon.repair_perimeter()
