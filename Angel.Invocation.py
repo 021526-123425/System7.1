@@ -38,3 +38,7 @@ class AngelInvocation:
 mindguard.receive_harmonic(self.core.pattern_signature["harmonic"])
 mindguard.enter_guardian_stance()
 
+self.bind_seals(seal_manager)
+
+
+sanctuary_daemon.invoke_angelic_perimeter()
