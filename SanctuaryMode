@@ -20,3 +20,21 @@ class SanctuaryDaemon:
 
     def report_status(self):
         return self.perimeter_state
+from SanctuaryAnimations import SanctuaryAnimator
+
+class SanctuaryDaemon:
+    def __init__(self):
+        self.perimeter_state = "Stable"
+        self.animator = SanctuaryAnimator()
+
+    def invoke_angelic_perimeter(self):
+        self.perimeter_state = "Angelic‑Bound"
+        # Optional: add a soft harmonic animation here
+
+    def repair_perimeter(self):
+        self.animator.animate_restoration()
+        self.perimeter_state = "Restored"
+
+    def breach(self):
+        self.animator.animate_breach()
+        self.perimeter_state = "Breached"
