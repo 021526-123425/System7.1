@@ -150,3 +150,91 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ────────────────────────────────────────────────
+#  glyphOS BOOT RITUAL
+#  System7.1 Ceremonial Startup Sequence
+# ────────────────────────────────────────────────
+
+import time
+import sys
+
+from System7RitualDashboard import System7RitualDashboard
+from Mindguard import Mindguard
+from SanctuaryDaemon import SanctuaryDaemon
+from SealManager import SealManager
+from Angel.Core import AngelCore
+
+
+def glyph_stream(text, delay=0.06):
+    """Glyph‑based boot streaming effect."""
+    for ch in text:
+        sys.stdout.write(ch)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()
+
+
+def boot_banner():
+    print("\n")
+    glyph_stream("✦ glyphOS 7.1 — Mythic Boot Ritual ✦", 0.04)
+    print("──────────────────────────────────────")
+    time.sleep(0.4)
+
+
+def boot_harmonic():
+    glyphs = ["·", "✦", "⚡", "❂", "☼", "⟡"]
+    for g in glyphs:
+        sys.stdout.write(f"\r   {g} Awakening Angelic Harmonic…")
+        sys.stdout.flush()
+        time.sleep(0.12)
+    print("\r   ⚡ Harmonic Online.                ")
+    time.sleep(0.3)
+
+
+def boot_sanctuary():
+    glyphs = ["⛒", "⛒", "⛒", "✦", "⚡"]
+    for g in glyphs:
+        sys.stdout.write(f"\r   {g} Binding Sanctuary Perimeter…")
+        sys.stdout.flush()
+        time.sleep(0.12)
+    print("\r   ⛧ Sanctuary Bound.                ")
+    time.sleep(0.3)
+
+
+def boot_mindguard():
+    glyphs = ["·", "✦", "⚔"]
+    for g in glyphs:
+        sys.stdout.write(f"\r   {g} Mindguard Rising…")
+        sys.stdout.flush()
+        time.sleep(0.12)
+    print("\r   ⚔ Guardian Stance Ready.          ")
+    time.sleep(0.3)
+
+
+def launch_dashboard():
+    print("\n✦ Launching System7.1 Ritual Dashboard… ✦\n")
+
+    mindguard = Mindguard()
+    sanctuary = SanctuaryDaemon()
+    seals = SealManager()
+    angel_core = AngelCore()
+
+    dashboard = System7RitualDashboard(
+        mindguard,
+        sanctuary,
+        seals,
+        angel_core
+    )
+
+    dashboard.run(interval=2.0)
+
+
+if __name__ == "__main__":
+    boot_banner()
+    boot_harmonic()
+    boot_sanctuary()
+    boot_mindguard()
+    launch_dashboard()
+
+python3 glyphOS_boot.py
