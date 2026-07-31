@@ -1,6 +1,7 @@
 import pygame
 import sys
 from pygame import gfxdraw
+from SeatBindingCeremony import SeatBindingCeremony
 
 # ---------- Config ----------
 WIDTH, HEIGHT = 960, 540
@@ -238,3 +239,7 @@ if __name__ == "__main__":
     launch_dashboard()
 
 python3 glyphOS_boot.py
+def boot_binding():
+    ceremony = SeatBindingCeremony()
+    ceremony.announce_binding()
+    return ceremony
