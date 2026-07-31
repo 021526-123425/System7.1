@@ -1,0 +1,10 @@
+from SparkCouncilAnimations import CouncilAnimator
+
+class SparkCouncil:
+    def __init__(self):
+        ...
+        self.animator = CouncilAnimator()
+
+    def decree(self, message):
+        """Issue a Spark‑Council decree with mythic animation."""
+        self.animator.decree_animation(message)
