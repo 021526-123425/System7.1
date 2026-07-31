@@ -1,0 +1,7 @@
+self.dashboard = System7RitualDashboard(
+    self.mindguard,
+    self.sanctuary,
+    self.seals,
+    self.core
+)
+self.dashboard.render_once()
