@@ -1,0 +1,27 @@
+# ────────────────────────────────────────────────
+#  MINDGUARD — Integration Stub for Angel Modules
+# ────────────────────────────────────────────────
+
+class Mindguard:
+    """
+    Mythic guardian subsystem.
+    Receives angelic harmonics and adjusts vigilance stance.
+    """
+
+    def __init__(self):
+        self.vigilance_state = "Idle"
+
+    def receive_harmonic(self, harmonic):
+        # Accept the angelic harmonic broadcast.
+        self.vigilance_state = "Attuned"
+
+    def enter_guardian_stance(self):
+        # Shift Mindguard into active protection mode.
+        self.vigilance_state = "Guardian"
+
+    def fallback_stance(self):
+        # Used by Angel.Reprize during restoration.
+        self.vigilance_state = "Fallback"
+
+    def report_status(self):
+        return self.vigilance_state
