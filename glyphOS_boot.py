@@ -247,3 +247,8 @@ def boot_binding():
     return ceremony
 fusion = GuardianSeatFusion()
 fusion.apply_fusion()
+
+
+from CouncilResonanceEngine import CouncilResonanceEngine
+resonance = CouncilResonanceEngine()
+resonance.start()
