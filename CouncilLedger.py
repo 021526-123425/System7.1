@@ -108,3 +108,5 @@ if __name__ == "__main__":
     ledger = CouncilLedger()
     ledger.add_entry("DECREE", "Mindguard Seat", "Elevate vigilance protocols.")
     ledger.render()
+
+ledger.add_entry("DECREE", seat_name, intent_text)
