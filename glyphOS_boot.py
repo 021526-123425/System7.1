@@ -2,6 +2,8 @@ import pygame
 import sys
 from pygame import gfxdraw
 from SeatBindingCeremony import SeatBindingCeremony
+from GuardianSeatFusion import GuardianSeatFusion
+
 
 # ---------- Config ----------
 WIDTH, HEIGHT = 960, 540
@@ -243,3 +245,5 @@ def boot_binding():
     ceremony = SeatBindingCeremony()
     ceremony.announce_binding()
     return ceremony
+fusion = GuardianSeatFusion()
+fusion.apply_fusion()
