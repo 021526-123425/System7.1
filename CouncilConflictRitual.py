@@ -103,3 +103,9 @@ if __name__ == "__main__":
         "Sanctuary Seat": "YES",
         "Angelic Seat": "NO"
     })
+conflict = CouncilConflictRitual()
+conflict.perform(vote_map)
+
+harmonize = CouncilHarmonizationRitual()
+harmonize.perform(vote_map)
+
