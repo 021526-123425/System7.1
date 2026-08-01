@@ -125,6 +125,10 @@ class SparkCouncilVotingRitual:
         result = self.compute_consensus()
         print(f"\n Final Result: {result}\n")
 
+if result == "DIVIDED":
+    conflict = CouncilConflictRitual()
+    conflict.perform(self.votes)
+
 
 if __name__ == "__main__":
     ritual = SparkCouncilVotingRitual()
