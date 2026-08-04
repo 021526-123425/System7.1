@@ -42,3 +42,75 @@
   <rect x="28" y="33" width="44" height="29"
         fill="none" stroke="#f5c96b" stroke-width="1"/>
 </svg>
+
+
+:root {
+  --color-gold: #f5c96b;
+  --color-ember: #f28b3b;
+  --color-ink: #1b1b24;
+  --color-indigo: #3b3f5c;
+}
+
+/* page entry */
+.installer-page {
+  animation: pageFadeIn 600ms ease-out;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* node ignition */
+.node-ignition {
+  animation: nodeIgnition 900ms ease-out forwards;
+}
+
+@keyframes nodeIgnition {
+  0%   { filter: drop-shadow(0 0 0 var(--color-gold)); opacity: 0.4; }
+  40%  { filter: drop-shadow(0 0 6px var(--color-gold)); opacity: 1; }
+  100% { filter: drop-shadow(0 0 3px var(--color-ember)); opacity: 1; }
+}
+
+/* mask glow (Mindgard ON) */
+.mask-glow {
+  animation: maskGlow 1200ms ease-out forwards;
+}
+
+@keyframes maskGlow {
+  0%   { box-shadow: 0 0 0 rgba(245,201,107,0); }
+  40%  { box-shadow: 0 0 18px rgba(245,201,107,0.9); }
+  100% { box-shadow: 0 0 8px rgba(245,201,107,0.6); }
+}
+
+/* mask dim (Mindgard OFF) */
+.mask-dim {
+  animation: maskDim 900ms ease-out forwards;
+}
+
+@keyframes maskDim {
+  0%   { box-shadow: 0 0 10px rgba(245,201,107,0.7); opacity: 1; }
+  100% { box-shadow: 0 0 0 rgba(245,201,107,0); opacity: 0.7; }
+}
+
+/* soft pulse cycle for module preview */
+.soft-pulse-cycle {
+  animation: softPulse 2000ms ease-in-out infinite;
+}
+
+@keyframes softPulse {
+  0%   { opacity: 0.7; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.03); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* spark council sigil rotation */
+.sigil-rotate {
+  animation: sigilRotate 3000ms linear infinite;
+}
+
+@keyframes sigilRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
