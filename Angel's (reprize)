@@ -427,6 +427,8 @@ case "$COMMAND" in
   "clone games") clone_games ;;
 esac
 
+> pip install nemoguardrails
+
 import numpy as np
 import soundfile as sf
 from scipy.signal import stft, istft
