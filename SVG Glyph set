@@ -114,3 +114,37 @@
   to   { transform: rotate(360deg); }
 }
 
+{
+  "theme_id": "system7_mythic_technical",
+  "palette": {
+    "background": "#0f1018",
+    "panel": "#181924",
+    "accent_primary": "#f5c96b",
+    "accent_secondary": "#f28b3b",
+    "accent_soft": "#3b3f5c",
+    "text_primary": "#fdfaf3",
+    "text_muted": "#b3b6c7"
+  },
+  "typography": {
+    "title_font": "Cinzel, serif",
+    "body_font": "Inter, system-ui",
+    "mono_font": "JetBrains Mono, monospace"
+  },
+  "components": {
+    "button": {
+      "radius": 6,
+      "border_width": 1,
+      "border_color": "#f5c96b",
+      "background": "#181924",
+      "hover_background": "#232536",
+      "active_background": "#232536",
+      "text_color": "#fdfaf3"
+    },
+    "panel": {
+      "radius": 10,
+      "border_color": "#3b3f5c",
+      "shadow": "0 12px 30px rgba(0,0,0,0.45)"
+    }
+  }
+}
+
