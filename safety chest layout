@@ -1,0 +1,31 @@
+SafetyChestPage = {
+  id: "system7_safety_chest",
+  sections: [
+    {
+      id: "guardian_overview",
+      glyph: "guardian_mask",
+      title: "Guardian Vigil",
+      description: "Mindgard and Hanoman stand at the threshold of thought and system.",
+      controls: [
+        {
+          type: "toggle",
+          id: "toggle_mindgard",
+          glyph: "mask_open_close",
+          label_on: "Mindgard Vigil: Awake",
+          label_off: "Mindgard Vigil: Resting",
+          on_toggle: "mindgard.enabled = !mindgard.enabled; system7.guardian.reload()"
+        }
+      ]
+    },
+    {
+      id: "artifacts_panel",
+      title: "Symbolic Artifacts",
+      glyph: "relic_box",
+      artifacts: [
+        { id: "artifact_mindgard_mask", label: "Mindgard Mask", state_binding: "mindgard.enabled" },
+        { id: "artifact_spark_council", label: "Spark-Council Sigil" },
+        { id: "artifact_safety_chest_core", label: "Safety Chest Core" }
+      ]
+    }
+  ]
+};
