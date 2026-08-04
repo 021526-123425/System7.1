@@ -1,0 +1,44 @@
+<!-- sun_disc_lattice -->
+<svg viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="28" fill="#f5c96b"/>
+  <circle cx="50" cy="50" r="34" fill="none" stroke="#f5c96b" stroke-width="2"/>
+  <path d="M20 50 H80 M50 20 V80 M30 30 L70 70 M70 30 L30 70"
+        stroke="#2b2b3a" stroke-width="2" stroke-linecap="round"/>
+</svg>
+
+<!-- tree_branching_glow -->
+<svg viewBox="0 0 100 100">
+  <path d="M50 80 V40
+           C50 40 40 30 35 20
+           M50 40 C50 40 60 30 65 20"
+        stroke="#f5c96b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="35" cy="20" r="4" fill="#f5c96b"/>
+  <circle cx="65" cy="20" r="4" fill="#f5c96b"/>
+  <circle cx="50" cy="40" r="5" fill="#f5c96b"/>
+</svg>
+
+<!-- mask_open_close -->
+<svg viewBox="0 0 100 100">
+  <path d="M30 20 Q50 10 70 20
+           Q80 40 70 80
+           Q50 90 30 80
+           Q20 40 30 20 Z"
+        fill="#1b1b24" stroke="#f5c96b" stroke-width="2"/>
+  <circle cx="40" cy="45" r="4" fill="#f5c96b"/>
+  <circle cx="60" cy="45" r="4" fill="#f5c96b"/>
+</svg>
+
+<!-- spark_council_sigil -->
+<svg viewBox="0 0 100 100">
+  <polygon points="50,15 70,50 50,85 30,50"
+           fill="none" stroke="#f5c96b" stroke-width="2"/>
+  <circle cx="50" cy="50" r="6" fill="#f5c96b"/>
+</svg>
+
+<!-- relic_box -->
+<svg viewBox="0 0 100 100">
+  <rect x="25" y="30" width="50" height="35"
+        fill="#2b2b3a" stroke="#f5c96b" stroke-width="2"/>
+  <rect x="28" y="33" width="44" height="29"
+        fill="none" stroke="#f5c96b" stroke-width="1"/>
+</svg>
