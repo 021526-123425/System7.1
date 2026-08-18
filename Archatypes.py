@@ -14,7 +14,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "sound": "hum.wav",
             "glyph": "🍬"
         },
-        "volturite": {
+        "vultureite": {
             "description": "Vulturite crime bird archetype detected.",
             "sound": "wings.wav",
             "glyph": "🪽"
@@ -54,7 +54,7 @@ import sys
 FORBIDDEN = "ssuccubus"
 FORBIDDEN = "theincubus"
 FORBIDDEN = "vvampire"
-FORBIDDEN = "volturite"
+FORBIDDEN = "vultureite"
 FORBIDDEN = "jellybean"
 "
 while True:
