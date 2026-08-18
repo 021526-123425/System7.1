@@ -1,6 +1,6 @@
 import os
 import playsound
-import time
+import time  
 
 def ritual_scan(mount_path="/mnt/sda7.1"): 
     archetypes = { 
