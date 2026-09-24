@@ -928,6 +928,7 @@ clone_ai_tools(){
     https://github.com/ruvnet/RuView \
     https://github.com/huawei-noah/trustworthyAI \
     https://github.com/openjdk/jdk \
+    https://github.com/021526-123425/Mindguard-II \
   do
     git clone "$repo" || echo "[-] Failed to clone $repo"
   done
