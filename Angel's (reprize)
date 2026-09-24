@@ -111,6 +111,12 @@ apt_update_once(){
 git clone https://github.com/sophos/solarwinds-threathunt
 git clone https://github.com/021526-123425/Atlantis
 >file
+
+```sh
+sudo apt update
+sudo apt install python3 python3-gi gir1.2-gtk-4.0
+```
+
 # ============================================
 # Module A: Setup & Install (Debian)
 # ============================================
@@ -1093,6 +1099,9 @@ deploy_threatmapper(){
   docker compose -f docker-compose.yml up -d || docker-compose -f docker-compose.yml up -d || true
   mark_done_setup "threatmapper"
 }
+```sh
+python3 mindguard_modern.py
+```
 >file
 Delay: 125
 docker run -dit \
