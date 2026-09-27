@@ -14,7 +14,7 @@ def ritual_scan(mount_path="/mnt/sda7.1"):
             "sound": "hum.wav",
             "glyph": "🍬"
         },
-        "vultureite": {
+        "volturite": {
             "description": "Vulturite crime bird archetype detected.",
             "sound": "wings.wav",
             "glyph": "🪽"
@@ -54,7 +54,7 @@ import sys
 FORBIDDEN = "ssuccubus"
 FORBIDDEN = "theincubus"
 FORBIDDEN = "vvampire"
-FORBIDDEN = "vultureite"
+FORBIDDEN = "volturite"
 FORBIDDEN = "jellybean"
 "
 while True:
@@ -65,5 +65,5 @@ while True:
     # otherwise pass it through
     print(f"Executing: {line}")
 
-if marker in ["ssuccubus", "theincubus", "vvampire", "vulturite", "jellybean"]:
+if marker in ["ssuccubus", "theincubus", "vvampire", "volturite", "jellybean"]:
     activate_sanctuary()
