@@ -1,7 +1,7 @@
 #!/bin/bash
 # partitions.sh - Backup/Restore/Dry-Run with color-coded notifications
 
-PARTS=("sda3.2a" "sda3.2b" "sda3.2c" "sda3.2d")
+PARTS=("sda3.2a" "sda3.2b" "sda3.2c" "sda3.2d" "sda8.2" "sda7. 3")
 LOGFILE="/var/log/partitions.log"
 ACTION=$1   # backup | restore | dry-run
 
