@@ -1,2 +1,3 @@
 sudo get upgrade
- 
+sudo restart
+git clone https://github.com/sophos/Solarwinds-Threathunter
