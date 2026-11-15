@@ -930,7 +930,6 @@ clone_ai_tools(){
     https://github.com/pleasedodisturb/llm-safe-haven \
     https://github.com/ruvnet/ruflo \
     https://github.com/ruvnet/RuView \
-    https://github.com/mayankmetha/Rucky \
     https://github.com/ruvnet/RuView \
     https://github.com/huawei-noah/trustworthyAI \
     https://github.com/openjdk/jdk \
@@ -1832,7 +1831,7 @@ check_auto_triggers(){
   });
 
   reviewBtn.addEventListener("click", reviewEvent);
-
+sudo apt remove Rucky
   debugEnter.addEventListener("click", enterSanctuary);
 
   // Conceptual watchdog (polling)
